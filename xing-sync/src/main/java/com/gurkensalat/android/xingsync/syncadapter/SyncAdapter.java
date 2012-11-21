@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * SyncAdapter implementation for syncing sample SyncAdapter contacts to the
+ * SyncAdapter implementation for syncing XING contacts to the
  * platform ContactOperations provider. This sample shows a basic 2-way sync
  * between the client and a sample server. It also contains an example of how to
  * update the contacts' status messages, which would be useful for a messaging

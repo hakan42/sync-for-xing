@@ -303,7 +303,7 @@ public class ContactManager
      * @param accountName
      *            the account the contact belongs to
      * @param rawContact
-     *            the sample SyncAdapter User object
+     *            the XING User object
      * @param groupId
      *            the id of the sample group
      * @param inSync
@@ -350,7 +350,7 @@ public class ContactManager
      * @param resolver
      *            the ContentResolver to use
      * @param rawContact
-     *            the sample SyncAdapter contact object
+     *            the XING contact object
      * @param updateStatus
      *            should we update this user's status
      * @param updateAvatar
@@ -602,7 +602,7 @@ public class ContactManager
         final String username = rawContact.getUserName();
         final String status = rawContact.getStatus();
 
-        // Look up the user's sample SyncAdapter data row
+        // Look up the user's XING data row
         final long profileId = lookupProfile(resolver, userId);
 
         // Insert the activity into the stream
@@ -658,13 +658,13 @@ public class ContactManager
     }
 
     /**
-     * Returns the RawContact id for a sample SyncAdapter contact, or 0 if the
-     * sample SyncAdapter user isn't found.
+     * Returns the RawContact id for a XING contact, or 0 if the XING user isn't
+     * found.
      *
      * @param resolver
      *            the content resolver to use
      * @param serverContactId
-     *            the sample SyncAdapter user ID to lookup
+     *            the XING user ID to lookup
      * @return the RawContact id, or 0 if not found
      */
     private static long lookupRawContact(ContentResolver resolver, long serverContactId)
@@ -690,13 +690,13 @@ public class ContactManager
     }
 
     /**
-     * Returns the Data id for a sample SyncAdapter contact's profile row, or 0
-     * if the sample SyncAdapter user isn't found.
+     * Returns the Data id for a XING contact's profile row, or 0 if the XING
+     * user isn't found.
      *
      * @param resolver
      *            a content resolver
      * @param userId
-     *            the sample SyncAdapter user ID to lookup
+     *            the XING user ID to lookup
      * @return the profile Data row id, or 0 if not found
      */
     private static long lookupProfile(ContentResolver resolver, long userId)
@@ -756,8 +756,7 @@ public class ContactManager
     }
 
     /**
-     * Constants for a query to find a contact given a sample SyncAdapter user
-     * ID.
+     * Constants for a query to find a contact given a XING user ID.
      */
     final private static class ProfileQuery
     {
@@ -776,8 +775,7 @@ public class ContactManager
     }
 
     /**
-     * Constants for a query to find a contact given a sample SyncAdapter user
-     * ID.
+     * Constants for a query to find a contact given a XING user ID.
      */
     final private static class UserIdQuery
     {

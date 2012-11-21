@@ -19,10 +19,10 @@
 
 <ContactsAccountType
     xmlns:android="http://schemas.android.com/apk/res/android"
-    inviteContactActivity="com.example.android.samplesync.activities.InviteContactActivity"
+    inviteContactActivity="com.gurkensalat.android.xingsync.activities.InviteContactActivity"
     inviteContactActionLabel="@string/invite_action_label"
-    viewContactNotifyService="com.example.android.samplesync.notifier.NotifierService"
-    viewGroupActivity="com.example.android.samplesync.activities.ViewGroupActivity"
+    viewContactNotifyService="com.gurkensalat.android.xingsync.notifier.NotifierService"
+    viewGroupActivity="com.gurkensalat.android.xingsync.activities.ViewGroupActivity"
     viewGroupActionLabel="@string/view_group_action_label"
 >
 

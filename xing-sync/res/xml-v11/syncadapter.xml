@@ -27,7 +27,7 @@
 
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
     android:contentAuthority="com.android.contacts"
-    android:accountType="com.example.android.samplesync"
+    android:accountType="com.gurkensalat.android.xingync"
     android:supportsUploading="true"
     android:userVisible="true"
 />

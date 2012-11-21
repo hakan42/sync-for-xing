@@ -51,7 +51,7 @@ public class ContactOperations
      * @param context
      *            the Authenticator Activity context
      * @param userId
-     *            the userId of the sample SyncAdapter user object
+     *            the userId of the XING user object
      * @param accountName
      *            the username for the SyncAdapter account
      * @param isSyncOperation
@@ -234,7 +234,7 @@ public class ContactOperations
      * Adds a profile action
      *
      * @param userId
-     *            the userId of the sample SyncAdapter user object
+     *            the userId of the XING user object
      * @return instance of ContactOperations
      */
     public ContactOperations addProfileAction(long userId)
@@ -272,7 +272,7 @@ public class ContactOperations
      * Updates contact's email
      *
      * @param email
-     *            email id of the sample SyncAdapter user
+     *            email id of the XING user
      * @param uri
      *            Uri for the existing raw contact to be updated
      * @return instance of ContactOperations
@@ -389,7 +389,7 @@ public class ContactOperations
      * Updates contact's profile action
      *
      * @param userId
-     *            sample SyncAdapter user id
+     *            XING user id
      * @param uri
      *            Uri for the existing raw contact to be updated
      * @return instance of ContactOperations

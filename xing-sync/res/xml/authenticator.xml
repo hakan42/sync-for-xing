@@ -21,7 +21,7 @@
 <!-- for the Account Manager. -->
 
 <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accountType="com.example.android.samplesync"
+    android:accountType="com.gurkensalat.android.xingsync"
     android:icon="@drawable/icon"
     android:smallIcon="@drawable/icon"
     android:label="@string/label"
