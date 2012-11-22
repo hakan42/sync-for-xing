@@ -1,8 +1,10 @@
 package com.gurkensalat.android.xingsync;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.provider.Settings;
 
 public class HelloAndroidActivity extends Activity
 {
@@ -23,7 +25,15 @@ public class HelloAndroidActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
-        setContentView(R.layout.account_entry);
-    }
+        // setContentView(R.layout.account_entry);
 
+        Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        // To show only our own accounts
+        intent.putExtra(Settings.EXTRA_AUTHORITIES, new String[]
+        { Constants.PROVIDER_AUTHORITY });
+
+        startActivity(intent);
+    }
 }
