@@ -15,7 +15,7 @@
     </modules>
 
     <properties>
-        <platform.version> 4.0.1.2</platform.version>
+        <platform.version>4.0.1.2</platform.version>
 
         <!-- Don't disturb the charging mobile -->
         <android.device>emulator</android.device>
@@ -41,6 +41,13 @@
                 <groupId>de.akquinet.android.androlog</groupId>
                 <artifactId>androlog</artifactId>
                 <version>1.0.5</version>
+            </dependency>
+
+            <!-- To parse the XING vcf files -->
+            <dependency>
+                <groupId>net.sourceforge.cardme</groupId>
+                <artifactId>cardme</artifactId>
+                <version>0.3.6</version>
             </dependency>
 
             <dependency>
