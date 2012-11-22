@@ -72,6 +72,9 @@ final public class NetworkUtilities
     /** URI for sync service */
     public static final String SYNC_CONTACTS_URI = BASE_URL + "/sync";
 
+    // TODO XTH 2012-11-22: Make mockMode settable
+    private static boolean mockMode = true;
+
     private NetworkUtilities()
     {
     }
@@ -101,6 +104,10 @@ final public class NetworkUtilities
      */
     public static String authenticate(String username, String password)
     {
+        if (mockMode == true)
+        {
+            return "mock-auth-token";
+        }
 
         final HttpResponse resp;
         final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
