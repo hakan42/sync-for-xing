@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +41,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
     /** The tag used to log to adb console. */
     private static final String TAG = "AuthenticatorActivity";
+
+    /** Sync period in seconds, currently every week */
+    // TODO XTH 2012-11-22 make SYNC_PERIOD configurable
+    private static final long SYNC_PERIOD = 7L * 24L * 60L * 60L;
 
     private AccountManager mAccountManager;
 
@@ -197,7 +200,11 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         {
             mAccountManager.addAccountExplicitly(account, mPassword, null);
             // Set contacts sync for this account.
-            ContentResolver.setSyncAutomatically(account, ContactsContract.AUTHORITY, true);
+            ContentResolver.setSyncAutomatically(account, Constants.PROVIDER_AUTHORITY, true);
+
+            ContentResolver.setIsSyncable(account, Constants.PROVIDER_AUTHORITY, 1);
+            ContentResolver.setSyncAutomatically(account, Constants.PROVIDER_AUTHORITY, true);
+            ContentResolver.addPeriodicSync(account, Constants.PROVIDER_AUTHORITY, new Bundle(), SYNC_PERIOD);
         }
         else
         {
