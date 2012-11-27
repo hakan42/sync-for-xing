@@ -67,6 +67,16 @@
                 someone who explicitly knows the class name
             -->
         </service>
+
+        <provider
+            android:name=".platform.ContentProviderAdapter"
+            android:authorities="com.gurkensalat.android.xingcontacts"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Foobar"
+            android:syncable="true"
+            />
+
         <activity
             android:name=".authenticator.AuthenticatorActivity"
             android:label="@string/ui_activity_title"
