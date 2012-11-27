@@ -11,7 +11,7 @@ public class Constants
     /**
      * Provider authority
      */
-    public static final String PROVIDER_AUTHORITY = "com.gurkensalat.android.xingsync";
+    public static final String PROVIDER_AUTHORITY = "com.gurkensalat.android.xingcontacts";
 
     /**
      * Authtoken type string.
