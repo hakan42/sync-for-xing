@@ -1,0 +1,4 @@
+About ${project.name}
+=====================
+
+This web site was generated for ${project.groupId}:${project.artifactId}:${project.version}.

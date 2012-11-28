@@ -7,7 +7,11 @@
     <artifactId>xing-sync-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>xing-sync - Parent</name>
+    <name>xing-sync</name>
+
+    <inceptionYear>2012</inceptionYear>
+    <url>http://hakan42.github.com/xing-sync/</url>
+    <description>Automated Android Contact Synchronization with XING</description>
 
     <modules>
         <module>xing-sync</module>
@@ -20,6 +24,42 @@
         <!-- Don't disturb the charging mobile -->
         <android.device>emulator</android.device>
     </properties>
+
+    <scm>
+        <url>https://github.com/hakan42/xing-sync</url>
+        <connection>scm:git:https://github.com/hakan42/xing-sync.git</connection>
+        <developerConnection>scm:git:https://github.com/hakan42/xing-sync.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Git</system>
+        <url>https://github.com/hakan42/xing-sync/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Jenkins</system>
+    </ciManagement>
+
+    <organization>
+        <name>Gurkensalat</name>
+        <url>http://blog.gurkensalat.com/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <site>
+            <id>github-pages-site</id>
+            <name>Deployment through GitHub's site deployment plugin</name>
+            <url>site/${project.version}</url>
+        </site>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
@@ -130,9 +170,79 @@
                         <proguardVersion>4.4</proguardVersion>
                     </configuration>
                 </plugin>
+
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.github.github</groupId>
+                    <artifactId>site-maven-plugin</artifactId>
+                    <version>0.7</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
             </plugins>
+
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <skipDeploy>true</skipDeploy>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.kohsuke</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <configuration>
+                    <message>Building site for ${project.version}</message>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>github-site</id>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site-deploy</phase>
+                        <configuration>
+                            <path>${project.version}</path>
+                            <merge>true</merge>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.6</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <profiles>
         <profile>
