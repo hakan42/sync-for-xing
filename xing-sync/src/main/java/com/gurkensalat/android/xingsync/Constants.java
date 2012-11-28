@@ -17,4 +17,9 @@ public class Constants
      * Authtoken type string.
      */
     public static final String AUTHTOKEN_TYPE = "com.gurkensalat.android.xingsync";
+
+    /**
+     * What should the default group name be?
+     */
+    public static final String DEFAULT_GROUP_NAME = "XING";
 }

@@ -41,8 +41,6 @@ public class ContactManager
 
     private static final String TAG = "ContactManager";
 
-    public static final String SAMPLE_GROUP_NAME = "Sample Group";
-
     public static long ensureSampleGroupExists(Context context, Account account)
     {
         final ContentResolver resolver = context.getContentResolver();
@@ -51,7 +49,7 @@ public class ContactManager
         long groupId = 0;
         final Cursor cursor = resolver.query(Groups.CONTENT_URI, new String[]
         { Groups._ID }, Groups.ACCOUNT_NAME + "=? AND " + Groups.ACCOUNT_TYPE + "=? AND " + Groups.TITLE + "=?", new String[]
-        { account.name, account.type, SAMPLE_GROUP_NAME }, null);
+        { account.name, account.type, Constants.DEFAULT_GROUP_NAME }, null);
         if (cursor != null)
         {
             try
@@ -72,7 +70,7 @@ public class ContactManager
             final ContentValues contentValues = new ContentValues();
             contentValues.put(Groups.ACCOUNT_NAME, account.name);
             contentValues.put(Groups.ACCOUNT_TYPE, account.type);
-            contentValues.put(Groups.TITLE, SAMPLE_GROUP_NAME);
+            contentValues.put(Groups.TITLE, Constants.DEFAULT_GROUP_NAME);
             contentValues.put(Groups.GROUP_IS_READ_ONLY, true);
 
             final Uri newGroupUri = resolver.insert(Groups.CONTENT_URI, contentValues);
