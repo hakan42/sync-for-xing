@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 .project
 .settings
 .classpath
 target
 version.properties
+=======
+target/
+>>>>>>> 76d94d23dc33dd8b466896476be2aa54eb88d956
