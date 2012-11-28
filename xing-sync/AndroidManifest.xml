@@ -73,7 +73,7 @@
             android:authorities="com.gurkensalat.android.xingcontacts"
             android:enabled="true"
             android:exported="true"
-            android:label="Foobar"
+            android:label="@string/sync_contacts_label"
             android:syncable="true"
             />
 

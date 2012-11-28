@@ -129,6 +129,8 @@
 
         This is the group uri:</string>
 
+    <string name="sync_contacts_label">Contacts</string>
+
     <!-- FIXME added to make stuff compile -->
     <string name="targetAccountLabel">T.Account</string>
     <string name="contactNameLabel">C.Name</string>
