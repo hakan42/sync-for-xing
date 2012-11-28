@@ -180,69 +180,109 @@ final public class NetworkUtilities
     public static List<RawContact> syncContacts(Account account, String authtoken, long serverSyncState,
             List<RawContact> dirtyContacts) throws JSONException, ParseException, IOException, AuthenticationException
     {
-        // Convert our list of User objects into a list of JSONObject
-        List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
-        for (RawContact rawContact : dirtyContacts)
-        {
-            jsonContacts.add(rawContact.toJSONObject());
-        }
+        Log.d(TAG, "in syncContacts");
 
-        // Create a special JSONArray of our JSON contacts
-        JSONArray buffer = new JSONArray(jsonContacts);
+//        // Convert our list of User objects into a list of JSONObject
+//        List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
+//        for (RawContact rawContact : dirtyContacts)
+//        {
+//            jsonContacts.add(rawContact.toJSONObject());
+//        }
+//
+//        // Create a special JSONArray of our JSON contacts
+//        JSONArray buffer = new JSONArray(jsonContacts);
 
         // Create an array that will hold the server-side contacts
         // that have been changed (returned by the server).
         final ArrayList<RawContact> serverDirtyList = new ArrayList<RawContact>();
 
-        // Prepare our POST data
-        final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
-        params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
-        params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA, buffer.toString()));
-        if (serverSyncState > 0)
-        {
-            params.add(new BasicNameValuePair(PARAM_SYNC_STATE, Long.toString(serverSyncState)));
-        }
-        Log.i(TAG, params.toString());
-        HttpEntity entity = new UrlEncodedFormEntity(params);
+//        // Prepare our POST data
+//        final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+//        params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
+//        params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
+//        params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA, buffer.toString()));
+//        if (serverSyncState > 0)
+//        {
+//            params.add(new BasicNameValuePair(PARAM_SYNC_STATE, Long.toString(serverSyncState)));
+//        }
+//        Log.i(TAG, params.toString());
+//        HttpEntity entity = new UrlEncodedFormEntity(params);
+//
+//        // Send the updated friends data to the server
+//        Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
+//        final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
+//        post.addHeader(entity.getContentType());
+//        post.setEntity(entity);
+//        final HttpResponse resp = getHttpClient().execute(post);
+//        final String response = EntityUtils.toString(resp.getEntity());
+//        if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+//        {
+//            // Our request to the server was successful - so we assume
+//            // that they accepted all the changes we sent up, and
+//            // that the response includes the contacts that we need
+//            // to update on our side...
+//            final JSONArray serverContacts = new JSONArray(response);
+//            Log.d(TAG, response);
+//            for (int i = 0; i < serverContacts.length(); i++)
+//            {
+//                RawContact rawContact = RawContact.valueOf(serverContacts.getJSONObject(i));
+//                if (rawContact != null)
+//                {
+//                    serverDirtyList.add(rawContact);
+//                }
+//            }
+//        }
+//        else
+//        {
+//            if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_UNAUTHORIZED)
+//            {
+//                Log.e(TAG, "Authentication exception in sending dirty contacts");
+//                throw new AuthenticationException();
+//            }
+//            else
+//            {
+//                Log.e(TAG, "Server error in sending dirty contacts: " + resp.getStatusLine());
+//                throw new IOException();
+//            }
+//        }
 
-        // Send the updated friends data to the server
-        Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
-        final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
-        post.addHeader(entity.getContentType());
-        post.setEntity(entity);
-        final HttpResponse resp = getHttpClient().execute(post);
-        final String response = EntityUtils.toString(resp.getEntity());
-        if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+        JSONObject contact = new JSONObject();
+
+        contact.put("u", "mickymouse");
+        contact.put("i", 4711);
+        contact.put("f", "Micky");
+        contact.put("l", "Mouse");
+
+//        final String userName = !contact.isNull("u") ? contact.getString("u") : null;
+//        final int serverContactId = !contact.isNull("i") ? contact.getInt("i") : -1;
+//        // If we didn't get either a username or serverId for the contact,
+//        // then
+//        // we can't do anything with it locally...
+//        if ((userName == null) && (serverContactId <= 0))
+//        {
+//            throw new JSONException("JSON contact missing required 'u' or 'i' fields");
+//        }
+//
+//        final int rawContactId = !contact.isNull("c") ? contact.getInt("c") : -1;
+//        final String firstName = !contact.isNull("f") ? contact.getString("f") : null;
+//        final String lastName = !contact.isNull("l") ? contact.getString("l") : null;
+//        final String cellPhone = !contact.isNull("m") ? contact.getString("m") : null;
+//        final String officePhone = !contact.isNull("o") ? contact.getString("o") : null;
+//        final String homePhone = !contact.isNull("h") ? contact.getString("h") : null;
+//        final String email = !contact.isNull("e") ? contact.getString("e") : null;
+//        final String status = !contact.isNull("s") ? contact.getString("s") : null;
+//        final String avatarUrl = !contact.isNull("a") ? contact.getString("a") : null;
+//        final boolean deleted = !contact.isNull("d") ? contact.getBoolean("d") : false;
+//        final long syncState = !contact.isNull("x") ? contact.getLong("x") : 0;
+
+
+        RawContact rawContact = RawContact.valueOf(contact);
+        if (rawContact != null)
         {
-            // Our request to the server was successful - so we assume
-            // that they accepted all the changes we sent up, and
-            // that the response includes the contacts that we need
-            // to update on our side...
-            final JSONArray serverContacts = new JSONArray(response);
-            Log.d(TAG, response);
-            for (int i = 0; i < serverContacts.length(); i++)
-            {
-                RawContact rawContact = RawContact.valueOf(serverContacts.getJSONObject(i));
-                if (rawContact != null)
-                {
-                    serverDirtyList.add(rawContact);
-                }
-            }
+            serverDirtyList.add(rawContact);
         }
-        else
-        {
-            if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_UNAUTHORIZED)
-            {
-                Log.e(TAG, "Authentication exception in sending dirty contacts");
-                throw new AuthenticationException();
-            }
-            else
-            {
-                Log.e(TAG, "Server error in sending dirty contacts: " + resp.getStatusLine());
-                throw new IOException();
-            }
-        }
+
+        Log.d(TAG, "Returning " + serverDirtyList.size() + " raw contacts");
 
         return serverDirtyList;
     }
