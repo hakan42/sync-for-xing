@@ -1,5 +1,22 @@
 package com.gurkensalat.android.xingsync.client;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,28 +31,17 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.accounts.Account;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.gurkensalat.android.xingsync.Constants;
 
 /**
  * Provides utility methods for communicating with the server.
@@ -180,69 +186,158 @@ final public class NetworkUtilities
     public static List<RawContact> syncContacts(Account account, String authtoken, long serverSyncState,
             List<RawContact> dirtyContacts) throws JSONException, ParseException, IOException, AuthenticationException
     {
-        // Convert our list of User objects into a list of JSONObject
-        List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
-        for (RawContact rawContact : dirtyContacts)
-        {
-            jsonContacts.add(rawContact.toJSONObject());
-        }
+        Log.d(TAG, "in syncContacts");
 
-        // Create a special JSONArray of our JSON contacts
-        JSONArray buffer = new JSONArray(jsonContacts);
+//        // Convert our list of User objects into a list of JSONObject
+//        List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
+//        for (RawContact rawContact : dirtyContacts)
+//        {
+//            jsonContacts.add(rawContact.toJSONObject());
+//        }
+//
+//        // Create a special JSONArray of our JSON contacts
+//        JSONArray buffer = new JSONArray(jsonContacts);
 
         // Create an array that will hold the server-side contacts
         // that have been changed (returned by the server).
         final ArrayList<RawContact> serverDirtyList = new ArrayList<RawContact>();
 
-        // Prepare our POST data
-        final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
-        params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
-        params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA, buffer.toString()));
-        if (serverSyncState > 0)
-        {
-            params.add(new BasicNameValuePair(PARAM_SYNC_STATE, Long.toString(serverSyncState)));
-        }
-        Log.i(TAG, params.toString());
-        HttpEntity entity = new UrlEncodedFormEntity(params);
+//        // Prepare our POST data
+//        final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+//        params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
+//        params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
+//        params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA, buffer.toString()));
+//        if (serverSyncState > 0)
+//        {
+//            params.add(new BasicNameValuePair(PARAM_SYNC_STATE, Long.toString(serverSyncState)));
+//        }
+//        Log.i(TAG, params.toString());
+//        HttpEntity entity = new UrlEncodedFormEntity(params);
+//
+//        // Send the updated friends data to the server
+//        Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
+//        final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
+//        post.addHeader(entity.getContentType());
+//        post.setEntity(entity);
+//        final HttpResponse resp = getHttpClient().execute(post);
+//        final String response = EntityUtils.toString(resp.getEntity());
+//        if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+//        {
+//            // Our request to the server was successful - so we assume
+//            // that they accepted all the changes we sent up, and
+//            // that the response includes the contacts that we need
+//            // to update on our side...
+//            final JSONArray serverContacts = new JSONArray(response);
+//            Log.d(TAG, response);
+//            for (int i = 0; i < serverContacts.length(); i++)
+//            {
+//                RawContact rawContact = RawContact.valueOf(serverContacts.getJSONObject(i));
+//                if (rawContact != null)
+//                {
+//                    serverDirtyList.add(rawContact);
+//                }
+//            }
+//        }
+//        else
+//        {
+//            if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_UNAUTHORIZED)
+//            {
+//                Log.e(TAG, "Authentication exception in sending dirty contacts");
+//                throw new AuthenticationException();
+//            }
+//            else
+//            {
+//                Log.e(TAG, "Server error in sending dirty contacts: " + resp.getStatusLine());
+//                throw new IOException();
+//            }
+//        }
 
-        // Send the updated friends data to the server
-        Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
-        final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
-        post.addHeader(entity.getContentType());
-        post.setEntity(entity);
-        final HttpResponse resp = getHttpClient().execute(post);
-        final String response = EntityUtils.toString(resp.getEntity());
-        if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+        if (Constants.MOCK_MODE)
         {
-            // Our request to the server was successful - so we assume
-            // that they accepted all the changes we sent up, and
-            // that the response includes the contacts that we need
-            // to update on our side...
-            final JSONArray serverContacts = new JSONArray(response);
-            Log.d(TAG, response);
-            for (int i = 0; i < serverContacts.length(); i++)
+            File storageDirectory = Environment.getExternalStorageDirectory();
+            if (storageDirectory != null)
             {
-                RawContact rawContact = RawContact.valueOf(serverContacts.getJSONObject(i));
+                File cacheDir = storageDirectory;
+                cacheDir = new File(cacheDir, "Android");
+                cacheDir = new File(cacheDir, "data");
+                cacheDir = new File(cacheDir, Constants.class.getPackage().getName());
+                cacheDir = new File(cacheDir, "files");
+                Log.i(TAG, cacheDir.getAbsolutePath() + " ? " + cacheDir.exists() + " ? " + cacheDir.isDirectory());
+
+                if (cacheDir.isDirectory())
+                {
+                    Log.i(TAG, cacheDir.getAbsolutePath() + " is a directory");
+                    if (cacheDir.canRead())
+                    {
+                        for (String candidateName : cacheDir.list())
+                        {
+                            Log.i(TAG, "File to check: " + candidateName);
+                            if (candidateName.endsWith(".json"))
+                            {
+                                try
+                                {
+                                    if (TextUtils.isDigitsOnly(candidateName.substring(0, 1)) || (candidateName.equals("me.json")))
+                                    {
+                                        File candidate = new File(cacheDir, candidateName);
+                                        Log.i(TAG, "About to read: " + candidate.getAbsolutePath());
+
+                                        FileInputStream stream = new FileInputStream(candidate);
+                                        String jsonString = null;
+                                        try
+                                        {
+                                            FileChannel fc = stream.getChannel();
+
+                                            MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+                                            jsonString = Charset.defaultCharset().decode(bb).toString();
+                                        }
+                                        finally
+                                        {
+                                            stream.close();
+                                        }
+
+                                        JSONObject jObject = new JSONObject(jsonString);
+
+                                        RawContact rawContact = RawContact.valueOf(jObject);
+                                        if (rawContact != null)
+                                        {
+                                            serverDirtyList.add(rawContact);
+                                        }
+                                    }
+                                }
+                                catch (IOException e)
+                                {
+                                    Log.e(TAG, "While mocking contacts", e);
+                                    throw e;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Cannot read " + cacheDir.getAbsolutePath());
+                    }
+                }
+            }
+            else
+            {
+                Log.e(TAG, "External Storage Directory was null");
+
+                JSONObject contact = new JSONObject();
+
+                contact.put("u", "mickymouse");
+                contact.put("i", 4711);
+                contact.put("f", "Micky");
+                contact.put("l", "Mouse");
+
+                RawContact rawContact = RawContact.valueOf(contact);
                 if (rawContact != null)
                 {
                     serverDirtyList.add(rawContact);
                 }
             }
         }
-        else
-        {
-            if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_UNAUTHORIZED)
-            {
-                Log.e(TAG, "Authentication exception in sending dirty contacts");
-                throw new AuthenticationException();
-            }
-            else
-            {
-                Log.e(TAG, "Server error in sending dirty contacts: " + resp.getStatusLine());
-                throw new IOException();
-            }
-        }
+
+        Log.d(TAG, "Returning " + serverDirtyList.size() + " raw contacts");
 
         return serverDirtyList;
     }
