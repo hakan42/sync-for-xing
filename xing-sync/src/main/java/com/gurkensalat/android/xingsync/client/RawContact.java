@@ -3,10 +3,9 @@ package com.gurkensalat.android.xingsync.client;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
-
-import java.lang.StringBuilder;
 
 /**
  * Represents a low-level contacts RawContact - or at least the fields of the
@@ -228,32 +227,64 @@ final public class RawContact
      */
     public static RawContact valueOf(JSONObject contact)
     {
-
         try
         {
-            final String userName = !contact.isNull("u") ? contact.getString("u") : null;
-            final int serverContactId = !contact.isNull("i") ? contact.getInt("i") : -1;
-            // If we didn't get either a username or serverId for the contact,
-            // then
-            // we can't do anything with it locally...
-            if ((userName == null) && (serverContactId <= 0))
+            // Log.i(TAG, "Received JSON object " + contact);
+            JSONArray contacts = contact.getJSONArray("users");
+            // Log.i(TAG, "converted to array: " + contacts);
+            if (contacts != null && contacts.length() > 0)
             {
-                throw new JSONException("JSON contact missing required 'u' or 'i' fields");
-            }
+                contact = contacts.getJSONObject(0);
 
-            final int rawContactId = !contact.isNull("c") ? contact.getInt("c") : -1;
-            final String firstName = !contact.isNull("f") ? contact.getString("f") : null;
-            final String lastName = !contact.isNull("l") ? contact.getString("l") : null;
-            final String cellPhone = !contact.isNull("m") ? contact.getString("m") : null;
-            final String officePhone = !contact.isNull("o") ? contact.getString("o") : null;
-            final String homePhone = !contact.isNull("h") ? contact.getString("h") : null;
-            final String email = !contact.isNull("e") ? contact.getString("e") : null;
-            final String status = !contact.isNull("s") ? contact.getString("s") : null;
-            final String avatarUrl = !contact.isNull("a") ? contact.getString("a") : null;
-            final boolean deleted = !contact.isNull("d") ? contact.getBoolean("d") : false;
-            final long syncState = !contact.isNull("x") ? contact.getLong("x") : 0;
-            return new RawContact(userName, null, firstName, lastName, cellPhone, officePhone, homePhone, email, status,
-                    avatarUrl, deleted, serverContactId, rawContactId, syncState, false);
+                // Log.d(TAG, "    contact: " + contact.toString(2));
+                // Iterator it = contact.keys();
+                // while (it.hasNext())
+                // {
+                // String key = (String) it.next();
+                // Log.d(TAG, "    key: " + key);
+                // }
+
+                final String userName = !contact.isNull("display_name") ? contact.getString("display_name") : null;
+                Log.d(TAG, "    userName: " + userName);
+                // !contact.isNull("u") ? contact.getString("u") : null;
+                final String serverContactIdString = !contact.isNull("id") ? contact.getString("id") : null;
+                Log.d(TAG, "    id: " + serverContactIdString);
+                int serverContactId = -1;
+                if (!(TextUtils.isEmpty(serverContactIdString)))
+                {
+                    serverContactId = Integer.parseInt(serverContactIdString.substring(0, serverContactIdString.indexOf("_") ));
+                }
+
+                // If we didn't get either a username or serverId for the
+                // contact,
+                // then we can't do anything with it locally...
+                if ((userName == null) && (serverContactId <= 0))
+                {
+                    throw new JSONException("JSON contact missing required 'u' or 'i' fields");
+                }
+
+                final int rawContactId = -1;
+                // !contact.isNull("c") ? contact.getInt("c") : -1;
+                final String firstName = !contact.isNull("first_name") ? contact.getString("first_name") : null;
+                final String lastName = !contact.isNull("last_name") ? contact.getString("last_name") : null;
+                final String cellPhone = null;
+                // !contact.isNull("m") ? contact.getString("m") : null;
+                final String officePhone = null;
+                // !contact.isNull("o") ? contact.getString("o") : null;
+                final String homePhone = null;
+                // !contact.isNull("h") ? contact.getString("h") : null;
+                final String email = null;
+                // !contact.isNull("e") ? contact.getString("e") : null;
+                final String status = null;
+                // !contact.isNull("s") ? contact.getString("s") : null;
+                final String avatarUrl = null;
+                // !contact.isNull("a") ? contact.getString("a") : null;
+                final boolean deleted = !contact.isNull("d") ? contact.getBoolean("d") : false;
+                final long syncState = !contact.isNull("x") ? contact.getLong("x") : 0;
+
+                return new RawContact(userName, null, firstName, lastName, cellPhone, officePhone, homePhone, email, status,
+                        avatarUrl, deleted, serverContactId, rawContactId, syncState, false);
+            }
         }
         catch (final Exception ex)
         {
