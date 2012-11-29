@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,7 +53,6 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider,
             SyncResult syncResult)
     {
-
         try
         {
             // see if we already have a sync-state attached to this account. By
@@ -79,14 +79,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             // yet, this could involve a round-trip to the server to request
             // and AuthToken.
             final String authtoken = mAccountManager.blockingGetAuthToken(account, Constants.AUTHTOKEN_TYPE, NOTIFY_AUTH_FAILURE);
+            Log.i(TAG, "Authtoken: " + authtoken);
 
             // Make sure that the sample group exists
             final long groupId = ContactManager.ensureSampleGroupExists(mContext, account);
+            Log.i(TAG, "groupId: " + groupId);
 
             // Find the local 'dirty' contacts that we need to tell the server
             // about...
             // Find the local users that need to be sync'd to the server...
-            dirtyContacts = ContactManager.getDirtyContacts(mContext, account);
+            // dirtyContacts = ContactManager.getDirtyContacts(mContext, account);
+            dirtyContacts = new ArrayList<RawContact>(0);
 
             // Send the dirty contacts to the server, and retrieve the
             // server-side changes
@@ -104,18 +107,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             // 2-way contact sync providers - it's more likely that one-way
             // sync providers (IM clients, social networking apps, etc) would
             // use this feature.
-            ContactManager.updateStatusMessages(mContext, updatedContacts);
+            // ContactManager.updateStatusMessages(mContext, updatedContacts);
 
             // Save off the new sync marker. On our next sync, we only want to
             // receive
             // contacts that have changed since this sync...
             setServerSyncMarker(account, newSyncState);
 
-            if (dirtyContacts.size() > 0)
-            {
-                ContactManager.clearSyncFlags(mContext, dirtyContacts);
-            }
-
+            // if (dirtyContacts.size() > 0)
+            // {
+            // ContactManager.clearSyncFlags(mContext, dirtyContacts);
+            // }
         }
         catch (final AuthenticatorException e)
         {
