@@ -104,9 +104,12 @@ public class ContactManager
         final BatchOperation batchOperation = new BatchOperation(context, resolver);
         final List<RawContact> newUsers = new ArrayList<RawContact>();
 
-        Log.d(TAG, "In SyncContacts");
+        Log.d(TAG, "In updateContacts");
+        Log.d(TAG, "raw contact list size: " + rawContacts.size());
         for (final RawContact rawContact : rawContacts)
         {
+            Log.i(TAG, "rawContact: " + rawContact);
+
             // The server returns a syncState (x) value with each contact
             // record.
             // The syncState is sequential, so higher values represent more
