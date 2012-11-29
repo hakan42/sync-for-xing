@@ -22,4 +22,14 @@ public class Constants
      * What should the default group name be?
      */
     public static final String DEFAULT_GROUP_NAME = "XING";
+
+    /**
+     * Do we mock anything at all? Should be a preference item.
+     */
+    public static final Boolean MOCK_MODE = true;
+
+    /**
+     * Do we mock network access? Should be a preference item.
+     */
+    public static final Boolean MOCK_NETWORK_ACCESS = true;
 }
