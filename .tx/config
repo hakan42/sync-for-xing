@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[xing-sync.xing-sync-strings]
+file_filter = xing-sync/res/values-<lang>/strings.xml
+source_file = xing-sync/res/values/strings.xml
+source_lang = en
+type = ANDROID
+
