@@ -195,6 +195,25 @@ final public class RawContact
         return json;
     }
 
+    private static String safeGetString(JSONObject object, String key)
+    {
+        String result = "";
+
+        try
+        {
+            if (!(object.isNull(key)))
+            {
+                result = object.getString(key);
+            }
+        }
+        catch (JSONException je)
+        {
+            Log.e(TAG, "While accessing " + key, je);
+        }
+
+        return result;
+    }
+
     public RawContact(String name, String fullName, String firstName, String lastName, String cellPhone, String officePhone,
             String homePhone, String email, String status, String avatarUrl, boolean deleted, long serverContactId,
             long rawContactId, long syncState, boolean dirty)
@@ -236,28 +255,19 @@ final public class RawContact
             {
                 contact = contacts.getJSONObject(0);
 
-                // Log.d(TAG, "    contact: " + contact.toString(2));
-                // Iterator it = contact.keys();
-                // while (it.hasNext())
-                // {
-                // String key = (String) it.next();
-                // Log.d(TAG, "    key: " + key);
-                // }
+                // Log.i(TAG, contact.toString(2));
 
-                final String userName = !contact.isNull("display_name") ? contact.getString("display_name") : null;
-                Log.d(TAG, "    userName: " + userName);
-                // !contact.isNull("u") ? contact.getString("u") : null;
-                final String serverContactIdString = !contact.isNull("id") ? contact.getString("id") : null;
-                Log.d(TAG, "    id: " + serverContactIdString);
+                final String userName = safeGetString(contact, "display_name");
+                final String serverContactIdString = safeGetString(contact, "id");
+
                 int serverContactId = -1;
                 if (!(TextUtils.isEmpty(serverContactIdString)))
                 {
-                    serverContactId = Integer.parseInt(serverContactIdString.substring(0, serverContactIdString.indexOf("_") ));
+                    serverContactId = Integer.parseInt(serverContactIdString.substring(0, serverContactIdString.indexOf("_")));
                 }
 
                 // If we didn't get either a username or serverId for the
-                // contact,
-                // then we can't do anything with it locally...
+                // contact, then we can't do anything with it locally...
                 if ((userName == null) && (serverContactId <= 0))
                 {
                     throw new JSONException("JSON contact missing required 'u' or 'i' fields");
@@ -265,20 +275,36 @@ final public class RawContact
 
                 final int rawContactId = -1;
                 // !contact.isNull("c") ? contact.getInt("c") : -1;
-                final String firstName = !contact.isNull("first_name") ? contact.getString("first_name") : null;
-                final String lastName = !contact.isNull("last_name") ? contact.getString("last_name") : null;
-                final String cellPhone = null;
-                // !contact.isNull("m") ? contact.getString("m") : null;
-                final String officePhone = null;
-                // !contact.isNull("o") ? contact.getString("o") : null;
-                final String homePhone = null;
-                // !contact.isNull("h") ? contact.getString("h") : null;
-                final String email = null;
-                // !contact.isNull("e") ? contact.getString("e") : null;
-                final String status = null;
+
+                final String firstName = safeGetString(contact, "first_name");
+                final String lastName = safeGetString(contact, "last_name");
+
+                String cellPhone = null;
+                String officePhone = null;
+                String homePhone = null;
+                String email = null;
+
+                String status = null;
                 // !contact.isNull("s") ? contact.getString("s") : null;
-                final String avatarUrl = null;
+                String avatarUrl = null;
                 // !contact.isNull("a") ? contact.getString("a") : null;
+
+                if (!contact.isNull("business_address"))
+                {
+                    JSONObject address = contact.getJSONObject("business_address");
+
+                    cellPhone = safeGetString(address, "mobile_phone");
+                    officePhone = safeGetString(address, "phone");
+                    email = safeGetString(address, "email");
+                }
+
+                if (!contact.isNull("private_address"))
+                {
+                    JSONObject address = contact.getJSONObject("private_address");
+
+                    homePhone = safeGetString(address, "phone");
+                }
+
                 final boolean deleted = !contact.isNull("d") ? contact.getBoolean("d") : false;
                 final long syncState = !contact.isNull("x") ? contact.getLong("x") : 0;
 
