@@ -14,7 +14,7 @@ public final class SampleSyncAdapterColumns
     /**
      * MIME-type used when storing a profile {@link Data} entry.
      */
-    public static final String MIME_PROFILE = "vnd.android.cursor.item/vnd.samplesyncadapter.profile";
+    public static final String MIME_PROFILE = "vnd.android.cursor.item/vnd.com.gurkensalat.android.xingsync.profile";
 
     public static final String DATA_PID = Data.DATA1;
 
