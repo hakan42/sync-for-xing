@@ -172,6 +172,17 @@
                 </plugin>
 
                 <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.7</version>
+                </plugin>
+
+                <plugin>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.2</version>
                 </plugin>
