@@ -771,8 +771,8 @@ public class ContactManager
 
         public final static int COLUMN_ID = 0;
 
-        public static final String SELECTION = Data.MIMETYPE + "='" + SampleSyncAdapterColumns.MIME_PROFILE + "' AND "
-                + SampleSyncAdapterColumns.DATA_PID + "=?";
+        public static final String SELECTION = Data.MIMETYPE + "='" + Constants.MIME_PROFILE + "' AND "
+                + Constants.DATA_PID + "=?";
     }
 
     /**

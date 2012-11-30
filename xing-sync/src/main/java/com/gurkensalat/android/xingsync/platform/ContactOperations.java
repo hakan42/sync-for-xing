@@ -242,10 +242,10 @@ public class ContactOperations
         mValues.clear();
         if (userId != 0)
         {
-            mValues.put(SampleSyncAdapterColumns.DATA_PID, userId);
-            mValues.put(SampleSyncAdapterColumns.DATA_SUMMARY, mContext.getString(R.string.profile_action));
-            mValues.put(SampleSyncAdapterColumns.DATA_DETAIL, mContext.getString(R.string.view_profile));
-            mValues.put(Data.MIMETYPE, SampleSyncAdapterColumns.MIME_PROFILE);
+            mValues.put(Constants.DATA_PID, userId);
+            mValues.put(Constants.DATA_SUMMARY, mContext.getString(R.string.profile_action));
+            mValues.put(Constants.DATA_DETAIL, mContext.getString(R.string.view_profile));
+            mValues.put(Data.MIMETYPE, Constants.MIME_PROFILE);
             addInsertOp();
         }
         return this;
@@ -397,7 +397,7 @@ public class ContactOperations
     public ContactOperations updateProfileAction(Integer userId, Uri uri)
     {
         mValues.clear();
-        mValues.put(SampleSyncAdapterColumns.DATA_PID, userId);
+        mValues.put(Constants.DATA_PID, userId);
         addUpdateOp(uri);
         return this;
     }
