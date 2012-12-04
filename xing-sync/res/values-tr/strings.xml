@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <!--Label for this package-->
+  <!--Permission label-->
+  <!--Permission description-->
+  <!--Permission label-->
+  <!--Permission description-->
+  <!--Title string for Login activity-->
+  <!--Message shown in progress dialog while app connects to the server-->
+  <!--AuthenticatorActivity-->
+  <!--Label above username EditText-->
+  <!--Label above password EditText-->
+  <!--Button to sign in after entering username and password-->
+  <!--Message shown in dialog if the username or password is invalid.-->
+  <!--Message shown in dialog if the password is invalid-->
+  <!--Message shown in dialog to prompt the user for their password-->
+  <!--Message shown if the provided account doesn't support the current
+        activity.-->
+  <!--Button that takes the user to the "sign in" screen-->
+  <!--Button for going to the previous screen or step-->
+  <!--Button to cancel the current operation-->
+  <!--Strings for contacts.xml-->
+  <!--The label of the button to add contact to this contact provider-->
+  <!--The description for the invite contact flow-->
+  <!--The label of the button to view a group-->
+  <!--The description for the view group button-->
+  <!--FIXME added to make stuff compile-->
+</resources>
