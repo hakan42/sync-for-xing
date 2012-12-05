@@ -201,9 +201,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             mAccountManager.addAccountExplicitly(account, mPassword, null);
 
             // Set contacts sync for this account.
-            // ContentResolver.setIsSyncable(account, Constants.PROVIDER_AUTHORITY, 1);
-            // ContentResolver.setSyncAutomatically(account, Constants.PROVIDER_AUTHORITY, true);
-            // ContentResolver.addPeriodicSync(account, Constants.PROVIDER_AUTHORITY, new Bundle(), SYNC_PERIOD);
+            ContentResolver.setIsSyncable(account, Constants.PROVIDER_AUTHORITY, 1);
+            ContentResolver.setSyncAutomatically(account, Constants.PROVIDER_AUTHORITY, true);
+            ContentResolver.addPeriodicSync(account, Constants.PROVIDER_AUTHORITY, new Bundle(), SYNC_PERIOD);
+            ContentResolver.setMasterSyncAutomatically(true);
         }
         else
         {
