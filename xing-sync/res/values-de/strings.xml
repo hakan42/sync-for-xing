@@ -24,5 +24,8 @@
   <!--The description for the invite contact flow-->
   <!--The label of the button to view a group-->
   <!--The description for the view group button-->
+  <!--For Preferences-->
   <!--FIXME added to make stuff compile-->
+  <string name="showInvisible">I.nvisible</string>
+  <string name="addContactTitle">Foo</string>
 </resources>
