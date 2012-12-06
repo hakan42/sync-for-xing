@@ -131,6 +131,9 @@
 
     <string name="sync_contacts_label">Contacts</string>
 
+    <!-- For Preferences -->
+    <string name="prefs_category_name">Account Settings</string>
+
     <!-- FIXME added to make stuff compile -->
     <string name="targetAccountLabel">T.Account</string>
     <string name="contactNameLabel">C.Name</string>
