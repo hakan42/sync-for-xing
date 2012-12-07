@@ -1,0 +1,243 @@
+﻿{
+  "users": [
+    {
+      "languages": {
+        "tr": "NATIVE",
+        "de": "NATIVE",
+        "en": "FLUENT"
+      },
+      "id": "3382304_64b174",
+      "haves": "Umfassendes Know-How im Bereich IT & IT-Consulting, Software-Architektur, Software-Entwicklung, Internet, Intranet, Portale, Content Management (CMS), Shops, J2EE, Java, Perl, Python, Unix, Linux",
+      "time_zone": {
+        "utc_offset": 1,
+        "name": "Europe/Berlin"
+      },
+      "wants": "Kontakte, Projekte, Ideenaustausch, Kooperationen, Partnerschaften, Investment Ideen in der Türkei, IT-Projekte in der Türkei",
+      "gender": "m",
+      "active_email": "hakan@et42.de",
+      "last_name": "Tandogan",
+      "interests": "GIS, OpenStreetMap (OSM), Android",
+      "instant_messaging_accounts": {},
+      "premium_services": [
+        "SEARCH",
+        "PRIVATEMESSAGES"
+      ],
+      "page_name": "Hakan_Tandogan",
+      "permalink": "https://www.xing.com/profile/Hakan_Tandogan",
+      "professional_experience": {
+        "awards": [],
+        "non_primary_companies": [
+          {
+            "end_date": null,
+            "begin_date": "2011-08",
+            "career_level": null,
+            "company_size": "5001-10000",
+            "industry": "BANKING",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "Giesecke & Devrient GmbH",
+            "url": "http://www.gi-de.com/",
+            "tag": "GIESECKE&DEVRIENTGMBH"
+          },
+          {
+            "end_date": "2011-06",
+            "begin_date": "2010-09",
+            "career_level": null,
+            "company_size": "201-500",
+            "industry": "BANKING",
+            "description": null,
+            "title": "Application Engineer",
+            "name": "Wirecard Technologies AG",
+            "url": "http://www.wirecard.com/",
+            "tag": "WIRECARDAG"
+          },
+          {
+            "end_date": "2010-08",
+            "begin_date": "2010-06",
+            "career_level": null,
+            "company_size": "201-500",
+            "industry": "BANKING",
+            "description": null,
+            "title": "QA Engineer",
+            "name": "Wirecard Technologies AG",
+            "url": "http://www.wirecard.com",
+            "tag": "WIRECARDAG"
+          },
+          {
+            "end_date": "2010-05",
+            "begin_date": "2009-09",
+            "career_level": null,
+            "company_size": "5001-10000",
+            "industry": "BANKING",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "Giesecke & Devrient GmbH",
+            "url": "http://www.gi-de.com/",
+            "tag": "GIESECKE&DEVRIENTGMBH"
+          },
+          {
+            "end_date": "2009-03",
+            "begin_date": "2008-09",
+            "career_level": null,
+            "company_size": "10001+",
+            "industry": "AUTOMOTIVE",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "MAN Nutzfahrzeuge AG, München",
+            "url": "http://www.man.eu",
+            "tag": "MANNUTZFAHRZEUGEAGMÜNCHEN"
+          },
+          {
+            "end_date": "2008-07",
+            "begin_date": "2008-01",
+            "career_level": null,
+            "company_size": "501-1000",
+            "industry": "BANKING",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "B. Metzler seel. Sohn & Co. KGaA",
+            "url": "http://www.metzler.com",
+            "tag": "BANKHAUSMETZLER"
+          },
+          {
+            "end_date": "2007-12",
+            "begin_date": "2007-08",
+            "career_level": null,
+            "company_size": "1001-5000",
+            "industry": "INSURANCE",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "WWK Versicherung a.G.",
+            "url": "http://www.wwk.de/",
+            "tag": "WWKVERSICHERUNGA.G."
+          },
+          {
+            "end_date": "2007-06",
+            "begin_date": "2003-12",
+            "career_level": null,
+            "company_size": "1001-5000",
+            "industry": "TELECOMMUNICATION",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "O2 Germany GmbH",
+            "url": "http://www.o2online.de/",
+            "tag": "O2"
+          },
+          {
+            "end_date": "2003-05",
+            "begin_date": "2002-03",
+            "career_level": null,
+            "company_size": "10001+",
+            "industry": "TELECOMMUNICATION",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "Deutsche Telekom AG",
+            "url": "http://www.telekom.de/",
+            "tag": "DEUTSCHETELEKOMAG"
+          },
+          {
+            "end_date": "2002-02",
+            "begin_date": "1999-12",
+            "career_level": null,
+            "company_size": "51-200",
+            "industry": "TELECOMMUNICATION",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "Varetis AG",
+            "url": "http://www.varetis.de/",
+            "tag": "VARETISAG"
+          },
+          {
+            "end_date": "1997-07",
+            "begin_date": "1994-07",
+            "career_level": null,
+            "company_size": "10001+",
+            "industry": "MACHINERY",
+            "description": null,
+            "title": "IT Consulter",
+            "name": "Siemens AG",
+            "url": "http://www.siemens.de/",
+            "tag": "SIEMENSAG"
+          }
+        ],
+        "primary_company": {
+          "end_date": null,
+          "begin_date": "1985",
+          "career_level": "SENIOR_EXECUTIVE",
+          "company_size": "1-10",
+          "industry": "INFORMATION_TECHNOLOGY_AND_SERVICES",
+          "description": null,
+          "title": "Geschäftsführer",
+          "name": "Egerer & Tandogan GmbH",
+          "url": "http://www.et42.de/",
+          "tag": "EGERER&TANDOGANGMBH"
+        }
+      },
+      "display_name": "Hakan Tandogan",
+      "web_profiles": {
+        "github": [
+          "https://github.com/hakan42"
+        ],
+        "other": [
+          "https://www.ohloh.net/accounts/hakan",
+          "https://launchpad.net/~hakan"
+        ],
+        "sourceforge": [
+          "https://sourceforge.net/users/hakan"
+        ]
+      },
+      "first_name": "Hakan",
+      "business_address": {
+        "zip_code": "82110",
+        "province": "Bayern",
+        "email": "hakan@et42.de",
+        "fax": "49|89|12799173",
+        "country": "DE",
+        "mobile_phone": "49|179|3987467",
+        "phone": "49|179|3987467",
+        "city": "Germering",
+        "street": "Pfarrer-Walleitner-Weg 22"
+      },
+      "private_address": {
+        "zip_code": null,
+        "province": "Bayern",
+        "email": "hakan@gurkensalat.com",
+        "fax": null,
+        "country": "DE",
+        "mobile_phone": null,
+        "phone": null,
+        "city": null,
+        "street": null
+      },
+      "organisation_member": null,
+      "photo_urls": {
+        "large": "https://m1.xing.com/pubimg/users/0/1/3/f98916e9d.3382304,2.140x185.jpg",
+        "mini_thumb": "https://m1.xing.com/pubimg/users/0/1/3/f98916e9d.3382304,2.18x24.jpg",
+        "medium_thumb": "https://m1.xing.com/pubimg/users/0/1/3/f98916e9d.3382304,2.57x75.jpg",
+        "maxi_thumb": "https://m1.xing.com/pubimg/users/0/1/3/f98916e9d.3382304,2.70x93.jpg",
+        "thumb": "https://m1.xing.com/pubimg/users/0/1/3/f98916e9d.3382304,2.30x40.jpg"
+      },
+      "educational_background": {
+        "schools": [
+          {
+            "end_date": null,
+            "begin_date": null,
+            "degree": null,
+            "subject": "Informatik",
+            "name": "Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)",
+            "notes": null
+          }
+        ],
+        "qualifications": []
+      },
+      "birth_date": {
+        "day": 10,
+        "year": 1967,
+        "month": 12
+      },
+      "badges": [
+        "PREMIUM"
+      ]
+    }
+  ]
+}
