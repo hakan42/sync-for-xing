@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.gurkensalat.android.xingsync</groupId>
+        <artifactId>xing-sync-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>xing-sync-example-data</artifactId>
+    <packaging>pom</packaging>
+    <name>xing-sync - Example data for integration tests</name>
+
+    <properties>
+        <android.push.destination>/mnt/sdcard/Android/data/${project.groupId}/files</android.push.destination>
+    </properties>
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>push-contacts-to-device</id>
+                        <phase>pre-integration-test-disabled-for-now</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <verbose>true</verbose>
+                    <push>
+                        <source>src/test/resources</source>
+                        <destination>${android.push.destination}</destination>
+                    </push>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+    </profiles>
+
+</project>

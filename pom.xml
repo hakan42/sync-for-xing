@@ -15,6 +15,7 @@
 
     <modules>
         <module>xing-sync</module>
+        <module>xing-sync-example-data</module>
         <module>xing-sync-it</module>
     </modules>
 
