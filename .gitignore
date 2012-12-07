@@ -3,3 +3,5 @@
 .classpath
 target
 version.properties
+xing-sync-example-data/src/test/resources/*.json
+xing-sync-example-data/src/test/resources/*.vcf
