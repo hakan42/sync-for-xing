@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="@string/prefs_category_name" />
+    <PreferenceCategory android:title="@string/prefs_general_category_title" />
+
+    <PreferenceScreen
+        android:key="account_settings"
+        android:summary="@string/prefs_account_settings_summary"
+        android:title="@string/prefs_account_settings_title" >
+        <intent
+            android:action="com.gurkensalat.android.xingsync.ACCOUNT_SETUP"
+            android:targetClass="com.gurkensalat.android.xingsync.preferences.AccountPreferences"
+            android:targetPackage="com.gurkensalat.android.xingsync" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="foo_1"
+        android:summary="Wizard"
+        android:title="Wizard Title" >
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="foo_2"
+        android:summary="Advanced Settings"
+        android:title="Advanced Settings Title" >
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="foo_3"
+        android:summary="About"
+        android:title="About Title" >
+    </PreferenceScreen>
 
 </PreferenceScreen>
