@@ -22,8 +22,8 @@
     <properties>
         <platform.version>4.0.1.2</platform.version>
 
-        <!-- Don't disturb the charging mobile -->
-        <android.device>emulator</android.device>
+        <!-- The device setting must be defined in the developer settings -->
+        <!-- <android.device>emulator</android.device> -->
     </properties>
 
     <scm>
