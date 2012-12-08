@@ -5,7 +5,7 @@ Automated Android Contact Synchronization with XING
 
 Contributions
 ------
-Please see our [Contibution Documents](https://github.com/puppetlabs/puppet/blob/master/CONTRIBUTING.md)
+Please see our [Contibution Documents](https://github.com/hakan42/xing-sync/blob/master/CONTRIBUTING.md)
 
 License
 -------
