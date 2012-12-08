@@ -125,6 +125,13 @@
             </intent-filter>
         </activity>
 
+        <!-- The Preferences -->
+        <activity
+            android:name=".preferences.AccountPreferences"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="Account Preferences"
+            android:excludeFromRecents="true" />
+
         <!-- From old application, to make stuff work... -->
         <activity android:name=".HelloAndroidActivity">
             <intent-filter>
