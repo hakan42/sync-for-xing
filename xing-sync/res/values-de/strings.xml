@@ -26,6 +26,8 @@
   <!--The description for the view group button-->
   <!--For Preferences-->
   <!--FIXME added to make stuff compile-->
+  <string name="targetAccountLabel">T.test1</string>
+  <string name="contactNameLabel">T.test2</string>
   <string name="showInvisible">I.nvisible</string>
   <string name="addContactTitle">Foo</string>
 </resources>
