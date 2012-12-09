@@ -12,10 +12,5 @@
             android:targetClass="com.gurkensalat.android.xingsync.preferences.AccountPreferences"
             android:targetPackage="com.gurkensalat.android.xingsync" />
     </PreferenceScreen>
-    <PreferenceScreen
-        android:key="@string/prefs_advanced_settings_key"
-        android:summary="@string/prefs_advanced_settings_summary"
-        android:title="@string/prefs_advanced_settings_title" >
-    </PreferenceScreen>
 
 </PreferenceScreen>

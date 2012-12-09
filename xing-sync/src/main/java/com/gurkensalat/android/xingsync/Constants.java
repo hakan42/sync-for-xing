@@ -26,6 +26,11 @@ public class Constants
     public static final String DEFAULT_GROUP_NAME = "XING";
 
     /**
+     * Root name for all our preferences
+     */
+    public final static String PREFS_NAME = "xingsync_prefs";
+
+    /**
      * Do we mock anything at all? Should be a preference item.
      */
     public static final Boolean MOCK_MODE = true;

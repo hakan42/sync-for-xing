@@ -135,13 +135,34 @@
     <string name="sync_contacts_label">Contacts</string>
 
     <!-- For Preferences -->
-    <string name="prefs_general_category_title">General Settings</string>
-
     <string name="prefs_account_settings_title">Account Settings</string>
     <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
 
-    <string name="prefs_advanced_settings_summary">Advanced Settings, summary</string>
-    <string name="prefs_advanced_settings_title">Advanced Settings</string>
+    <string name="prefs_general_category_title">General Settings</string>
+
+    <string name="prefs_sync_options_category_title">Category: Sync Options</string>
+
+    <string name="prefs_sync_options_summary">Sync Options, summary</string>
+    <string name="prefs_sync_options_title">Sync Options</string>
+
+    <string name="prefs_sync_frequency_summary">Sync Frequency, summary</string>
+    <string name="prefs_sync_frequency_title">Sync Frequency</string>
+    
+    <string name="prefs_resource_saving_summary">Resource Saving, summary</string>
+    <string name="prefs_resource_saving_title">Category: Resource Saving</string>
+
+    <string name="prefs_sync_wifi_only_summary">Only sync when in a Wi-Fi network</string>
+    <string name="prefs_sync_wifi_only_title">WiFi only</string>
+    
+    <string name="prefs_sync_charging_only_summary">Only sync while charging</string>
+    <string name="prefs_sync_charging_only_title">Sync when charging</string>
+    
+    <!-- 
+    <string name="prefs_background_update_category_title">Background update</string>
+
+    <string name="prefs_background_update_flag_summary">Download tutorial list daily</string>
+    <string name="prefs_background_update_flag_title">Allow updates</string>
+     -->
     
     <!-- FIXME added to make stuff compile -->
     <string name="targetAccountLabel">T.Account</string>

@@ -1,19 +1,39 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="Privacy preferences" />
+    <PreferenceCategory android:title="@string/prefs_sync_options_category_title" >
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="privacy_contacts"
-        android:summary="Keep contacts private"
-        android:title="Contacts" />
+        <!--
+        <CheckBoxPreference
+            android:key="@string/prefs_sync_options_key"
+            android:summary="@string/prefs_sync_options_flag_summary"
+            android:title="@string/prefs_sync_options_flag_title" />
+        -->
 
-    <PreferenceCategory android:title="Outgoing" />
+    </PreferenceCategory>
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="allow_mail"
-        android:summary="Allow email"
-        android:title="Email" />
+    <PreferenceScreen
+        android:key="@string/prefs_sync_options_key"
+        android:summary="@string/prefs_sync_options_summary"
+        android:title="@string/prefs_sync_options_title" >
+        <CheckBoxPreference
+            android:key="@string/prefs_sync_frequency_key"
+            android:summary="@string/prefs_sync_frequency_summary"
+            android:title="@string/prefs_sync_frequency_title" />
+    </PreferenceScreen>
+
+    <!--  -->
+    <PreferenceScreen
+        android:key="@string/prefs_resource_saving_key"
+        android:summary="@string/prefs_resource_saving_summary"
+        android:title="@string/prefs_resource_saving_title" >
+        <CheckBoxPreference
+            android:key="@string/prefs_sync_wifi_only_key"
+            android:summary="@string/prefs_sync_wifi_only_summary"
+            android:title="@string/prefs_sync_wifi_only_title" />
+        <CheckBoxPreference
+            android:key="@string/prefs_sync_charging_only_key"
+            android:summary="@string/prefs_sync_charging_only_summary"
+            android:title="@string/prefs_sync_charging_only_title" />
+    </PreferenceScreen>
 
 </PreferenceScreen>
