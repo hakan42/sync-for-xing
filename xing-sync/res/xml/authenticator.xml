@@ -24,6 +24,6 @@
     android:accountType="com.gurkensalat.android.xingsync"
     android:icon="@drawable/icon"
     android:smallIcon="@drawable/icon"
-    android:label="@string/label"
+    android:label="@string/accounts_label"
     android:accountPreferences="@xml/account_preferences"
 />

@@ -617,7 +617,7 @@ public class ContactManager
             values.put(StatusUpdates.IM_HANDLE, userId);
             values.put(StatusUpdates.STATUS_RES_PACKAGE, context.getPackageName());
             values.put(StatusUpdates.STATUS_ICON, R.drawable.icon);
-            values.put(StatusUpdates.STATUS_LABEL, R.string.label);
+            values.put(StatusUpdates.STATUS_LABEL, R.string.accounts_label);
             batchOperation.add(ContactOperations.newInsertCpo(StatusUpdates.CONTENT_URI, false, true).withValues(values).build());
         }
     }

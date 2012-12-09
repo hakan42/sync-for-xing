@@ -282,7 +282,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      */
     private CharSequence getMessage()
     {
-        getString(R.string.label);
+        getString(R.string.accounts_label);
         if (TextUtils.isEmpty(mUsername))
         {
             // If no username, then we ask the user to log in using an
