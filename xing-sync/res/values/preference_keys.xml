@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Keys for Preferences -->
+    <!-- NEVER CHANGE THIS KEY, exact setting necessary for Account Management in Android -->
+    <string name="prefs_account_settings_key">account_settings</string>
+    <string name="prefs_advanced_settings_key">advanced_settings</string>
+
+</resources>

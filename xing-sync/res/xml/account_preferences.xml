@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="@string/prefs_general_category_title" />
 
     <PreferenceScreen
-        android:key="account_settings"
+        android:key="@string/prefs_account_settings_key"
         android:summary="@string/prefs_account_settings_summary"
         android:title="@string/prefs_account_settings_title" >
         <intent
@@ -13,19 +13,9 @@
             android:targetPackage="com.gurkensalat.android.xingsync" />
     </PreferenceScreen>
     <PreferenceScreen
-        android:key="foo_1"
-        android:summary="Wizard"
-        android:title="Wizard Title" >
-    </PreferenceScreen>
-    <PreferenceScreen
-        android:key="foo_2"
-        android:summary="Advanced Settings"
-        android:title="Advanced Settings Title" >
-    </PreferenceScreen>
-    <PreferenceScreen
-        android:key="foo_3"
-        android:summary="About"
-        android:title="About Title" >
+        android:key="@string/prefs_advanced_settings_key"
+        android:summary="@string/prefs_advanced_settings_summary"
+        android:title="@string/prefs_advanced_settings_title" >
     </PreferenceScreen>
 
 </PreferenceScreen>

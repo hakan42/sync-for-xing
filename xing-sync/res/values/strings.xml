@@ -133,9 +133,13 @@
 
     <!-- For Preferences -->
     <string name="prefs_general_category_title">General Settings</string>
-    <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
-    <string name="prefs_account_settings_title">Account Settings</string>
 
+    <string name="prefs_account_settings_title">Account Settings</string>
+    <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
+
+    <string name="prefs_advanced_settings_summary">Advanced Settings, summary</string>
+    <string name="prefs_advanced_settings_title">Advanced Settings</string>
+    
     <!-- FIXME added to make stuff compile -->
     <string name="targetAccountLabel">T.Account</string>
     <string name="contactNameLabel">C.Name</string>
