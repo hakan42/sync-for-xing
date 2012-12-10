@@ -8,6 +8,7 @@
   <!--Title string for Login activity-->
   <!--Message shown in progress dialog while app connects to the server-->
   <!--AuthenticatorActivity-->
+  <!--Label on Accounts list-->
   <!--Label above username EditText-->
   <!--Label above password EditText-->
   <!--Button to sign in after entering username and password-->
@@ -25,6 +26,10 @@
   <!--The label of the button to view a group-->
   <!--The description for the view group button-->
   <!--For Preferences-->
+  <!--<string name="prefs_background_update_category_title">Background update</string>
+
+    <string name="prefs_background_update_flag_summary">Download tutorial list daily</string>
+    <string name="prefs_background_update_flag_title">Allow updates</string>-->
   <!--FIXME added to make stuff compile-->
   <string name="targetAccountLabel">T.test1</string>
   <string name="contactNameLabel">T.test2</string>
