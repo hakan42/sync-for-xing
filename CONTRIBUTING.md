@@ -24,7 +24,32 @@
 * Push your changes to a topic branch in your fork of the repository.
 * Submit a pull request to the repository.
 
-# Additional Resources
+## Translations
+
+Translations are hosted on Transifex, which is configured by ``.tx/config``
+
+1. To pull newest translations install transifex client (e.g. aptitude install transifex-client)
+2. Config Transifex client with ``~/.transifexrc``
+3. Go into root folder of git repo
+4. execute ```tx pull``` (```tx pull -a``` to get all languages)
+
+see http://help.transifex.net/features/client/index.html#user-client
+
+## Coding Style
+
+### Code
+* Indentation: 4 spaces, no tabs
+* Maximum line width for code and comments: 100
+* Opening braces *do* go on their own line
+
+### XML
+* XML Maximum line width 999
+* XML: Split multiple attributes each on a new line (Eclipse: Properties -> XML -> XML Files -> Editor)
+* XML: Indent using spaces with Indention size 4 (Eclipse: Properties -> XML -> XML Files -> Editor)
+
+See http://www.androidpolice.com/2009/11/04/auto-formatting-android-xml-files-with-eclipse/
+
+## Additional Resources
 
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
