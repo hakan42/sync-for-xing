@@ -1,51 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-/**
- * Copyright (c) 2010, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
--->
-<resources
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <!-- Label for this package -->
-    <string
-        name="app_name">XING Sync</string>
+    <string name="app_name">XING Sync</string>
 
     <!-- Permission label -->
-    <string
-        name="permlab_samplesyncadapterAuthPassword">access to passwords for XING accounts</string>
+    <string name="permlab_samplesyncadapterAuthPassword">access to passwords for XING accounts</string>
     <!-- Permission description -->
-    <string
-        name="permdesc_samplesyncadapterAuthPassword">Allows applications direct access to the passwords for the
+    <string name="permdesc_samplesyncadapterAuthPassword">Allows applications direct access to the passwords for the
         XING account(s) you have configured.</string>
 
     <!-- Permission label -->
-    <string
-        name="permlab_samplesyncadapterAuth">view configured accounts</string>
+    <string name="permlab_samplesyncadapterAuth">view configured accounts</string>
     <!-- Permission description -->
-    <string
-        name="permdesc_samplesyncadapterAuth">Allows applications to see the usernames (email addresses) of
+    <string name="permdesc_samplesyncadapterAuth">Allows applications to see the usernames (email addresses) of
         the XING account(s) you have configured.</string>
-    <string
-        name="notification_login_error">Touch to sign into your XING account.</string>
+    <string name="notification_login_error">Touch to sign into your XING account.</string>
 
-    <!-- Title string for Login activity-->
-    <string
-        name="ui_activity_title">Sign-in</string>
+    <!-- Title string for Login activity -->
+    <string name="ui_activity_title">Sign-in</string>
     <!-- Message shown in progress dialog while app connects to the server -->
-    <string
-        name="ui_activity_authenticating">Authenticating\u2026</string>
+    <string name="ui_activity_authenticating">Authenticating\u2026</string>
 
     <!-- AuthenticatorActivity -->
     <skip />
@@ -53,63 +28,47 @@
     <string name="accounts_label">XING Sync</string>
 
     <!-- Label above username EditText -->
-    <string
-        name="login_activity_username_label">Username</string>
+    <string name="login_activity_username_label">Username</string>
     <!-- Label above password EditText -->
-    <string
-        name="login_activity_password_label">Password</string>
+    <string name="login_activity_password_label">Password</string>
     <!-- Button to sign in after entering username and password -->
-    <string
-        name="login_activity_ok_button">Sign in</string>
+    <string name="login_activity_ok_button">Sign in</string>
 
     <!-- Message shown in dialog if the username or password is invalid. -->
-    <string
-        name="login_activity_loginfail_text_both">The username or password isn\'t valid. A XING account is
+    <string name="login_activity_loginfail_text_both">The username or password isn\'t valid. A XING account is
         required. Please try again. </string>
     <!-- Message shown in dialog if the password is invalid -->
-    <string
-        name="login_activity_loginfail_text_pwonly">You entered the wrong password or your account has changed.
+    <string name="login_activity_loginfail_text_pwonly">You entered the wrong password or your account has changed.
         Please re-enter your password.</string>
     <!-- Message shown in dialog to prompt the user for their password -->
-    <string
-        name="login_activity_loginfail_text_pwmissing">Type the password for this account.</string>
+    <string name="login_activity_loginfail_text_pwmissing">Type the password for this account.</string>
     <!--
         Message shown if the provided account doesn't support the current
-        activity.
+        activity.
     -->
-    <string
-        name="login_activity_newaccount_text">Sign in to your XING account. </string>
+    <string name="login_activity_newaccount_text">Sign in to your XING account. </string>
 
     <!-- Button that takes the user to the "sign in" screen -->
-    <string
-        name="sign_in_button_label">Sign in</string>
+    <string name="sign_in_button_label">Sign in</string>
     <!-- Button for going to the previous screen or step -->
-    <string
-        name="back_button_label">Back</string>
+    <string name="back_button_label">Back</string>
     <!-- Button to cancel the current operation -->
-    <string
-        name="cancel_button_label">Cancel</string>
-    <string
-        name="profile_action">XING profile</string>
-    <string
-        name="view_profile">View Profile</string>
-
+    <string name="cancel_button_label">Cancel</string>
+    <string name="profile_action">XING profile</string>
+    <string name="view_profile">View Profile</string>
     <string name="header_account_type">XINGSync contact</string>
-
     <string name="label_name">Name</string>
     <string name="label_phone_home">Home Phone</string>
     <string name="label_phone_mobile">Mobile Phone</string>
     <string name="label_phone_work">Work Phone</string>
     <string name="label_email">Email</string>
-    <string
-        name="menu_done">Done</string>
-    <string
-        name="menu_cancel">Cancel</string>
+    <string name="menu_done">Done</string>
+    <string name="menu_cancel">Cancel</string>
 
     <!-- Strings for contacts.xml -->
     <skip />
 
-    <!-- The label of the button to add contact to this contact provider  -->
+    <!-- The label of the button to add contact to this contact provider -->
     <string name="invite_action_label">Add to XING SyncAdaper</string>
 
     <!-- The description for the invite contact flow -->
@@ -131,38 +90,40 @@
     <string name="view_group_description">This would now show the details of the group.
 
         This is the group uri:</string>
-
     <string name="sync_contacts_label">Contacts</string>
 
     <!-- For Preferences -->
     <string name="prefs_account_settings_title">Account Settings</string>
     <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
-
     <string name="prefs_general_category_title">General Settings</string>
 
-    <string name="prefs_sync_options_category_title">Category: Sync Options</string>
-
+    <!-- Synchronization Options Category -->
+    <string name="prefs_sync_options_category_title">Sync Options</string>
     <string name="prefs_sync_options_summary">Sync Options, summary</string>
     <string name="prefs_sync_options_title">Sync Options</string>
-
     <string name="prefs_sync_frequency_summary">Sync Frequency, summary</string>
     <string name="prefs_sync_frequency_title">Sync Frequency</string>
-    
+
+    <!-- Resource saving preferences Category -->
     <string name="prefs_resource_saving_summary">Resource Saving, summary</string>
     <string name="prefs_resource_saving_title">Category: Resource Saving</string>
-
     <string name="prefs_sync_wifi_only_summary">Only sync when in a Wi-Fi network</string>
     <string name="prefs_sync_wifi_only_title">WiFi only</string>
-    
     <string name="prefs_sync_charging_only_summary">Only sync while charging</string>
     <string name="prefs_sync_charging_only_title">Sync when charging</string>
-    
-    <!-- 
-    <string name="prefs_background_update_category_title">Background update</string>
 
-    <string name="prefs_background_update_flag_summary">Download tutorial list daily</string>
-    <string name="prefs_background_update_flag_title">Allow updates</string>
-     -->
+    <!-- Development options -->
+    <string name="prefs_development_options_category_title">Development Options</string>
+    <string name="prefs_mock_oauth_calls_summary">Always assume OAuth calls to be successful</string>
+    <string name="prefs_mock_oauth_calls_title">Mock OAuth calls</string>
+    <string name="prefs_mock_api_calls_summary">Satisfy data requests from local cache</string>
+    <string name="prefs_mock_api_calls_title">Mock API calls</string>
+    <string name="prefs_max_age_cached_data_summary">How long before cached data is considered stale</string>
+    <string name="prefs_max_age_cached_data_title">Maximum age of cached Data</string>
+    <string name="prefs_max_number_of_calls_summary">How many calls to make in a certain period</string>
+    <string name="prefs_max_number_of_calls_title">Maximum number of API calls</string>
+    <string name="prefs_log_summary">Keep a running log of events</string>
+    <string name="prefs_log_title">Logging</string>
     
     <!-- FIXME added to make stuff compile -->
     <string name="targetAccountLabel">T.Account</string>

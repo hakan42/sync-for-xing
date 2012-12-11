@@ -12,5 +12,11 @@
     <string name="prefs_resource_saving_key">sync_resource_saving</string>
     <string name="prefs_sync_wifi_only_key">sync_wifi_only</string>
     <string name="prefs_sync_charging_only_key">sync_charging_only</string>
+    <!-- Development options -->
+    <string name="prefs_mock_oauth_calls_key">mock_oauth_calls</string>
+    <string name="prefs_mock_api_calls_key">mock_api_calls</string>
+    <string name="prefs_max_age_cached_data_key">max_age_cached_data</string>
+    <string name="prefs_max_number_of_calls_key">max_number_of_calls</string>
+    <string name="prefs_log_key">log</string>
 
 </resources>
