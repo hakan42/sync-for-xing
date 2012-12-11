@@ -18,7 +18,7 @@
     <string name="notification_login_error">Touch to sign into your XING account.</string>
 
     <!-- Title string for Login activity -->
-    <string name="ui_activity_title">Sign-in</string>
+    <string name="authenticator_activity_title">Sign-in</string>
     <!-- Message shown in progress dialog while app connects to the server -->
     <string name="ui_activity_authenticating">Authenticating\u2026</string>
 
@@ -27,6 +27,16 @@
     <!-- Label on Accounts list -->
     <string name="accounts_label">XING Sync</string>
 
+    <!-- OAuth strings -->
+    <string name="oauth_activity_title">OAuth configuration</string>
+    <string name="oauth_introductory_blurb">XING Sync uses OAuth technology to log you into XING. Please click the button
+        above which will redirect you to the XING approval page in the mobile browser. After you approve the application
+        you will be returned to XING Sync</string>
+    <string name="oauth_introductory_blurb_no_account">If you don\'t have a XING account you can create one with either
+        the mobile browser or using your desktop browser at http://www.xing.com/</string>
+    <string name="oauth_real_login">Real</string>
+    <string name="oauth_mock_login">Mock</string>
+    
     <!-- Label above username EditText -->
     <string name="login_activity_username_label">Username</string>
     <!-- Label above password EditText -->
@@ -36,7 +46,8 @@
 
     <!-- Message shown in dialog if the username or password is invalid. -->
     <string name="login_activity_loginfail_text_both">The username or password isn\'t valid. A XING account is
-        required. Please try again. </string>
+        required. Please try again.
+    </string>
     <!-- Message shown in dialog if the password is invalid -->
     <string name="login_activity_loginfail_text_pwonly">You entered the wrong password or your account has changed.
         Please re-enter your password.</string>
@@ -44,7 +55,7 @@
     <string name="login_activity_loginfail_text_pwmissing">Type the password for this account.</string>
     <!--
         Message shown if the provided account doesn't support the current
-        activity.
+        activity.
     -->
     <string name="login_activity_newaccount_text">Sign in to your XING account. </string>
 

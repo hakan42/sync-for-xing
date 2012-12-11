@@ -83,7 +83,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @Override
     public void onCreate(Bundle icicle)
     {
-
         Log.i(TAG, "onCreate(" + icicle + ")");
         super.onCreate(icicle);
         mAccountManager = AccountManager.get(this);
@@ -94,14 +93,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mConfirmCredentials = intent.getBooleanExtra(PARAM_CONFIRM_CREDENTIALS, false);
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.oauth_screen_1);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, android.R.drawable.ic_dialog_alert);
-        mMessage = (TextView) findViewById(R.id.message);
-        mUsernameEdit = (EditText) findViewById(R.id.username_edit);
-        mPasswordEdit = (EditText) findViewById(R.id.password_edit);
-        if (!TextUtils.isEmpty(mUsername))
-            mUsernameEdit.setText(mUsername);
-        mMessage.setText(getMessage());
+        // mMessage = (TextView) findViewById(R.id.message);
+        // mUsernameEdit = (EditText) findViewById(R.id.username_edit);
+        // mPasswordEdit = (EditText) findViewById(R.id.password_edit);
+        // if (!TextUtils.isEmpty(mUsername))
+        // mUsernameEdit.setText(mUsername);
+        // mMessage.setText(getMessage());
     }
 
     /*
@@ -110,6 +109,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     @Override
     protected Dialog onCreateDialog(int id, Bundle args)
     {
+        Log.i(TAG, "onCreateDialog(" + id + ", " + args + ")");
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage(getText(R.string.ui_activity_authenticating));
         dialog.setIndeterminate(true);
@@ -133,6 +133,32 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     }
 
     /**
+     * Handles onClick event on the Submit button. Continues the OAuth dance.
+     * 
+     * The button is configured to call handleRealOAuthCall() in the layout XML.
+     * 
+     * @param view
+     *            The Submit button for which this method is invoked
+     */
+    public void handleRealOAuthCall(View view)
+    {
+        Log.i(TAG, "handleRealOAuthCall(" + view + ")");
+    }
+
+    /**
+     * Handles onClick event on the Submit button. Mocks the OAuth dance.
+     * 
+     * The button is configured to call handleLogin() in the layout XML.
+     * 
+     * @param view
+     *            The Submit button for which this method is invoked
+     */
+    public void handleMockOAuthCall(View view)
+    {
+        Log.i(TAG, "handleMockOAuthCall(" + view + ")");
+    }
+
+    /**
      * Handles onClick event on the Submit button. Sends username/password to
      * the server for authentication. The button is configured to call
      * handleLogin() in the layout XML.
@@ -142,6 +168,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      */
     public void handleLogin(View view)
     {
+        Log.i(TAG, "handleLogin(" + view + ")");
+
         if (mRequestNewAccount)
         {
             mUsername = mUsernameEdit.getText().toString();
@@ -171,7 +199,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      */
     private void finishConfirmCredentials(boolean result)
     {
-        Log.i(TAG, "finishConfirmCredentials()");
+        Log.i(TAG, "finishConfirmCredentials(" + result + ")");
         final Account account = new Account(mUsername, Constants.ACCOUNT_TYPE);
         mAccountManager.setPassword(account, mPassword);
         final Intent intent = new Intent();
@@ -193,8 +221,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      */
     private void finishLogin(String authToken)
     {
-
-        Log.i(TAG, "finishLogin()");
+        Log.i(TAG, "finishLogin(" + authToken + ")");
         final Account account = new Account(mUsername, Constants.ACCOUNT_TYPE);
         if (mRequestNewAccount)
         {
@@ -227,7 +254,6 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
      */
     public void onAuthenticationResult(String authToken)
     {
-
         boolean success = ((authToken != null) && (authToken.length() > 0));
         Log.i(TAG, "onAuthenticationResult(" + success + ")");
 
