@@ -13,6 +13,7 @@
     <string name="prefs_sync_wifi_only_key">sync_wifi_only</string>
     <string name="prefs_sync_charging_only_key">sync_charging_only</string>
     <!-- Development options -->
+    <string name="prefs_development_options_key">development_options</string>
     <string name="prefs_mock_oauth_calls_key">mock_oauth_calls</string>
     <string name="prefs_mock_api_calls_key">mock_api_calls</string>
     <string name="prefs_max_age_cached_data_key">max_age_cached_data</string>

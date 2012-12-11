@@ -113,7 +113,8 @@
     <string name="prefs_sync_charging_only_title">Sync when charging</string>
 
     <!-- Development options -->
-    <string name="prefs_development_options_category_title">Development Options</string>
+    <string name="prefs_development_options_summary">Development Options, summary</string>
+    <string name="prefs_development_options_title">Development Options</string>
     <string name="prefs_mock_oauth_calls_summary">Always assume OAuth calls to be successful</string>
     <string name="prefs_mock_oauth_calls_title">Mock OAuth calls</string>
     <string name="prefs_mock_api_calls_summary">Satisfy data requests from local cache</string>
