@@ -22,6 +22,10 @@
     <properties>
         <platform.version>4.0.1.2</platform.version>
 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.source.version>1.6</java.source.version>
+        <java.target.version>1.6</java.target.version>
+
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
     </properties>
@@ -124,8 +128,8 @@
                     <version>2.3.2</version>
                     <inherited>true</inherited>
                     <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
+                        <source>${java.source.version}</source>
+                        <target>${java.target.version}</target>
                     </configuration>
                 </plugin>
                 <plugin>
