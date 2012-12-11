@@ -88,6 +88,25 @@
                 <version>1.0.5</version>
             </dependency>
 
+            <!-- For OAuth handling -->
+            <dependency>
+                <groupId>oauth.signpost</groupId>
+                <artifactId>signpost-core</artifactId>
+                <version>1.2.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>oauth.signpost</groupId>
+                <artifactId>signpost-commonshttp4</artifactId>
+                <version>1.2.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20090211</version>
+            </dependency>
+            
             <!-- To parse the XING vcf files -->
             <dependency>
                 <groupId>net.sourceforge.cardme</groupId>
