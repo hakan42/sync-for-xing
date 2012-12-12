@@ -26,6 +26,8 @@
         <java.source.version>1.6</java.source.version>
         <java.target.version>1.6</java.target.version>
 
+        <github.global.server>github</github.global.server>
+
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
     </properties>
@@ -106,7 +108,7 @@
                 <artifactId>json</artifactId>
                 <version>20090211</version>
             </dependency>
-            
+
             <!-- To parse the XING vcf files -->
             <dependency>
                 <groupId>net.sourceforge.cardme</groupId>
@@ -207,6 +209,12 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>com.github.goldin</groupId>
+                    <artifactId>copy-maven-plugin</artifactId>
+                    <version>0.2.5</version>
+                </plugin>
+
+                <plugin>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.2</version>
                 </plugin>
@@ -226,6 +234,43 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>com.github.goldin</groupId>
+                <artifactId>copy-maven-plugin</artifactId>
+                <configuration>
+                    <failIfNotFound>false</failIfNotFound>
+                    <resources>
+                        <!--
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <directory>${project.basedir}</directory>
+                            <include>*.md</include>
+                            <exclude>README.md</exclude>
+                        </resource>
+                        -->
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <file>${project.basedir}/README.md</file>
+                            <destFileName>index.md.vm</destFileName>
+                        </resource>
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <file>${project.basedir}/CONTRIBUTING.md</file>
+                            <destFileName>contributing.md.vm</destFileName>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-md-files</id>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
                 <configuration>
@@ -260,6 +305,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
 
     </build>
