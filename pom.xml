@@ -3,6 +3,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.gurkensalat.android.commons</groupId>
+        <artifactId>android-commons-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>com.gurkensalat.android.xingsync</groupId>
     <artifactId>xing-sync-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -22,12 +28,6 @@
     <properties>
         <platform.version>4.0.1.2</platform.version>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source.version>1.6</java.source.version>
-        <java.target.version>1.6</java.target.version>
-
-        <github.global.server>github</github.global.server>
-
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
     </properties>
@@ -43,53 +43,8 @@
         <url>https://github.com/hakan42/xing-sync/issues</url>
     </issueManagement>
 
-    <ciManagement>
-        <system>Jenkins</system>
-    </ciManagement>
-
-    <organization>
-        <name>Gurkensalat</name>
-        <url>http://blog.gurkensalat.com/</url>
-    </organization>
-
-    <licenses>
-        <license>
-            <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <distributionManagement>
-        <site>
-            <id>github-pages-site</id>
-            <name>Deployment through GitHub's site deployment plugin</name>
-            <url>site/${project.version}</url>
-        </site>
-    </distributionManagement>
-
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android</artifactId>
-                <version>${platform.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android-test</artifactId>
-                <version>${platform.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- Androlog is a logging and reporting library for Android -->
-            <dependency>
-                <groupId>de.akquinet.android.androlog</groupId>
-                <artifactId>androlog</artifactId>
-                <version>1.0.5</version>
-            </dependency>
-
             <!-- For OAuth handling -->
             <dependency>
                 <groupId>oauth.signpost</groupId>
@@ -107,20 +62,6 @@
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
                 <version>20090211</version>
-            </dependency>
-
-            <!-- To parse the XING vcf files -->
-            <dependency>
-                <groupId>net.sourceforge.cardme</groupId>
-                <artifactId>cardme</artifactId>
-                <version>0.3.6</version>
-            </dependency>
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.10</version>
-                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -143,91 +84,6 @@
                         </sdk>
                         <undeployBeforeDeploy>false</undeployBeforeDeploy>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <source>${java.source.version}</source>
-                        <target>${java.target.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>1.0</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.1</version>
-                    <configuration>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jarsigner-plugin</artifactId>
-                    <version>1.2</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <removeExistingSignatures>true</removeExistingSignatures>
-                        <archiveDirectory />
-                        <archive>${project.build.directory}/${project.build.finalName}.${project.packaging}</archive>
-                        <verbose>true</verbose>
-                        <certs>true</certs>
-                        <keystore>${sign.keystore}</keystore>
-                        <alias>${sign.alias}</alias>
-                        <storepass>${sign.storepass}</storepass>
-                        <keypass>${sign.keypass}</keypass>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>com.pyx4me</groupId>
-                    <artifactId>proguard-maven-plugin</artifactId>
-                    <version>2.0.4</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>net.sf.proguard</groupId>
-                            <artifactId>proguard</artifactId>
-                            <version>4.4</version>
-                            <scope>runtime</scope>
-                        </dependency>
-                    </dependencies>
-                    <configuration>
-                        <proguardVersion>4.4</proguardVersion>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.7</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>com.github.goldin</groupId>
-                    <artifactId>copy-maven-plugin</artifactId>
-                    <version>0.2.5</version>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.2</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>com.github.github</groupId>
-                    <artifactId>site-maven-plugin</artifactId>
-                    <version>0.7</version>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.6</version>
                 </plugin>
             </plugins>
 
@@ -271,59 +127,9 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <skipDeploy>true</skipDeploy>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.kohsuke</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <configuration>
-                    <message>Building site for ${project.version}</message>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>github-site</id>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>site-deploy</phase>
-                        <configuration>
-                            <path>${project.version}</path>
-                            <merge>true</merge>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
 
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.6</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.0</version>
-            </plugin>
-        </plugins>
-    </reporting>
 
     <profiles>
         <profile>
@@ -404,47 +210,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-        <profile>
-            <id>linux</id>
-            <activation>
-                <os>
-                    <family>unix</family>
-                </os>
-            </activation>
-            <properties>
-                <rt.jar.path>${java.home}/jre/lib/rt.jar</rt.jar.path>
-                <jsse.jar.path>${java.home}/jre/lib/jsse.jar</jsse.jar.path>
-            </properties>
-        </profile>
-        <!-- mac profile has to be after unix since running on mac will trigger
-            both -->
-        <profile>
-            <id>mac</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <properties>
-                <!-- absolute path -->
-                <!--<rt.jar.path>/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/classes.jar</rt.jar.path> -->
-                <!-- or with JAVA_HOME /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/ -->
-                <rt.jar.path>${java.home}/../Classes/classes.jar</rt.jar.path>
-                <jsse.jar.path>${java.home}/../Classes/jsse.jar</jsse.jar.path>
-            </properties>
-        </profile>
-        <profile>
-            <id>windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <rt.jar.path>${java.home}/jre/lib/rt.jar</rt.jar.path>
-                <jsse.jar.path>${java.home}/jre/lib/jsse.jar</jsse.jar.path>
-            </properties>
         </profile>
     </profiles>
 
