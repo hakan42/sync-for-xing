@@ -54,7 +54,7 @@ public class PrepareRequestTokenActivity extends Activity
 
         Log.i(TAG, "Starting task to retrieve request token.");
         // HAKAN - REACTIVATE THIS
-        // new OAuthRequestTokenTask(this, consumer, provider).execute();
+        new OAuthRequestTokenTask(this, consumer, provider).execute();
     }
 
     /**

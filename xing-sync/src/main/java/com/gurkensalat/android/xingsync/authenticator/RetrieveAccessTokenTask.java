@@ -4,6 +4,7 @@ import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
@@ -14,10 +15,10 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {
     private static final String TAG = RetrieveAccessTokenTask.class.getName();
 
-    private Context           context;
-    private OAuthProvider     provider;
-    private OAuthConsumer     consumer;
-    private SharedPreferences prefs;
+    private Context             context;
+    private OAuthProvider       provider;
+    private OAuthConsumer       consumer;
+    private SharedPreferences   prefs;
 
     public RetrieveAccessTokenTask(Context context, OAuthConsumer consumer, OAuthProvider provider, SharedPreferences prefs)
     {
@@ -38,6 +39,8 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 
         final String oauth_verifier = uri.getQueryParameter(OAuth.OAUTH_VERIFIER);
 
+        Log.i(TAG, "doInBackground");
+
         try
         {
             provider.retrieveAccessToken(consumer, oauth_verifier);
@@ -52,10 +55,9 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 
             consumer.setTokenWithSecret(token, secret);
             // HAKAN - REACTIVATE THIS
-            // context.startActivity(new Intent(context, OAuthFlowApp.class));
+            context.startActivity(new Intent(context, OAuthFlowApp.class));
 
             Log.i(TAG, "OAuth - Access Token Retrieved");
-
         }
         catch (Exception e)
         {

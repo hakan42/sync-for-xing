@@ -36,6 +36,7 @@
         the mobile browser or using your desktop browser at http://www.xing.com/</string>
     <string name="oauth_real_login">Real</string>
     <string name="oauth_mock_login">Mock</string>
+    <string name="oauth_clear_credentials">Clear</string>
     
     <!-- Label above username EditText -->
     <string name="login_activity_username_label">Username</string>

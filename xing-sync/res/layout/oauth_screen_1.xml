@@ -44,6 +44,24 @@
             android:text="@string/oauth_mock_login"
             android:onClick="handleMockOAuthCall" />
 
+        <Button
+            android:id="@+id/clear_oauth_credentials"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/oauth_clear_credentials" />
+        <!-- android:onClick="handleMockOAuthCall"  -->
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/response_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
 </LinearLayout>
