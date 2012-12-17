@@ -80,24 +80,25 @@ public class OAuthFlowApp extends Activity
         String jsonOutput = "";
         try
         {
-            // Constants.API_REQUEST
-            jsonOutput = doGet("Foo", getConsumer(this.prefs));
-            System.out.println("jsonOutput : " + jsonOutput);
-            JSONObject jsonResponse = new JSONObject(jsonOutput);
-            JSONObject m = (JSONObject) jsonResponse.get("feed");
-            JSONArray entries = (JSONArray) m.getJSONArray("entry");
-            String contacts = "";
-            for (int i = 0; i < entries.length(); i++)
-            {
-                JSONObject entry = entries.getJSONObject(i);
-                JSONObject title = entry.getJSONObject("title");
-                if (title.getString("$t") != null && title.getString("$t").length() > 0)
-                {
-                    contacts += title.getString("$t") + "\n";
-                }
-            }
-            Log.i(TAG, jsonOutput);
-            textView.setText(contacts);
+            String ME_REQUEST = "/v1/users/me";
+
+            jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
+            Log.i(TAG, "Response to me: " + jsonOutput);
+//            JSONObject jsonResponse = new JSONObject(jsonOutput);
+//            JSONObject m = (JSONObject) jsonResponse.get("feed");
+//            JSONArray entries = (JSONArray) m.getJSONArray("entry");
+//            String contacts = "";
+//            for (int i = 0; i < entries.length(); i++)
+//            {
+//                JSONObject entry = entries.getJSONObject(i);
+//                JSONObject title = entry.getJSONObject("title");
+//                if (title.getString("$t") != null && title.getString("$t").length() > 0)
+//                {
+//                    contacts += title.getString("$t") + "\n";
+//                }
+//            }
+//            Log.i(TAG, jsonOutput);
+            textView.setText(jsonOutput);
         }
         catch (Exception e)
         {
