@@ -1,4 +1,4 @@
-package com.gurkensalat.android.xingsync.authenticator;
+package com.gurkensalat.android.xingsync.oauth;
 
 import java.net.URLEncoder;
 

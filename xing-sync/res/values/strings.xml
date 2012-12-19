@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Label for this package -->
-    <string name="app_name">XING Sync</string>
+    <string name="app_label">Contact Sync for XING</string>
 
     <!-- Permission label -->
     <string name="permlab_samplesyncadapterAuthPassword">access to passwords for XING accounts</string>
@@ -29,9 +29,9 @@
 
     <!-- OAuth strings -->
     <string name="oauth_activity_title">OAuth configuration</string>
-    <string name="oauth_introductory_blurb">XING Sync uses OAuth technology to log you into XING. Please click the button
+    <string name="oauth_introductory_blurb">Contact Sync for XING uses OAuth technology to log you into XING. Please click the button
         above which will redirect you to the XING approval page in the mobile browser. After you approve the application
-        you will be returned to XING Sync</string>
+        you will be returned to Contact Sync for XING</string>
     <string name="oauth_introductory_blurb_no_account">If you don\'t have a XING account you can create one with either
         the mobile browser or using your desktop browser at http://www.xing.com/</string>
     <string name="oauth_real_login">Real</string>
@@ -81,7 +81,7 @@
     <skip />
 
     <!-- The label of the button to add contact to this contact provider -->
-    <string name="invite_action_label">Add to XING SyncAdaper</string>
+    <string name="invite_action_label">Add to Contact Sync for XINGAdaper</string>
 
     <!-- The description for the invite contact flow -->
     <string name="invite_contact_description">Congratulations! The user wants to add the contact
