@@ -5,19 +5,30 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
 >
-    <TextView
-        android:layout_width="wrap_content"
+
+    <ImageButton
+        android:id="@+id/real_oauth_call"
+        android:contentDescription="@string/oauth_login"
+        android:focusable="true"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/oauth_introductory_blurb"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+        android:layout_marginBottom="4.0dip"
+        android:src="@drawable/login_grey_18"
+        android:onClick="handleRealOAuthCall" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="6.0dip"
+        android:text="@string/oauth_introductory_blurb"
+        android:textAppearance="?android:textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6.0dip"
         android:text="@string/oauth_introductory_blurb_no_account"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+        android:textAppearance="?android:textAppearanceSmall" />
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
@@ -26,6 +37,7 @@
         android:orientation="horizontal"
     >
 
+        <!-- 
         <Button
             android:id="@+id/real_oauth_call"
             style="?android:attr/buttonBarButtonStyle"
@@ -34,6 +46,7 @@
             android:layout_weight="1"
             android:text="@string/oauth_real_login"
             android:onClick="handleRealOAuthCall" />
+ -->
 
         <Button
             android:id="@+id/mock_oauth_calls"

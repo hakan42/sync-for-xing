@@ -54,7 +54,6 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
             String secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
 
             consumer.setTokenWithSecret(token, secret);
-            // HAKAN - REACTIVATE THIS
             context.startActivity(new Intent(context, OAuthFlowApp.class));
 
             Log.i(TAG, "OAuth - Access Token Retrieved");

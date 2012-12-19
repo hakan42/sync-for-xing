@@ -34,7 +34,7 @@
         you will be returned to Contact Sync for XING</string>
     <string name="oauth_introductory_blurb_no_account">If you don\'t have a XING account you can create one with either
         the mobile browser or using your desktop browser at http://www.xing.com/</string>
-    <string name="oauth_real_login">Real</string>
+    <string name="oauth_login">Login via XING</string>
     <string name="oauth_mock_login">Mock</string>
     <string name="oauth_clear_credentials">Clear</string>
     

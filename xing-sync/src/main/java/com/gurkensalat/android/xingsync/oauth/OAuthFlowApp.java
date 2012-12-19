@@ -38,39 +38,54 @@ import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
  */
 public class OAuthFlowApp extends Activity
 {
+    private final static String TAG          = OAuthFlowApp.class.getName();
 
-    private static final int  PICK_CONTACT = 0;
-    final String              TAG          = getClass().getName();
-    private SharedPreferences prefs;
+    private static final int    PICK_CONTACT = 0;
 
+    private SharedPreferences   prefs;
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        Log.i(TAG, "onCreate(" + savedInstanceState + ")");
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.oauth_screen_1);
+        setContentView(R.layout.oauth_result);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Button launchOauth = (Button) findViewById(R.id.real_oauth_call);
-        Button clearCredentials = (Button) findViewById(R.id.clear_oauth_credentials);
+        String token = prefs.getString(OAuth.OAUTH_TOKEN, "NO-TOKEN");
+        TextView oauthToken = (TextView) findViewById(R.id.oauth_token);
+        oauthToken.setText(token);
 
-        launchOauth.setOnClickListener(new View.OnClickListener()
+        String token_secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "NO-TOKEN-SECRET");
+        TextView oauthTokenSecret = (TextView) findViewById(R.id.oauth_token_secret);
+        oauthTokenSecret.setText(token_secret);
+    }
+
+    public void performApiCallME(View view)
+    {
+        Log.i(TAG, "performApiCallME(" + view + ")");
+
+        TextView textView = (TextView) findViewById(R.id.api_call_result);
+
+        String jsonOutput = "";
+        try
         {
-            public void onClick(View v)
-            {
-                startActivity(new Intent().setClass(v.getContext(), PrepareRequestTokenActivity.class));
-            }
-        });
+            String ME_REQUEST = "/v1/users/me";
 
-        clearCredentials.setOnClickListener(new View.OnClickListener()
+            jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
+            Log.i(TAG, "Response to me: " + jsonOutput);
+
+            textView.setText(jsonOutput);
+        }
+        catch (Exception e)
         {
-            public void onClick(View v)
-            {
-                clearCredentials();
-                performApiCall();
-            }
-        });
-
-        performApiCall();
+            Log.e(TAG, "Error executing request", e);
+            textView.setText("Error retrieving contacts : " + jsonOutput);
+        }
     }
 
     private void performApiCall()
@@ -84,20 +99,21 @@ public class OAuthFlowApp extends Activity
 
             jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
             Log.i(TAG, "Response to me: " + jsonOutput);
-//            JSONObject jsonResponse = new JSONObject(jsonOutput);
-//            JSONObject m = (JSONObject) jsonResponse.get("feed");
-//            JSONArray entries = (JSONArray) m.getJSONArray("entry");
-//            String contacts = "";
-//            for (int i = 0; i < entries.length(); i++)
-//            {
-//                JSONObject entry = entries.getJSONObject(i);
-//                JSONObject title = entry.getJSONObject("title");
-//                if (title.getString("$t") != null && title.getString("$t").length() > 0)
-//                {
-//                    contacts += title.getString("$t") + "\n";
-//                }
-//            }
-//            Log.i(TAG, jsonOutput);
+            // JSONObject jsonResponse = new JSONObject(jsonOutput);
+            // JSONObject m = (JSONObject) jsonResponse.get("feed");
+            // JSONArray entries = (JSONArray) m.getJSONArray("entry");
+            // String contacts = "";
+            // for (int i = 0; i < entries.length(); i++)
+            // {
+            // JSONObject entry = entries.getJSONObject(i);
+            // JSONObject title = entry.getJSONObject("title");
+            // if (title.getString("$t") != null &&
+            // title.getString("$t").length() > 0)
+            // {
+            // contacts += title.getString("$t") + "\n";
+            // }
+            // }
+            // Log.i(TAG, jsonOutput);
             textView.setText(jsonOutput);
         }
         catch (Exception e)
@@ -139,6 +155,8 @@ public class OAuthFlowApp extends Activity
 
     private OAuthConsumer getConsumer(SharedPreferences prefs)
     {
+        Log.i(TAG, "getConsumer()");
+
         String token = prefs.getString(OAuth.OAUTH_TOKEN, "");
         String secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
         OAuthConsumer consumer = new CommonsHttpOAuthConsumer(XingOAuthKeys.CONSUMER_KEY, XingOAuthKeys.CONSUMER_SECRET);
@@ -148,6 +166,8 @@ public class OAuthFlowApp extends Activity
 
     private String doGet(String url, OAuthConsumer consumer) throws Exception
     {
+        Log.i(TAG, "doGet(" + url + ", " + consumer + ")");
+
         DefaultHttpClient httpclient = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
         Log.i(TAG, "Requesting URL : " + url);

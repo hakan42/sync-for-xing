@@ -3,6 +3,7 @@ package com.gurkensalat.android.xingsync.authenticator;
 import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.client.NetworkUtilities;
+import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity;
 
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
@@ -93,7 +94,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mConfirmCredentials = intent.getBooleanExtra(PARAM_CONFIRM_CREDENTIALS, false);
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
-        setContentView(R.layout.oauth_screen_1);
+        setContentView(R.layout.oauth_activity);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, android.R.drawable.ic_dialog_alert);
         // mMessage = (TextView) findViewById(R.id.message);
         // mUsernameEdit = (EditText) findViewById(R.id.username_edit);
@@ -143,6 +144,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     public void handleRealOAuthCall(View view)
     {
         Log.i(TAG, "handleRealOAuthCall(" + view + ")");
+        startActivity(new Intent().setClass(view.getContext(), PrepareRequestTokenActivity.class));
     }
 
     /**
