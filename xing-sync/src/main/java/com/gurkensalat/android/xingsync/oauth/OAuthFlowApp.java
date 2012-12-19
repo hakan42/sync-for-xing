@@ -74,17 +74,17 @@ public class OAuthFlowApp extends Activity
         String jsonOutput = "";
         try
         {
-            String ME_REQUEST = "/v1/users/me";
+            String ME_REQUEST = "https://api.xing.com/v1/users/me";
 
             jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
-            Log.i(TAG, "Response to me: " + jsonOutput);
+            Log.i(TAG, "Response to ME: " + jsonOutput);
 
             textView.setText(jsonOutput);
         }
         catch (Exception e)
         {
             Log.e(TAG, "Error executing request", e);
-            textView.setText("Error retrieving contacts : " + jsonOutput);
+            textView.setText("Error retrieving myself : " + jsonOutput);
         }
     }
 
@@ -95,10 +95,10 @@ public class OAuthFlowApp extends Activity
         String jsonOutput = "";
         try
         {
-            String ME_REQUEST = "/v1/users/me";
+            String ME_REQUEST = "https://api.xing.com/v1/users/me";
 
             jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
-            Log.i(TAG, "Response to me: " + jsonOutput);
+            Log.i(TAG, "Response to ME: " + jsonOutput);
             // JSONObject jsonResponse = new JSONObject(jsonOutput);
             // JSONObject m = (JSONObject) jsonResponse.get("feed");
             // JSONArray entries = (JSONArray) m.getJSONArray("entry");
