@@ -5,8 +5,8 @@
 
     <parent>
         <groupId>com.gurkensalat.android.commons</groupId>
-        <artifactId>android-commons-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>android-commons-account-sync</artifactId>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.gurkensalat.android.xingsync</groupId>
@@ -27,6 +27,7 @@
 
     <properties>
         <platform.version>4.0.1.2</platform.version>
+        <platform.sdk.version>14</platform.sdk.version>
 
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
@@ -45,24 +46,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- For OAuth handling -->
-            <dependency>
-                <groupId>oauth.signpost</groupId>
-                <artifactId>signpost-core</artifactId>
-                <version>1.2.1.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>oauth.signpost</groupId>
-                <artifactId>signpost-commonshttp4</artifactId>
-                <version>1.2.1.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.json</groupId>
-                <artifactId>json</artifactId>
-                <version>20090211</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -72,7 +55,6 @@
                 <plugin>
                     <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                     <artifactId>android-maven-plugin</artifactId>
-                    <version>3.4.1</version>
                     <inherited>true</inherited>
                     <configuration>
                         <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
@@ -80,7 +62,7 @@
                         <resourceDirectory>${project.basedir}/res</resourceDirectory>
                         <nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
                         <sdk>
-                            <platform>14</platform>
+                            <platform>${platform.sdk.version}</platform>
                         </sdk>
                         <undeployBeforeDeploy>false</undeployBeforeDeploy>
                     </configuration>
