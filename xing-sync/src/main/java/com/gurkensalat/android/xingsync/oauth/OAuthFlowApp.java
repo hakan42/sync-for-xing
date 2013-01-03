@@ -1,19 +1,6 @@
 package com.gurkensalat.android.xingsync.oauth;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import oauth.signpost.OAuth;
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,13 +12,11 @@ import android.preference.PreferenceManager;
 import android.provider.Contacts.People;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.R;
-import com.gurkensalat.android.xingsync.authenticator.UserLoginTask;
 import com.gurkensalat.android.xingsync.client.MeTask;
-import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 /**
  * Entry point in the application. Launches the OAuth flow by starting the
@@ -40,14 +25,15 @@ import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
  */
 public class OAuthFlowApp extends Activity
 {
-    private final static String TAG          = OAuthFlowApp.class.getName();
+    /** The tag used to log to adb console. **/
+    private final static String TAG = OAuthFlowApp.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
-    private static final int    PICK_CONTACT = 0;
+    private static final int PICK_CONTACT = 0;
 
-    private SharedPreferences   prefs;
+    private SharedPreferences prefs;
 
     /** Keep track of the API call task so can cancel it if requested */
-    private MeTask              mMeTask      = null;
+    private MeTask mMeTask = null;
 
     /**
      * {@inheritDoc}
@@ -80,47 +66,16 @@ public class OAuthFlowApp extends Activity
 
     public void showResult(String result)
     {
+        Log.i(TAG, "showResult(" + result + ")");
+
         TextView textView = (TextView) findViewById(R.id.api_call_result);
         textView.setText(result);
     }
 
-    private void performApiCall()
-    {
-        TextView textView = (TextView) findViewById(R.id.response_code);
-
-        String jsonOutput = "";
-        try
-        {
-            String ME_REQUEST = "https://api.xing.com/v1/users/me";
-
-            // jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
-            // Log.i(TAG, "Response to ME: " + jsonOutput);
-            // JSONObject jsonResponse = new JSONObject(jsonOutput);
-            // JSONObject m = (JSONObject) jsonResponse.get("feed");
-            // JSONArray entries = (JSONArray) m.getJSONArray("entry");
-            // String contacts = "";
-            // for (int i = 0; i < entries.length(); i++)
-            // {
-            // JSONObject entry = entries.getJSONObject(i);
-            // JSONObject title = entry.getJSONObject("title");
-            // if (title.getString("$t") != null &&
-            // title.getString("$t").length() > 0)
-            // {
-            // contacts += title.getString("$t") + "\n";
-            // }
-            // }
-            // Log.i(TAG, jsonOutput);
-            textView.setText(jsonOutput);
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Error executing request", e);
-            textView.setText("Error retrieving contacts : " + jsonOutput);
-        }
-    }
-
     public void onActivityResult(int reqCode, int resultCode, Intent data)
     {
+        Log.i(TAG, "onActivityResult(" + reqCode + ", " + resultCode + ", " + data + ")");
+
         super.onActivityResult(reqCode, resultCode, data);
 
         switch (reqCode)
@@ -138,6 +93,8 @@ public class OAuthFlowApp extends Activity
             }
             break;
         }
+
+        Log.i(TAG, "onActivityResult() finished");
     }
 
     private void clearCredentials()

@@ -9,9 +9,10 @@ import android.util.Log;
 
 public class AccountPreferences extends PreferenceActivity
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = AccountPreferences.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
-    public static final String TAG             = "AccountPreferences";
-    private boolean            shouldForceSync = false;
+    private boolean shouldForceSync = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,13 +36,11 @@ public class AccountPreferences extends PreferenceActivity
     }
 
     Preference.OnPreferenceChangeListener syncToggle = new Preference.OnPreferenceChangeListener()
-                                                     {
-                                                         public boolean onPreferenceChange(
-                                                                 Preference preference,
-                                                                 Object newValue)
-                                                         {
-                                                             shouldForceSync = true;
-                                                             return true;
-                                                         }
-                                                     };
+    {
+        public boolean onPreferenceChange(Preference preference, Object newValue)
+        {
+            shouldForceSync = true;
+            return true;
+        }
+    };
 }

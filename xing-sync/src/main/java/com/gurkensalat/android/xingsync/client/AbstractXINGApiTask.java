@@ -12,6 +12,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 import android.content.SharedPreferences;
@@ -20,10 +21,8 @@ import android.util.Log;
 
 public abstract class AbstractXINGApiTask extends AsyncTask<Void, Void, String>
 {
-    /**
-     * 
-     */
-    private final static String TAG = AbstractXINGApiTask.class.getName();
+    /** The tag used to log to adb console. **/
+    private final static String TAG = AbstractXINGApiTask.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     protected OAuthConsumer getConsumer(SharedPreferences prefs)
     {

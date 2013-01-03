@@ -33,13 +33,13 @@ import java.util.List;
  */
 public class ContactManager
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = ContactManager.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     /**
      * Custom IM protocol used when storing status messages.
      */
     public static final String CUSTOM_IM_PROTOCOL = "SampleSyncAdapter";
-
-    private static final String TAG = "ContactManager";
 
     public static long ensureSampleGroupExists(Context context, Account account)
     {

@@ -48,8 +48,8 @@ import com.gurkensalat.android.xingsync.Constants;
  */
 final public class NetworkUtilities
 {
-    /** The tag used to log to adb console. */
-    private static final String TAG = "NetworkUtilities";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = NetworkUtilities.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     /** POST parameter name for the user's account name */
     public static final String PARAM_USERNAME = "username";
@@ -101,7 +101,7 @@ final public class NetworkUtilities
     /**
      * Connects to the SampleSync test server, authenticates the provided
      * username and password.
-     *
+     * 
      * @param username
      *            The server account username
      * @param password
@@ -161,7 +161,8 @@ final public class NetworkUtilities
         {
             Log.e(TAG, "IOException when getting authtoken", e);
             return null;
-        } finally
+        }
+        finally
         {
             Log.v(TAG, "getAuthtoken completing");
         }
@@ -172,7 +173,7 @@ final public class NetworkUtilities
      * includes all the locally-dirty contacts so that the server can process
      * those changes, and we receive (and return) a list of contacts that were
      * updated on the server-side that need to be updated locally.
-     *
+     * 
      * @param account
      *            The account being synced
      * @param authtoken
@@ -183,74 +184,80 @@ final public class NetworkUtilities
      *            A list of the contacts to send to the server
      * @return A list of contacts that we need to update locally
      */
-    public static List<RawContact> syncContacts(Account account, String authtoken, long serverSyncState,
-            List<RawContact> dirtyContacts) throws JSONException, ParseException, IOException, AuthenticationException
+    public static List<RawContact> syncContacts(Account account, String authtoken, long serverSyncState, List<RawContact> dirtyContacts) throws JSONException, ParseException,
+            IOException, AuthenticationException
     {
         Log.d(TAG, "in syncContacts");
 
-//        // Convert our list of User objects into a list of JSONObject
-//        List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
-//        for (RawContact rawContact : dirtyContacts)
-//        {
-//            jsonContacts.add(rawContact.toJSONObject());
-//        }
-//
-//        // Create a special JSONArray of our JSON contacts
-//        JSONArray buffer = new JSONArray(jsonContacts);
+        // // Convert our list of User objects into a list of JSONObject
+        // List<JSONObject> jsonContacts = new ArrayList<JSONObject>();
+        // for (RawContact rawContact : dirtyContacts)
+        // {
+        // jsonContacts.add(rawContact.toJSONObject());
+        // }
+        //
+        // // Create a special JSONArray of our JSON contacts
+        // JSONArray buffer = new JSONArray(jsonContacts);
 
         // Create an array that will hold the server-side contacts
         // that have been changed (returned by the server).
         final ArrayList<RawContact> serverDirtyList = new ArrayList<RawContact>();
 
-//        // Prepare our POST data
-//        final ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-//        params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
-//        params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
-//        params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA, buffer.toString()));
-//        if (serverSyncState > 0)
-//        {
-//            params.add(new BasicNameValuePair(PARAM_SYNC_STATE, Long.toString(serverSyncState)));
-//        }
-//        Log.i(TAG, params.toString());
-//        HttpEntity entity = new UrlEncodedFormEntity(params);
-//
-//        // Send the updated friends data to the server
-//        Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
-//        final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
-//        post.addHeader(entity.getContentType());
-//        post.setEntity(entity);
-//        final HttpResponse resp = getHttpClient().execute(post);
-//        final String response = EntityUtils.toString(resp.getEntity());
-//        if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
-//        {
-//            // Our request to the server was successful - so we assume
-//            // that they accepted all the changes we sent up, and
-//            // that the response includes the contacts that we need
-//            // to update on our side...
-//            final JSONArray serverContacts = new JSONArray(response);
-//            Log.d(TAG, response);
-//            for (int i = 0; i < serverContacts.length(); i++)
-//            {
-//                RawContact rawContact = RawContact.valueOf(serverContacts.getJSONObject(i));
-//                if (rawContact != null)
-//                {
-//                    serverDirtyList.add(rawContact);
-//                }
-//            }
-//        }
-//        else
-//        {
-//            if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_UNAUTHORIZED)
-//            {
-//                Log.e(TAG, "Authentication exception in sending dirty contacts");
-//                throw new AuthenticationException();
-//            }
-//            else
-//            {
-//                Log.e(TAG, "Server error in sending dirty contacts: " + resp.getStatusLine());
-//                throw new IOException();
-//            }
-//        }
+        // // Prepare our POST data
+        // final ArrayList<NameValuePair> params = new
+        // ArrayList<NameValuePair>();
+        // params.add(new BasicNameValuePair(PARAM_USERNAME, account.name));
+        // params.add(new BasicNameValuePair(PARAM_AUTH_TOKEN, authtoken));
+        // params.add(new BasicNameValuePair(PARAM_CONTACTS_DATA,
+        // buffer.toString()));
+        // if (serverSyncState > 0)
+        // {
+        // params.add(new BasicNameValuePair(PARAM_SYNC_STATE,
+        // Long.toString(serverSyncState)));
+        // }
+        // Log.i(TAG, params.toString());
+        // HttpEntity entity = new UrlEncodedFormEntity(params);
+        //
+        // // Send the updated friends data to the server
+        // Log.i(TAG, "Syncing to: " + SYNC_CONTACTS_URI);
+        // final HttpPost post = new HttpPost(SYNC_CONTACTS_URI);
+        // post.addHeader(entity.getContentType());
+        // post.setEntity(entity);
+        // final HttpResponse resp = getHttpClient().execute(post);
+        // final String response = EntityUtils.toString(resp.getEntity());
+        // if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+        // {
+        // // Our request to the server was successful - so we assume
+        // // that they accepted all the changes we sent up, and
+        // // that the response includes the contacts that we need
+        // // to update on our side...
+        // final JSONArray serverContacts = new JSONArray(response);
+        // Log.d(TAG, response);
+        // for (int i = 0; i < serverContacts.length(); i++)
+        // {
+        // RawContact rawContact =
+        // RawContact.valueOf(serverContacts.getJSONObject(i));
+        // if (rawContact != null)
+        // {
+        // serverDirtyList.add(rawContact);
+        // }
+        // }
+        // }
+        // else
+        // {
+        // if (resp.getStatusLine().getStatusCode() ==
+        // HttpStatus.SC_UNAUTHORIZED)
+        // {
+        // Log.e(TAG, "Authentication exception in sending dirty contacts");
+        // throw new AuthenticationException();
+        // }
+        // else
+        // {
+        // Log.e(TAG, "Server error in sending dirty contacts: " +
+        // resp.getStatusLine());
+        // throw new IOException();
+        // }
+        // }
 
         if (Constants.MOCK_MODE)
         {
@@ -344,7 +351,7 @@ final public class NetworkUtilities
 
     /**
      * Download the avatar image from the server.
-     *
+     * 
      * @param avatarUrl
      *            the URL pointing to the avatar image
      * @return a byte array with the raw JPEG avatar image
@@ -385,7 +392,8 @@ final public class NetworkUtilities
                 // bitmaps
                 avatar.recycle();
                 return convertStream.toByteArray();
-            } finally
+            }
+            finally
             {
                 connection.disconnect();
             }

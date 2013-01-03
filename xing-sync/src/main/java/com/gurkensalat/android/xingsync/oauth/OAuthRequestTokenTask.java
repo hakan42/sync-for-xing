@@ -1,5 +1,6 @@
 package com.gurkensalat.android.xingsync.oauth;
 
+import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 import oauth.signpost.OAuthConsumer;
@@ -20,11 +21,12 @@ import android.util.Log;
  */
 public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 {
-    private static final String TAG = OAuthRequestTokenTask.class.getName();
+    /** The tag used to log to adb console. **/
+    private static final String TAG = OAuthRequestTokenTask.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
-    private Context             context;
-    private OAuthProvider       provider;
-    private OAuthConsumer       consumer;
+    private Context context;
+    private OAuthProvider provider;
+    private OAuthConsumer consumer;
 
     /**
      * 

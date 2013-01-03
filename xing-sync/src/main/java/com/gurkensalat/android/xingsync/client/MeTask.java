@@ -12,10 +12,8 @@ import com.gurkensalat.android.xingsync.oauth.OAuthFlowApp;
  */
 public class MeTask extends AbstractXINGApiTask
 {
-    /**
-     * 
-     */
-    private final static String TAG = MeTask.class.getName();
+    /** The tag used to log to adb console. **/
+    private final static String TAG = MeTask.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     /**
      * 

@@ -3,6 +3,7 @@ package com.gurkensalat.android.xingsync.authenticator;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.client.NetworkUtilities;
 
 /**
@@ -11,6 +12,8 @@ import com.gurkensalat.android.xingsync.client.NetworkUtilities;
  */
 public class UserLoginTask extends AsyncTask<Void, Void, String>
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = UserLoginTask.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     /**
      * 
@@ -36,8 +39,8 @@ public class UserLoginTask extends AsyncTask<Void, Void, String>
         }
         catch (Exception ex)
         {
-            Log.e(AuthenticatorActivity.TAG, "UserLoginTask.doInBackground: failed to authenticate");
-            Log.i(AuthenticatorActivity.TAG, ex.toString());
+            Log.e(TAG, "UserLoginTask.doInBackground: failed to authenticate");
+            Log.i(TAG, ex.toString());
             return null;
         }
     }

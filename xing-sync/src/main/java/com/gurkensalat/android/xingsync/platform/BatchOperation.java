@@ -12,13 +12,15 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import com.gurkensalat.android.xingsync.Constants;
+
 /**
  * This class handles execution of batch mOperations on Contacts provider.
  */
 final public class BatchOperation
 {
-
-    private final String TAG = "BatchOperation";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = BatchOperation.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     private final ContentResolver mResolver;
 

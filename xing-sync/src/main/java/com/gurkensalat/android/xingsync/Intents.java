@@ -7,6 +7,9 @@ import android.content.Intent;
  */
 public class Intents
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = Intents.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
+
     /**
      * Prefix for all intents created
      */

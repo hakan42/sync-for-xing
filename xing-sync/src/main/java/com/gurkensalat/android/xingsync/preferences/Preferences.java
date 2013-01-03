@@ -1,14 +1,17 @@
 package com.gurkensalat.android.xingsync.preferences;
 
-import com.gurkensalat.android.xingsync.Constants;
-import com.gurkensalat.android.xingsync.R;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.gurkensalat.android.xingsync.Constants;
+import com.gurkensalat.android.xingsync.R;
+
 public class Preferences
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = Preferences.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
+
     public static boolean getWiFiOnlyFlag(Context context)
     {
         SharedPreferences prefs = context.getSharedPreferences(

@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.syncadapter;
 
+import com.gurkensalat.android.xingsync.Constants;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -11,6 +13,9 @@ import android.os.IBinder;
  */
 public class SyncService extends Service
 {
+    /** The tag used to log to adb console. **/
+    private final static String TAG = SyncService.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
+
     private static final Object sSyncAdapterLock = new Object();
 
     private static SyncAdapter sSyncAdapter = null;

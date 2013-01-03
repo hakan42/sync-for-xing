@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.oauth;
 
+import com.gurkensalat.android.xingsync.Constants;
+
 import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
@@ -13,12 +15,13 @@ import android.util.Log;
 
 public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {
-    private static final String TAG = RetrieveAccessTokenTask.class.getName();
+    /** The tag used to log to adb console. **/
+    private static final String TAG = RetrieveAccessTokenTask.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
-    private Context             context;
-    private OAuthProvider       provider;
-    private OAuthConsumer       consumer;
-    private SharedPreferences   prefs;
+    private Context context;
+    private OAuthProvider provider;
+    private OAuthConsumer consumer;
+    private SharedPreferences prefs;
 
     public RetrieveAccessTokenTask(Context context, OAuthConsumer consumer, OAuthProvider provider, SharedPreferences prefs)
     {

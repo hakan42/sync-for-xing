@@ -33,9 +33,8 @@ import android.util.Log;
  */
 class Authenticator extends AbstractAccountAuthenticator
 {
-
     /** The tag used to log to adb console. **/
-    private static final String TAG = "Authenticator";
+    private final static String TAG = Authenticator.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     // Authentication Service context
     private final Context mContext;
@@ -47,8 +46,7 @@ class Authenticator extends AbstractAccountAuthenticator
     }
 
     @Override
-    public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType,
-            String[] requiredFeatures, Bundle options)
+    public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType, String[] requiredFeatures, Bundle options)
     {
         Log.v(TAG, "addAccount()");
         final Intent intent = new Intent(mContext, AuthenticatorActivity.class);
@@ -73,8 +71,7 @@ class Authenticator extends AbstractAccountAuthenticator
     }
 
     @Override
-    public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle loginOptions)
-            throws NetworkErrorException
+    public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle loginOptions) throws NetworkErrorException
     {
         Log.v(TAG, "getAuthToken()");
 
@@ -137,8 +134,7 @@ class Authenticator extends AbstractAccountAuthenticator
     }
 
     @Override
-    public Bundle updateCredentials(AccountAuthenticatorResponse response, Account account, String authTokenType,
-            Bundle loginOptions)
+    public Bundle updateCredentials(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle loginOptions)
     {
         Log.v(TAG, "updateCredentials()");
         return null;

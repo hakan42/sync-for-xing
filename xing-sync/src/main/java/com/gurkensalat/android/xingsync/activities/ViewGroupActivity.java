@@ -1,10 +1,11 @@
 package com.gurkensalat.android.xingsync.activities;
 
-import com.gurkensalat.android.xingsync.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.gurkensalat.android.xingsync.Constants;
+import com.gurkensalat.android.xingsync.R;
 
 /**
  * Activity to handle the view-group action. In a real app, this would show a
@@ -12,7 +13,8 @@ import android.widget.TextView;
  */
 public class ViewGroupActivity extends Activity
 {
-    private static final String TAG = "ViewGroupActivity";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = ViewGroupActivity.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     private TextView mUriTextView;
 

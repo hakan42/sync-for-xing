@@ -1,11 +1,13 @@
 package com.gurkensalat.android.xingsync.client;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.gurkensalat.android.xingsync.Constants;
+
 import android.text.TextUtils;
 import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONException;
 
 /**
  * Represents a low-level contacts RawContact - or at least the fields of the
@@ -13,9 +15,8 @@ import org.json.JSONException;
  */
 final public class RawContact
 {
-
     /** The tag used to log to adb console. **/
-    private static final String TAG = "RawContact";
+    private final static String TAG = RawContact.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     private final String mUserName;
 
@@ -141,7 +142,7 @@ final public class RawContact
     /**
      * Convert the RawContact object into a JSON string. From the JSONString
      * interface.
-     *
+     * 
      * @return a JSON string representation of the object
      */
     public JSONObject toJSONObject()
@@ -214,9 +215,8 @@ final public class RawContact
         return result;
     }
 
-    public RawContact(String name, String fullName, String firstName, String lastName, String cellPhone, String officePhone,
-            String homePhone, String email, String status, String avatarUrl, boolean deleted, long serverContactId,
-            long rawContactId, long syncState, boolean dirty)
+    public RawContact(String name, String fullName, String firstName, String lastName, String cellPhone, String officePhone, String homePhone, String email, String status,
+            String avatarUrl, boolean deleted, long serverContactId, long rawContactId, long syncState, boolean dirty)
     {
         mUserName = name;
         mFullName = fullName;
@@ -238,7 +238,7 @@ final public class RawContact
     /**
      * Creates and returns an instance of the RawContact from the provided JSON
      * data.
-     *
+     * 
      * @param user
      *            The JSONObject containing user data
      * @return user The new instance of Sample RawContact created from the JSON
@@ -308,8 +308,8 @@ final public class RawContact
                 final boolean deleted = !contact.isNull("d") ? contact.getBoolean("d") : false;
                 final long syncState = !contact.isNull("x") ? contact.getLong("x") : 0;
 
-                return new RawContact(userName, null, firstName, lastName, cellPhone, officePhone, homePhone, email, status,
-                        avatarUrl, deleted, serverContactId, rawContactId, syncState, false);
+                return new RawContact(userName, null, firstName, lastName, cellPhone, officePhone, homePhone, email, status, avatarUrl, deleted, serverContactId, rawContactId,
+                        syncState, false);
             }
         }
         catch (final Exception ex)
@@ -322,17 +322,16 @@ final public class RawContact
     /**
      * Creates and returns RawContact instance from all the supplied parameters.
      */
-    public static RawContact create(String fullName, String firstName, String lastName, String cellPhone, String officePhone,
-            String homePhone, String email, String status, boolean deleted, long rawContactId, long serverContactId)
+    public static RawContact create(String fullName, String firstName, String lastName, String cellPhone, String officePhone, String homePhone, String email, String status,
+            boolean deleted, long rawContactId, long serverContactId)
     {
-        return new RawContact(null, fullName, firstName, lastName, cellPhone, officePhone, homePhone, email, status, null,
-                deleted, serverContactId, rawContactId, -1, true);
+        return new RawContact(null, fullName, firstName, lastName, cellPhone, officePhone, homePhone, email, status, null, deleted, serverContactId, rawContactId, -1, true);
     }
 
     /**
      * Creates and returns a User instance that represents a deleted user. Since
      * the user is deleted, all we need are the client/server IDs.
-     *
+     * 
      * @param clientUserId
      *            The client-side ID for the contact
      * @param serverUserId
@@ -341,7 +340,6 @@ final public class RawContact
      */
     public static RawContact createDeletedContact(long rawContactId, long serverContactId)
     {
-        return new RawContact(null, null, null, null, null, null, null, null, null, null, true, serverContactId, rawContactId,
-                -1, true);
+        return new RawContact(null, null, null, null, null, null, null, null, null, null, true, serverContactId, rawContactId, -1, true);
     }
 }

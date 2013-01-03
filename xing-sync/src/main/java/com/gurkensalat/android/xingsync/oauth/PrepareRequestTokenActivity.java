@@ -2,6 +2,7 @@ package com.gurkensalat.android.xingsync.oauth;
 
 import java.net.URLEncoder;
 
+import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 import oauth.signpost.OAuthConsumer;
@@ -30,10 +31,11 @@ import android.util.Log;
  */
 public class PrepareRequestTokenActivity extends Activity
 {
-    private static final String TAG = PrepareRequestTokenActivity.class.getName();
+    /** The tag used to log to adb console. **/
+    private static final String TAG = PrepareRequestTokenActivity.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
-    private OAuthConsumer       consumer;
-    private OAuthProvider       provider;
+    private OAuthConsumer consumer;
+    private OAuthProvider provider;
 
     @Override
     public void onCreate(Bundle savedInstanceState)

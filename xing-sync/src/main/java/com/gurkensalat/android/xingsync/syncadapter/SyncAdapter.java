@@ -26,16 +26,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SyncAdapter implementation for syncing XING contacts to the
- * platform ContactOperations provider. This sample shows a basic 2-way sync
- * between the client and a sample server. It also contains an example of how to
- * update the contacts' status messages, which would be useful for a messaging
- * or social networking client.
+ * SyncAdapter implementation for syncing XING contacts to the platform
+ * ContactOperations provider. This sample shows a basic 2-way sync between the
+ * client and a sample server. It also contains an example of how to update the
+ * contacts' status messages, which would be useful for a messaging or social
+ * networking client.
  */
 public class SyncAdapter extends AbstractThreadedSyncAdapter
 {
-    private static final String TAG = "SyncAdapter";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = SyncAdapter.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
+
     private static final String SYNC_MARKER_KEY = "com.gurkensalat.android.xingsync.marker";
+
     private static final boolean NOTIFY_AUTH_FAILURE = true;
 
     private final AccountManager mAccountManager;
@@ -50,8 +53,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
     }
 
     @Override
-    public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider,
-            SyncResult syncResult)
+    public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult)
     {
         try
         {
@@ -88,7 +90,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             // Find the local 'dirty' contacts that we need to tell the server
             // about...
             // Find the local users that need to be sync'd to the server...
-            // dirtyContacts = ContactManager.getDirtyContacts(mContext, account);
+            // dirtyContacts = ContactManager.getDirtyContacts(mContext,
+            // account);
             dirtyContacts = new ArrayList<RawContact>(0);
 
             // Send the dirty contacts to the server, and retrieve the
@@ -153,7 +156,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
     /**
      * This helper function fetches the last known high-water-mark we received
      * from the server - or 0 if we've never synced.
-     *
+     * 
      * @param account
      *            the account we're syncing
      * @return the change high-water-mark
@@ -170,7 +173,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
 
     /**
      * Save off the high-water-mark we receive back from the server.
-     *
+     * 
      * @param account
      *            The account we're syncing
      * @param marker

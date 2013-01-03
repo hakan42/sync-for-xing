@@ -6,6 +6,10 @@ import android.provider.ContactsContract.Data;
 
 public class Constants
 {
+    /**
+     * Number of characters to cut from logger TAG name length.
+     */
+    public static final int PACKAGE_PREFIX_LENGTH = "com.gurkensalat.android.".length();
 
     /**
      * Account type string.

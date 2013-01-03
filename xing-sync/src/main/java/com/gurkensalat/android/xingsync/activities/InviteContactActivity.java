@@ -1,10 +1,11 @@
 package com.gurkensalat.android.xingsync.activities;
 
-import com.gurkensalat.android.xingsync.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.gurkensalat.android.xingsync.Constants;
+import com.gurkensalat.android.xingsync.R;
 
 /**
  * Activity to handle the invite-intent. In a real app, this would look up the
@@ -13,7 +14,8 @@ import android.widget.TextView;
  */
 public class InviteContactActivity extends Activity
 {
-    private static final String TAG = "InviteContactActivity";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = InviteContactActivity.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     private TextView mUriTextView;
 

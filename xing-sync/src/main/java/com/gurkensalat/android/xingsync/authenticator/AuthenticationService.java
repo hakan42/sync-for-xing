@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.authenticator;
 
+import com.gurkensalat.android.xingsync.Constants;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -11,37 +13,28 @@ import android.util.Log;
  */
 public class AuthenticationService extends Service
 {
-
-    private static final String TAG = "AuthenticationService";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = AuthenticationService.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     private Authenticator mAuthenticator;
 
     @Override
     public void onCreate()
     {
-        if (Log.isLoggable(TAG, Log.VERBOSE))
-        {
-            Log.v(TAG, "SampleSyncAdapter Authentication Service started.");
-        }
+        Log.v(TAG, "started");
         mAuthenticator = new Authenticator(this);
     }
 
     @Override
     public void onDestroy()
     {
-        if (Log.isLoggable(TAG, Log.VERBOSE))
-        {
-            Log.v(TAG, "SampleSyncAdapter Authentication Service stopped.");
-        }
+        Log.v(TAG, "stopped");
     }
 
     @Override
     public IBinder onBind(Intent intent)
     {
-        if (Log.isLoggable(TAG, Log.VERBOSE))
-        {
-            Log.v(TAG, "getBinder()...  returning the AccountAuthenticator binder for intent " + intent);
-        }
+        Log.v(TAG, "getBinder()...  returning the AccountAuthenticator binder for intent " + intent);
         return mAuthenticator.getIBinder();
     }
 }

@@ -3,13 +3,13 @@ package com.gurkensalat.android.xingsync;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.provider.Settings;
+import android.util.Log;
 
 public class HelloAndroidActivity extends Activity
 {
-
-    private static String TAG = "xing-sync";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = HelloAndroidActivity.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     /**
      * Called when the activity is first created.

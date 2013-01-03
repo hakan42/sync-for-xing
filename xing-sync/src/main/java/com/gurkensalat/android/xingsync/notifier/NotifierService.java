@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.notifier;
 
+import com.gurkensalat.android.xingsync.Constants;
+
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
@@ -10,7 +12,8 @@ import android.util.Log;
  */
 public class NotifierService extends IntentService
 {
-    private static final String TAG = "NotifierService";
+    /** The tag used to log to adb console. **/
+    private final static String TAG = NotifierService.class.getName().substring(Constants.PACKAGE_PREFIX_LENGTH);
 
     public NotifierService()
     {
