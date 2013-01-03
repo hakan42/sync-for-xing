@@ -57,7 +57,8 @@ public class MeTask extends AbstractXINGApiTask
         catch (Exception e)
         {
             Log.e(TAG, "Error executing request", e);
-            data = jsonOutput;
+            Log.i(TAG, "Response to ME: " + jsonOutput);
+            data = null;
         }
 
         return null;

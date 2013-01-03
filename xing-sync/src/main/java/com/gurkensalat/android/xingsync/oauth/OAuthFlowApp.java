@@ -70,6 +70,11 @@ public class OAuthFlowApp extends Activity
 
         TextView textView = (TextView) findViewById(R.id.api_call_result);
         textView.setText(result);
+
+        if (result != null)
+        {
+            finish();
+        }
     }
 
     public void onActivityResult(int reqCode, int resultCode, Intent data)
