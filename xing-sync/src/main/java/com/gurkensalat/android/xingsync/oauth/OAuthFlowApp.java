@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.gurkensalat.android.xingsync.R;
+import com.gurkensalat.android.xingsync.authenticator.UserLoginTask;
+import com.gurkensalat.android.xingsync.client.MeTask;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 /**
@@ -43,6 +45,9 @@ public class OAuthFlowApp extends Activity
     private static final int    PICK_CONTACT = 0;
 
     private SharedPreferences   prefs;
+
+    /** Keep track of the API call task so can cancel it if requested */
+    private MeTask              mMeTask      = null;
 
     /**
      * {@inheritDoc}
@@ -69,23 +74,14 @@ public class OAuthFlowApp extends Activity
     {
         Log.i(TAG, "performApiCallME(" + view + ")");
 
+        mMeTask = new MeTask(this);
+        mMeTask.execute();
+    }
+
+    public void showResult(String result)
+    {
         TextView textView = (TextView) findViewById(R.id.api_call_result);
-
-        String jsonOutput = "";
-        try
-        {
-            String ME_REQUEST = "https://api.xing.com/v1/users/me";
-
-            jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
-            Log.i(TAG, "Response to ME: " + jsonOutput);
-
-            textView.setText(jsonOutput);
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Error executing request", e);
-            textView.setText("Error retrieving myself : " + jsonOutput);
-        }
+        textView.setText(result);
     }
 
     private void performApiCall()
@@ -97,8 +93,8 @@ public class OAuthFlowApp extends Activity
         {
             String ME_REQUEST = "https://api.xing.com/v1/users/me";
 
-            jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
-            Log.i(TAG, "Response to ME: " + jsonOutput);
+            // jsonOutput = doGet(ME_REQUEST, getConsumer(this.prefs));
+            // Log.i(TAG, "Response to ME: " + jsonOutput);
             // JSONObject jsonResponse = new JSONObject(jsonOutput);
             // JSONObject m = (JSONObject) jsonResponse.get("feed");
             // JSONArray entries = (JSONArray) m.getJSONArray("entry");
@@ -151,38 +147,5 @@ public class OAuthFlowApp extends Activity
         edit.remove(OAuth.OAUTH_TOKEN);
         edit.remove(OAuth.OAUTH_TOKEN_SECRET);
         edit.commit();
-    }
-
-    private OAuthConsumer getConsumer(SharedPreferences prefs)
-    {
-        Log.i(TAG, "getConsumer()");
-
-        String token = prefs.getString(OAuth.OAUTH_TOKEN, "");
-        String secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
-        OAuthConsumer consumer = new CommonsHttpOAuthConsumer(XingOAuthKeys.CONSUMER_KEY, XingOAuthKeys.CONSUMER_SECRET);
-        consumer.setTokenWithSecret(token, secret);
-        return consumer;
-    }
-
-    private String doGet(String url, OAuthConsumer consumer) throws Exception
-    {
-        Log.i(TAG, "doGet(" + url + ", " + consumer + ")");
-
-        DefaultHttpClient httpclient = new DefaultHttpClient();
-        HttpGet request = new HttpGet(url);
-        Log.i(TAG, "Requesting URL : " + url);
-        consumer.sign(request);
-        HttpResponse response = httpclient.execute(request);
-        Log.i(TAG, "Statusline : " + response.getStatusLine());
-        InputStream data = response.getEntity().getContent();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(data));
-        String responeLine;
-        StringBuilder responseBuilder = new StringBuilder();
-        while ((responeLine = bufferedReader.readLine()) != null)
-        {
-            responseBuilder.append(responeLine);
-        }
-        Log.i(TAG, "Response : " + responseBuilder.toString());
-        return responseBuilder.toString();
     }
 }
