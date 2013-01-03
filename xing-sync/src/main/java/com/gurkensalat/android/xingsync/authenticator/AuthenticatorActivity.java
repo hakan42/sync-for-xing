@@ -65,16 +65,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
     private TextView mMessage;
 
-    private String mPassword;
+    private String mPassword = "FIXME-none-necessary";
 
-    private EditText mPasswordEdit;
+    // private EditText mPasswordEdit;
 
     /** Was the original caller asking for an entirely new account? */
     protected boolean mRequestNewAccount = false;
 
-    private String mUsername;
+    private String mUsername = "FIXME-one-and-only-one";
 
-    private EditText mUsernameEdit;
+    // private EditText mUsernameEdit;
 
     /**
      * {@inheritDoc}
@@ -87,8 +87,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         mAccountManager = AccountManager.get(this);
         Log.i(TAG, "loading data from Intent");
         final Intent intent = getIntent();
-        mUsername = intent.getStringExtra(PARAM_USERNAME);
-        mRequestNewAccount = mUsername == null;
+        // mUsername = intent.getStringExtra(PARAM_USERNAME);
+        // mRequestNewAccount = true;
         mConfirmCredentials = intent.getBooleanExtra(PARAM_CONFIRM_CREDENTIALS, false);
         Log.i(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
@@ -170,16 +170,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     {
         Log.i(TAG, "handleLogin(" + view + ")");
 
-        if (mRequestNewAccount)
-        {
-            mUsername = mUsernameEdit.getText().toString();
-        }
-        mPassword = mPasswordEdit.getText().toString();
-        if (TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword))
-        {
-            mMessage.setText(getMessage());
-        }
-        else
+        // if (mRequestNewAccount)
+        // {
+        // mUsername = mUsernameEdit.getText().toString();
+        // }
+        // mPassword = mPasswordEdit.getText().toString();
+        // if (TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword))
+        // {
+        // mMessage.setText(getMessage());
+        // }
+        // else
         {
             // Show a progress dialog, and kick off a background task to perform
             // the user login attempt.
@@ -362,15 +362,5 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     public void setmUsername(String mUsername)
     {
         this.mUsername = mUsername;
-    }
-
-    public EditText getmUsernameEdit()
-    {
-        return mUsernameEdit;
-    }
-
-    public void setmUsernameEdit(EditText mUsernameEdit)
-    {
-        this.mUsernameEdit = mUsernameEdit;
     }
 }
