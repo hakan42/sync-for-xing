@@ -26,6 +26,11 @@ public class MeTask extends AbstractXINGApiTask
     private final OAuthFlowApp caller;
 
     /**
+     * 
+     */
+    private String data;
+
+    /**
      * @param caller
      */
     public MeTask(OAuthFlowApp caller)
@@ -40,20 +45,45 @@ public class MeTask extends AbstractXINGApiTask
     @Override
     protected String doInBackground(Void... params)
     {
+        Log.i(TAG, "doInBackground(" + params + ")");
+
         String jsonOutput = "";
         try
         {
             jsonOutput = doGet(Constants.ME_REQUEST, getConsumer(this.prefs));
             Log.i(TAG, "Response to ME: " + jsonOutput);
-
-            // caller.showResult(jsonOutput);
+            data = "success";
         }
         catch (Exception e)
         {
             Log.e(TAG, "Error executing request", e);
-            // caller.showResult("Error retrieving myself : " + jsonOutput);
+            data = jsonOutput;
         }
 
         return null;
     }
+
+    @Override
+    protected void onPostExecute(final String authToken)
+    {
+        Log.i(TAG, "onPostExecute(" + authToken + ")");
+
+        // On a successful authentication, call back into the Activity to
+        // communicate the authToken (or null for an error).
+        // this.caller.onAuthenticationResult(authToken);
+
+        caller.showResult(data);
+    }
+
+    @Override
+    protected void onCancelled()
+    {
+        Log.i(TAG, "onCancelled()");
+
+        // If the action was canceled (by the user clicking the cancel
+        // button in the progress dialog), then call back into the
+        // activity to let it know.
+        // this.caller.onAuthenticationCancel();
+    }
+
 }
