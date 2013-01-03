@@ -2,7 +2,6 @@ package com.gurkensalat.android.xingsync.authenticator;
 
 import com.gurkensalat.android.xingsync.Constants;
 import com.gurkensalat.android.xingsync.R;
-import com.gurkensalat.android.xingsync.client.NetworkUtilities;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity;
 
 import android.accounts.Account;
@@ -13,7 +12,6 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -29,54 +27,54 @@ import android.widget.TextView;
 public class AuthenticatorActivity extends AccountAuthenticatorActivity
 {
     /** The Intent flag to confirm credentials. */
-    public static final String  PARAM_CONFIRM_CREDENTIALS = "confirmCredentials";
+    public static final String PARAM_CONFIRM_CREDENTIALS = "confirmCredentials";
 
     /** The Intent extra to store password. */
-    public static final String  PARAM_PASSWORD            = "password";
+    public static final String PARAM_PASSWORD            = "password";
 
     /** The Intent extra to store username. */
-    public static final String  PARAM_USERNAME            = "username";
+    public static final String PARAM_USERNAME            = "username";
 
     /** The Intent extra to store username. */
-    public static final String  PARAM_AUTHTOKEN_TYPE      = "authtokenType";
+    public static final String PARAM_AUTHTOKEN_TYPE      = "authtokenType";
 
     /** The tag used to log to adb console. */
-    private static final String TAG                       = "AuthenticatorActivity";
+    static final String        TAG                       = "AuthenticatorActivity";
 
     /** Sync period in seconds, currently every week */
     // TODO XTH 2012-11-22 make SYNC_PERIOD configurable
-    private static final long   SYNC_PERIOD               = 7L * 24L * 60L * 60L;
+    private static final long  SYNC_PERIOD               = 7L * 24L * 60L * 60L;
 
-    private AccountManager      mAccountManager;
+    private AccountManager     mAccountManager;
 
     /** Keep track of the login task so can cancel it if requested */
-    private UserLoginTask       mAuthTask                 = null;
+    private UserLoginTask      mAuthTask                 = null;
 
     /** Keep track of the progress dialog so we can dismiss it */
-    private ProgressDialog      mProgressDialog           = null;
+    private ProgressDialog     mProgressDialog           = null;
 
     /**
      * If set we are just checking that the user knows their credentials; this
      * doesn't cause the user's password or authToken to be changed on the
      * device.
      */
-    private Boolean             mConfirmCredentials       = false;
+    private Boolean            mConfirmCredentials       = false;
 
     /** for posting authentication attempts back to UI thread */
-    private final Handler       mHandler                  = new Handler();
+    private final Handler      mHandler                  = new Handler();
 
-    private TextView            mMessage;
+    private TextView           mMessage;
 
-    private String              mPassword;
+    private String             mPassword;
 
-    private EditText            mPasswordEdit;
+    private EditText           mPasswordEdit;
 
     /** Was the original caller asking for an entirely new account? */
-    protected boolean           mRequestNewAccount        = false;
+    protected boolean          mRequestNewAccount        = false;
 
-    private String              mUsername;
+    private String             mUsername;
 
-    private EditText            mUsernameEdit;
+    private EditText           mUsernameEdit;
 
     /**
      * {@inheritDoc}
@@ -186,7 +184,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             // Show a progress dialog, and kick off a background task to perform
             // the user login attempt.
             showProgress();
-            mAuthTask = new UserLoginTask();
+            mAuthTask = new UserLoginTask(this);
             mAuthTask.execute();
         }
     }
@@ -346,45 +344,33 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
         }
     }
 
-    /**
-     * Represents an asynchronous task used to authenticate a user against the
-     * SampleSync Service
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, String>
+    public String getmPassword()
     {
+        return mPassword;
+    }
 
-        @Override
-        protected String doInBackground(Void... params)
-        {
-            // We do the actual work of authenticating the user
-            // in the NetworkUtilities class.
-            try
-            {
-                return NetworkUtilities.authenticate(mUsername, mPassword);
-            }
-            catch (Exception ex)
-            {
-                Log.e(TAG, "UserLoginTask.doInBackground: failed to authenticate");
-                Log.i(TAG, ex.toString());
-                return null;
-            }
-        }
+    public void setmPassword(String mPassword)
+    {
+        this.mPassword = mPassword;
+    }
 
-        @Override
-        protected void onPostExecute(final String authToken)
-        {
-            // On a successful authentication, call back into the Activity to
-            // communicate the authToken (or null for an error).
-            onAuthenticationResult(authToken);
-        }
+    public String getmUsername()
+    {
+        return mUsername;
+    }
 
-        @Override
-        protected void onCancelled()
-        {
-            // If the action was canceled (by the user clicking the cancel
-            // button in the progress dialog), then call back into the
-            // activity to let it know.
-            onAuthenticationCancel();
-        }
+    public void setmUsername(String mUsername)
+    {
+        this.mUsername = mUsername;
+    }
+
+    public EditText getmUsernameEdit()
+    {
+        return mUsernameEdit;
+    }
+
+    public void setmUsernameEdit(EditText mUsernameEdit)
+    {
+        this.mUsernameEdit = mUsernameEdit;
     }
 }
