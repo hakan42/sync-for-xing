@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync;
 
+import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
+
 import android.provider.ContactsContract.Data;
 
 public class Constants
@@ -39,6 +41,11 @@ public class Constants
      * Do we mock network access? Should be a preference item.
      */
     public static final Boolean MOCK_NETWORK_ACCESS = true;
+
+    /**
+     * 
+     */
+    public static final String ME_REQUEST = XingOAuthKeys.API_URL_BASE + "/users/me";
 
     /**
      * MIME-type used when storing a profile {@link Data} entry.

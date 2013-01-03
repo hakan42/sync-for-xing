@@ -13,6 +13,11 @@ public class XingOAuthKeys
     public static final String CONSUMER_SECRET       = "${xingsync.consumer.secret}";
 
     /**
+     * API URL base
+     */
+    public static final String API_URL_BASE         = "${xingapi.url.base}";
+
+    /**
      * OAuth Request URL. Defined in API documentation at dev.xing.com
      */
     public static final String REQUEST_URL           = "${xingapi.request_token_path}";
