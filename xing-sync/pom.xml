@@ -62,6 +62,15 @@
                         <enableXml>true</enableXml>
                     </lint>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>lint</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>lint</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
