@@ -55,22 +55,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
-                    <lint>
-                        <failOnError>false</failOnError>
-                        <skip>false</skip>
-                        <enableHtml>true</enableHtml>
-                        <enableXml>true</enableXml>
-                    </lint>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>lint</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>lint</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
