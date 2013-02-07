@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -109,6 +112,43 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-signing-properties</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>sign.keystore</property>
+                                    <message>The 'sign.keystore' property is missing.</message>
+                                </requireProperty>
+                                <requireFilesExist>
+                                    <files>
+                                        <file>${sign.keystore}</file>
+                                    </files>
+                                    <message>The 'sign.keystore' property does not point to a file.</message>
+                                </requireFilesExist>
+                                <requireProperty>
+                                    <property>sign.alias</property>
+                                    <message>The 'sign.alias' property is missing.</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>sign.storepass</property>
+                                    <message>The 'sign.storepass' property is missing.</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>sign.keypass</property>
+                                    <message>The 'sign.keypass' property is missing.</message>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
@@ -124,72 +164,6 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>enforce-signing-properties</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireProperty>
-                                            <property>sign.keystore</property>
-                                            <message>The 'sign.keystore'
-                                                property is missing. It
-                                                must contain the path to
-                                                the
-                                                keystore used to sign
-                                                the application.</message>
-                                        </requireProperty>
-                                        <requireFilesExist>
-                                            <files>
-                                                <file>${sign.keystore}</file>
-                                            </files>
-                                            <message>The 'sign.keystore'
-                                                property does not point
-                                                to a file. It must
-                                                contain the
-                                                path to the
-                                                keystore used to sign
-                                                the application.</message>
-                                        </requireFilesExist>
-                                        <requireProperty>
-                                            <property>sign.alias</property>
-                                            <message>The 'sign.alias'
-                                                property is missing. It
-                                                must contain the key
-                                                alias used to
-                                                sign the
-                                                application.</message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>sign.storepass</property>
-                                            <message>The
-                                                'sign.storepass'
-                                                property is missing. It
-                                                must contain the
-                                                password of
-                                                the keystore
-                                                used to sign the
-                                                application.
-                                            </message>
-                                        </requireProperty>
-                                        <requireProperty>
-                                            <property>sign.keypass</property>
-                                            <message>The 'sign.keypass'
-                                                property is missing. It
-                                                must contain the
-                                                password of the
-                                                key used
-                                                to sign the application.</message>
-                                        </requireProperty>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
