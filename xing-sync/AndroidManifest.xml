@@ -116,21 +116,6 @@
                 someone who explicitly knows the class name
             -->
         </activity>
-        
-        <activity
-            android:name=".activites.InviteContactActivity"
-            android:theme="@android:style/Theme.Dialog">
-            <!--
-                We use the INVITE intent to add a raw contact to an existing contact.
-                It always comes with a lookup URI.
-            -->
-            <intent-filter>
-                <action
-                    android:name="com.android.contacts.action.INVITE_CONTACT" />
-                <data
-                    android:mimeType="vnd.android.cursor.item/contact" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name=".activities.ViewGroupActivity"
