@@ -13,7 +13,7 @@
     </parent>
 
     <groupId>com.gurkensalat.android.xingsync</groupId>
-    <artifactId>xing-sync-parent</artifactId>
+    <artifactId>xing-sync</artifactId>
     <version>0.5.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>xing-sync</name>
@@ -23,7 +23,7 @@
     <description>Automated Android Contact Synchronization with XING</description>
 
     <modules>
-        <module>xing-sync</module>
+        <module>xing-sync-app</module>
         <module>xing-sync-example-data</module>
         <module>xing-sync-it</module>
     </modules>
