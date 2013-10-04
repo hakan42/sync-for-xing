@@ -30,14 +30,14 @@
         </dependency>
         <dependency>
             <groupId>com.gurkensalat.android.xingsync</groupId>
-            <artifactId>xing-sync</artifactId>
+            <artifactId>xing-sync-app</artifactId>
             <type>apk</type>
             <version>${project.version}</version>
             <classifier>${zipaligned-classifier}</classifier> <!-- classifier set according to the ran profile -->
         </dependency>
         <dependency>
             <groupId>com.gurkensalat.android.xingsync</groupId>
-            <artifactId>xing-sync</artifactId>
+            <artifactId>xing-sync-app</artifactId>
             <type>jar</type>
             <version>${project.version}</version>
         </dependency>
