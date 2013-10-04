@@ -1,51 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.gurkensalat.android.xingsync</groupId>
-        <artifactId>xing-sync-parent</artifactId>
-        <version>0.5.0-SNAPSHOT</version>
+        <groupId>com.gurkensalat.android.commons</groupId>
+        <artifactId>android-commons-account-sync</artifactId>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>xing-sync-example-data</artifactId>
+    <groupId>com.gurkensalat.android.xingsync</groupId>
+    <artifactId>xing-sync-parent</artifactId>
+    <version>0.5.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>xing-sync - Example data for integration tests</name>
+    <name>xing-sync</name>
+
+    <inceptionYear>2012</inceptionYear>
+    <url>http://hakan42.github.com/xing-sync/</url>
+    <description>Automated Android Contact Synchronization with XING</description>
+
+    <modules>
+        <module>xing-sync</module>
+        <module>xing-sync-example-data</module>
+        <module>xing-sync-it</module>
+    </modules>
 
     <properties>
-        <android.push.destination>/mnt/sdcard/Android/data/${project.groupId}/files</android.push.destination>
+        <platform.version>4.0.1.2</platform.version>
+        <platform.sdk.version>14</platform.sdk.version>
+
+        <!-- The device setting must be defined in the developer settings -->
+        <!-- <android.device>emulator</android.device> -->
     </properties>
 
-    <dependencies>
-    </dependencies>
+    <scm>
+        <url>https://github.com/hakan42/xing-sync</url>
+        <connection>scm:git:https://github.com/hakan42/xing-sync.git</connection>
+        <developerConnection>scm:git:https://github.com/hakan42/xing-sync.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Git</system>
+        <url>https://github.com/hakan42/xing-sync/issues</url>
+    </issueManagement>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+                        <assetsDirectory>${project.basedir}/assets</assetsDirectory>
+                        <resourceDirectory>${project.basedir}/res</resourceDirectory>
+                        <nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
+                        <sdk>
+                            <platform>${platform.sdk.version}</platform>
+                        </sdk>
+                        <undeployBeforeDeploy>false</undeployBeforeDeploy>
+                    </configuration>
+                </plugin>
+            </plugins>
+
+        </pluginManagement>
+
         <plugins>
             <plugin>
-                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                <artifactId>android-maven-plugin</artifactId>
+                <groupId>com.github.goldin</groupId>
+                <artifactId>copy-maven-plugin</artifactId>
+                <configuration>
+                    <failIfNotFound>false</failIfNotFound>
+                    <resources>
+                        <!--
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <directory>${project.basedir}</directory>
+                            <include>*.md</include>
+                            <exclude>README.md</exclude>
+                        </resource>
+                        -->
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <file>${project.basedir}/README.md</file>
+                            <destFileName>index.md.vm</destFileName>
+                        </resource>
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <file>${project.basedir}/CONTRIBUTING.md</file>
+                            <destFileName>contributing.md.vm</destFileName>
+                        </resource>
+                    </resources>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>push-contacts-to-device</id>
-                        <phase>pre-integration-test-disabled-for-now</phase>
+                        <id>copy-md-files</id>
+                        <phase>pre-site</phase>
                         <goals>
-                            <goal>push</goal>
+                            <goal>copy</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <push>
-                        <source>src/test/resources</source>
-                        <destination>${android.push.destination}</destination>
-                    </push>
-                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-signing-properties</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>sign.keystore</property>
+                                    <message>The 'sign.keystore' property is missing.</message>
+                                </requireProperty>
+                                <requireFilesExist>
+                                    <files>
+                                        <file>${sign.keystore}</file>
+                                    </files>
+                                    <message>The 'sign.keystore' property does not point to a file.</message>
+                                </requireFilesExist>
+                                <requireProperty>
+                                    <property>sign.alias</property>
+                                    <message>The 'sign.alias' property is missing.</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>sign.storepass</property>
+                                    <message>The 'sign.storepass' property is missing.</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>sign.keypass</property>
+                                    <message>The 'sign.keypass' property is missing.</message>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
+
     </build>
 
     <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
