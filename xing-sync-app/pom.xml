@@ -132,7 +132,7 @@
                                     <goal>proguard</goal>
                                 </goals>
                                 <configuration>
-                                    <proguardVersion>4.4</proguardVersion>
+                                    <proguardVersion>${proguard.version}</proguardVersion>
                                     <maxMemory>256m</maxMemory>
                                     <injar>android-classes</injar>
                                     <libs>
@@ -149,7 +149,7 @@
                             <dependency>
                                 <groupId>net.sf.proguard</groupId>
                                 <artifactId>proguard</artifactId>
-                                <version>4.4</version>
+                                <version>${proguard.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
                         </dependencies>
