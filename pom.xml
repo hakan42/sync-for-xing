@@ -29,7 +29,7 @@
     </modules>
 
     <properties>
-        <platform.version>4.0.1.2</platform.version>
+        <platform.version>4.1.1.4</platform.version>
         <platform.sdk.version>14</platform.sdk.version>
 
         <!-- The device setting must be defined in the developer settings -->
