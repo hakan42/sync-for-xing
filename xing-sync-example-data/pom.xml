@@ -11,7 +11,7 @@
 
     <artifactId>xing-sync-example-data</artifactId>
     <packaging>pom</packaging>
-    <name>xing-sync - Example data for integration tests</name>
+    <name>xing-sync-example-data - Example data for integration tests</name>
 
     <properties>
         <android.push.destination>/mnt/sdcard/Android/data/${project.groupId}/files</android.push.destination>
