@@ -1,3 +1,0 @@
-[submodule "ci-scripts"]
-	path = ci-scripts
-	url = git@github.com:maposmatic/ci-scripts.git
