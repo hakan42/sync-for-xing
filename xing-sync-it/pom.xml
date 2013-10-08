@@ -14,8 +14,7 @@
     <name>xing-sync-it - Integration tests</name>
 
     <properties>
-        <!-- When not running a release, we are deploying the plain artifact
-            (so no classifier) This is overridden during the release. -->
+        <!-- When not running a release, we are deploying the plain artifact (so no classifier) This is overridden during the release. -->
         <zipaligned-classifier></zipaligned-classifier>
     </properties>
 
@@ -54,6 +53,25 @@
                 <artifactId>android-maven-plugin</artifactId>
                 <extensions>true</extensions>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${secrets.path}/${project.artifactId}.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -61,8 +79,7 @@
         <profile>
             <id>release</id>
             <properties>
-                <!-- When running a release, we must deployed the final artifact
-                    (signed and zipaligned). -->
+                <!-- When running a release, we must deployed the final artifact (signed and zipaligned). -->
                 <zipaligned-classifier>aligned</zipaligned-classifier>
             </properties>
             <build>
