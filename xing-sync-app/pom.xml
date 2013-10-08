@@ -122,38 +122,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.github.wvengen</groupId>
-                        <artifactId>proguard-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>proguard</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>proguard</goal>
-                                </goals>
-                                <configuration>
-                                    <options>
-                                        <option>-keep public class * { public protected *; }</option>
-                                    </options>
-                                    <libs>
-                                        <lib>${java.bootstrap.classes}</lib>
-                                        <lib>${java.cryptographic.extension.classes}</lib>
-                                        <lib>${java.secure.socket.extension.classes}</lib>
-                                    </libs>
-<!--
-                                    <proguardVersion>${proguard.version}</proguardVersion>
-                                    <maxMemory>256m</maxMemory>
-                                    <injar>android-classes</injar>
-                                    <obfuscate>true</obfuscate>
-                                    <addMavenDescriptor>false</addMavenDescriptor>
-                                    <proguardInclude>${project.basedir}/proguard.conf</proguardInclude>
--->
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
                         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                         <artifactId>android-maven-plugin</artifactId>
                         <executions>
@@ -171,11 +139,15 @@
                                 <inputApk>${project.build.directory}/${project.artifactId}-${project.version}.apk</inputApk>
                                 <outputApk>${project.build.directory}/${project.artifactId}-${project.version}-signed-aligned.apk</outputApk>
                             </zipalign>
+                            <proguard>
+                                <skip>false</skip>
+                            </proguard>
                             <sign>
                                 <debug>false</debug>
                             </sign>
                         </configuration>
                     </plugin>
+
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
