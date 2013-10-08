@@ -71,6 +71,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <argument>-sigalg</argument><argument>MD5withRSA</argument>
+                    <argument>-digestalg</argument><argument>SHA1</argument>
+                </configuration>
             </plugin>
 
             <plugin>
