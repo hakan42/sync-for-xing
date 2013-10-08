@@ -65,13 +65,31 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>${secrets.path}/${project.artifactId}.properties</file>
+                                <file>${secrets.path}/${project.parent.artifactId}.properties</file>
                             </files>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
+            <plugin>
+                <artifactId>maven-jarsigner-plugin</artifactId>
+                <inherited>true</inherited>
+                <executions>
+                    <execution>
+                        <id>sign-application-apk</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>sign</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <argument>-sigalg</argument><argument>MD5withRSA</argument>
+                    <argument>-digestalg</argument><argument>SHA1</argument>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
