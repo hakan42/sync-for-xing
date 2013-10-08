@@ -1,5 +1,7 @@
 .project
 .settings
 .classpath
+bin
+gen
 target
 version.properties
