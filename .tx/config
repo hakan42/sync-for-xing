@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[xing-sync-app.xing-sync-app-strings]
+[xing-sync.xing-sync-app-strings]
 file_filter = xing-sync-app/res/values-<lang>/strings.xml
 source_file = xing-sync-app/res/values/strings.xml
 source_lang = en
