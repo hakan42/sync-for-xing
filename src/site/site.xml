@@ -29,7 +29,8 @@
     </custom>
 
     <body>
-        <menu name="Regular Site">
+        <menu name="Manual Content">
+            <item name="Attribution" href="attribution.html"/>
         <!--
             <item name="APT Format" href="format.html"/>
             <item name="Xdoc Example" href="xdoc.html"/>

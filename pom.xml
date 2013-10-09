@@ -96,6 +96,11 @@
                         </resource>
                         <resource>
                             <targetPath>${project.basedir}/src/site/markdown</targetPath>
+                            <file>${project.basedir}/ATTRIBUTION.md</file>
+                            <destFileName>attribution.md.vm</destFileName>
+                        </resource>
+                        <resource>
+                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
                             <file>${project.basedir}/CONTRIBUTING.md</file>
                             <destFileName>contributing.md.vm</destFileName>
                         </resource>
