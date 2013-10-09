@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gurkensalat.android.xingsync"
-    android:sharedUserId="${xingsync.sharedUserId}"
     android:versionCode="${manifest.version.code}"
     android:versionName="${project.version}" >
 
