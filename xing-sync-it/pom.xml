@@ -77,7 +77,6 @@
 
             <plugin>
                 <artifactId>maven-jarsigner-plugin</artifactId>
-                <inherited>true</inherited>
             </plugin>
 
         </plugins>
