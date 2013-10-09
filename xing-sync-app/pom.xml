@@ -14,7 +14,7 @@
 
     <artifactId>xing-sync-app</artifactId>
     <packaging>apk</packaging>
-    <name>xing-sync - Application</name>
+    <name>xing-sync-app - Application</name>
 
     <dependencies>
         <dependency>
@@ -89,20 +89,6 @@
             <plugin>
                 <artifactId>maven-jarsigner-plugin</artifactId>
                 <inherited>true</inherited>
-                <executions>
-                    <execution>
-                        <id>sign-application-apk</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>sign</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <argument>-sigalg</argument><argument>MD5withRSA</argument>
-                    <argument>-digestalg</argument><argument>SHA1</argument>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -153,33 +139,6 @@
             <id>release</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                        <artifactId>android-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>zipalign-application-apk</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>zipalign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <zipalign>
-                                <verbose>true</verbose>
-                                <inputApk>${project.build.directory}/${project.artifactId}-${project.version}.apk</inputApk>
-                                <outputApk>${project.build.directory}/${project.artifactId}-${project.version}-signed-aligned.apk</outputApk>
-                            </zipalign>
-                            <proguard>
-                                <skip>false</skip>
-                            </proguard>
-                            <sign>
-                                <debug>false</debug>
-                            </sign>
-                        </configuration>
-                    </plugin>
-
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>

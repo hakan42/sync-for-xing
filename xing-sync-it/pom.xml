@@ -78,57 +78,9 @@
             <plugin>
                 <artifactId>maven-jarsigner-plugin</artifactId>
                 <inherited>true</inherited>
-                <executions>
-                    <execution>
-                        <id>sign-application-apk</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>sign</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <argument>-sigalg</argument><argument>MD5withRSA</argument>
-                    <argument>-digestalg</argument><argument>SHA1</argument>
-                </configuration>
             </plugin>
+
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <properties>
-                <!-- When running a release, we must deployed the final artifact (signed and zipaligned). -->
-                <zipaligned-classifier>aligned</zipaligned-classifier>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-jarsigner-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-application-it-apk</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                        <artifactId>android-maven-plugin</artifactId>
-                        <configuration>
-                            <sign>
-                                <debug>false</debug>
-                            </sign>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
