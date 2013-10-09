@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello xing-sync!</string>
     <string name="app_name">xing-sync</string>
+    <string name="transifex_test">Test for Transifex work</string>
 </resources>
