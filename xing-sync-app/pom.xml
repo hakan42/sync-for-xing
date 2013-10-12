@@ -24,6 +24,12 @@
         
         <dependency>
             <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
             <artifactId>androidannotations-api</artifactId>
         </dependency>
 
