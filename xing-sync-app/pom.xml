@@ -21,10 +21,17 @@
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations-api</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>de.akquinet.android.androlog</groupId>
             <artifactId>androlog</artifactId>
         </dependency>
+
         <dependency>
             <groupId>oauth.signpost</groupId>
             <artifactId>signpost-core</artifactId>
