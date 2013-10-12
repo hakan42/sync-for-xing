@@ -43,7 +43,7 @@
     </scm>
 
     <issueManagement>
-        <system>Git</system>
+        <system>Github</system>
         <url>https://github.com/hakan42/xing-sync/issues</url>
     </issueManagement>
 
