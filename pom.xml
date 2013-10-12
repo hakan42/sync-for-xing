@@ -81,40 +81,6 @@
 
         <plugins>
             <plugin>
-                <groupId>com.github.goldin</groupId>
-                <artifactId>copy-maven-plugin</artifactId>
-                <configuration>
-                    <failIfNotFound>false</failIfNotFound>
-                    <resources>
-                        <resource>
-                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
-                            <file>${project.basedir}/README.md</file>
-                            <destFileName>index.md.vm</destFileName>
-                        </resource>
-                        <resource>
-                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
-                            <file>${project.basedir}/ATTRIBUTION.md</file>
-                            <destFileName>attribution.md.vm</destFileName>
-                        </resource>
-                        <resource>
-                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
-                            <file>${project.basedir}/CONTRIBUTING.md</file>
-                            <destFileName>contributing.md.vm</destFileName>
-                        </resource>
-                    </resources>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>copy-md-files</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <executions>

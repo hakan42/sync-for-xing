@@ -31,8 +31,8 @@
     <body>
         <menu name="Overview">
             <item name="Github Page" href="${project.url}/../.." />
-            <item name="Contributing" href="contributing.html" />
-            <item name="Attribution" href="attribution.html"/>
+            <item name="Contributing" href="CONTRIBUTING.html" />
+            <item name="Attribution" href="ATTRIBUTION.html"/>
         </menu>
 
         <menu ref="reports" />
