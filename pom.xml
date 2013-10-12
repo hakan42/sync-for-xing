@@ -32,7 +32,6 @@
 
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
-        <androidannotations.version>2.7.1</androidannotations.version>
     </properties>
 
     <scm>
@@ -56,18 +55,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.googlecode.androidannotations</groupId>
-                <artifactId>androidannotations</artifactId>
-                <version>${androidannotations.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.googlecode.androidannotations</groupId>
-                <artifactId>androidannotations-api</artifactId>
-                <version>${androidannotations.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
