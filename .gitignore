@@ -5,3 +5,7 @@ bin
 gen
 target
 version.properties
+
+# copied markdown files for site
+src/site/markdown/
+

@@ -17,7 +17,7 @@
             <sideBarEnabled>true</sideBarEnabled>
             <googlePlusOne />
             <gitHub>
-                <projectId>hakan42/android-commons</projectId>
+                <projectId>hakan42/xing-sync</projectId>
                 <ribbonOrientation>right</ribbonOrientation>
                 <ribbonColor>gray</ribbonColor>
             </gitHub>
@@ -29,21 +29,13 @@
     </custom>
 
     <body>
-        <menu name="Regular Site">
-        <!--
-            <item name="APT Format" href="format.html"/>
-            <item name="Xdoc Example" href="xdoc.html"/>
-            <item name="FAQ" href="faq.html"/>
-        -->
+        <menu name="Overview">
+            <item name="Github Page" href="${project.url}/../../.." />
         </menu>
 
-        <!--
-        <links>
-            <item name="akquinet" href="http://www.akquinet.de/en"/>
-        </links>
-        -->
-
         <menu ref="reports" />
-        <menu ref="modules" />
+        <menu ref="parent" />
+        <menu ref="modules"/>
+
     </body>
 </project>

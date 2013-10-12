@@ -47,6 +47,14 @@
         <url>https://github.com/hakan42/xing-sync/issues</url>
     </issueManagement>
 
+    <distributionManagement>
+        <site>
+            <id>github-pages-site</id>
+            <name>Deployment through GitHub's site deployment plugin</name>
+            <url>site/${project.version}</url>
+        </site>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
         </dependencies>
