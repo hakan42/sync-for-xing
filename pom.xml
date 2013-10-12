@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -19,7 +16,8 @@
     <name>xing-sync</name>
 
     <inceptionYear>2012</inceptionYear>
-    <url>http://hakan42.github.com/xing-sync/</url>
+    <!-- <url>http://hakan42.github.com/xing-sync/</url> -->
+    <url>http://xing-sync.gurkensalat.com/</url>
     <description>Automated Android Contact Synchronization with XING</description>
 
     <modules>
@@ -88,14 +86,6 @@
                 <configuration>
                     <failIfNotFound>false</failIfNotFound>
                     <resources>
-                        <!--
-                        <resource>
-                            <targetPath>${project.basedir}/src/site/markdown</targetPath>
-                            <directory>${project.basedir}</directory>
-                            <include>*.md</include>
-                            <exclude>README.md</exclude>
-                        </resource>
-                        -->
                         <resource>
                             <targetPath>${project.basedir}/src/site/markdown</targetPath>
                             <file>${project.basedir}/README.md</file>
