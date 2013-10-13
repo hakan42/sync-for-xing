@@ -1,10 +1,12 @@
 package com.gurkensalat.android.xingsync;
 
-import com.googlecode.androidannotations.annotations.EActivity;
-
 import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.main)
 public class HelloAndroidActivity extends Activity
@@ -20,11 +22,26 @@ public class HelloAndroidActivity extends Activity
 	 *            supplied in onSaveInstanceState(Bundle). <b>Note: Otherwise it
 	 *            is null.</b>
 	 */
-	@Override
-	public void onCreate(Bundle savedInstanceState)
+	// @Override
+	// public void onCreate(Bundle savedInstanceState)
+	// {
+	// super.onCreate(savedInstanceState);
+	// // Log.i(TAG, "onCreate");
+	// // // setContentView(R.layout.main);
+	// // setContentView(R.layout.oauth_result);
+	// // Log.i(TAG, "after setContentView()");
+	// }
+
+	@ViewById(R.id.myInput)
+	EditText myInput;
+
+	@ViewById(R.id.myInput)
+	TextView textView;
+
+	@Click
+	void myButton()
 	{
-		super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreate");
-		setContentView(R.layout.main);
+		String name = myInput.getText().toString();
+		textView.setText("Hello " + name);
 	}
 }
