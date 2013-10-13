@@ -12,6 +12,7 @@
 target/
 bin/
 gen/
+.factorypath
 
 # copied markdown files for site
 src/site/markdown/
