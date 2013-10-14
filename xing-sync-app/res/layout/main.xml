@@ -15,4 +15,14 @@
         android:layout_height="wrap_content"
         android:text="Click me!" />
 
+    <fragment
+        android:id="@+id/main_layout_fragment_oauth_secrets"
+        android:name="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_weight="1"
+        class="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_" >
+    </fragment>
+
 </LinearLayout>
