@@ -10,6 +10,7 @@ import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
+import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 
 @EActivity(R.layout.main)
@@ -44,6 +45,9 @@ public class HelloAndroidActivity extends Activity
 
 	@FragmentById(R.id.main_layout_fragment_oauth_secrets)
 	OAuthSecretsFragment secretsFragment;
+
+	@FragmentById(R.id.main_layout_fragment_oauth_buttons)
+	OAuthButtonsFragment buttonsFragment;
 
 	@Click
 	void myButton()

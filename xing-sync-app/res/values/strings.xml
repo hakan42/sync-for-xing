@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="hello">Hello xing-sync!</string>
     <string name="app_name">xing-sync</string>
     <string name="transifex_test">Test for Transifex work</string>
+    <string name="oauth_launch_flow">Launch OAuth Flow</string>
+    <string name="oauth_clear_credentials">Clear Credentials</string>
+
 </resources>
