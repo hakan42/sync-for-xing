@@ -4,17 +4,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/myInput"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/myButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Click me!" />
-
     <fragment
         android:id="@+id/main_layout_fragment_oauth_secrets"
         android:name="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_"
