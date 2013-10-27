@@ -8,6 +8,7 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,8 +65,9 @@ public class PrepareRequestTokenActivity extends Activity
 		{
 			Log.i(TAG, "Callback received : " + uri);
 			Log.i(TAG, "Retrieving Access Token");
-			// new RetrieveAccessTokenTask(this, consumer, provider,
-			// syncPrefs).execute(uri);
+			// TODO Avoid passing the current prefs into access task
+			SharedPreferences prefs = syncPrefs.getSharedPreferences();
+			new RetrieveAccessTokenTask(this, consumer, provider, prefs).execute(uri);
 			finish();
 		}
 	}
