@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.FragmentById;
+import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
@@ -13,6 +14,9 @@ import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 public class HelloAndroidActivity extends Activity
 {
 	private static String TAG = "xing-sync";
+	
+	@Pref
+	SyncPrefs_ syncPrefs;
 
 	@FragmentById(R.id.main_layout_fragment_oauth_secrets)
 	OAuthSecretsFragment secretsFragment;
