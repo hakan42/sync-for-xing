@@ -44,7 +44,27 @@ public class HelloAndroidActivity extends Activity
 		// onResume() is always called just before activity is displayed
 		Log.i(TAG, "onResume()");
 		super.onResume();
+		displaySecrets();
+	}
 
+	@Click(R.id.btn_launch_oauth)
+	void launchOAuth(View clickedView)
+	{
+		Log.i(TAG, "About to launch OAuth dance");
+		PrepareRequestTokenActivity_.intent(clickedView.getContext()).start();
+	}
+
+	@Click(R.id.btn_clear_credentials)
+	void clearCredentials(View clickedView)
+	{
+		Log.i(TAG, "About to clear credentials");
+		syncPrefs.oauth_token().put("");
+		syncPrefs.oauth_token_secret().put("");
+		displaySecrets();
+	}
+
+	private void displaySecrets()
+	{
 		Log.i(TAG, "oauth_token: '" + syncPrefs.oauth_token().get() + "'");
 		if (oauthToken != null)
 		{
@@ -57,34 +77,4 @@ public class HelloAndroidActivity extends Activity
 			oauthTokenSecret.setText(syncPrefs.oauth_token_secret().get());
 		}
 	}
-
-	@Click(R.id.btn_launch_oauth)
-	void launchOAuth(View clickedView)
-	{
-		Log.i(TAG, "About to launch OAuth dance");
-		PrepareRequestTokenActivity_.intent(clickedView.getContext()).start();
-	}
-
-	// @Click
-	// void myButton()
-	// {
-	// @ViewById(R.id.myInput)
-	// EditText myInput;
-	//
-	// @ViewById(R.id.myInput)
-	// TextView textView;
-	//
-	// String name = myInput.getText().toString();
-	// textView.setText("Hello " + name);
-	//
-	// Log.i(TAG, "secretsFragment is");
-	// if (secretsFragment == null)
-	// {
-	// Log.i(TAG, "NULL");
-	// }
-	// else
-	// {
-	// Log.i(TAG, secretsFragment.toString());
-	// }
-	// }
 }
