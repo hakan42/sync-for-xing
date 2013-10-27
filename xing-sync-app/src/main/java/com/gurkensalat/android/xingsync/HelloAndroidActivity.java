@@ -23,26 +23,26 @@ public class HelloAndroidActivity extends Activity
 	@FragmentById(R.id.main_layout_fragment_oauth_results)
 	OAuthResultsFragment resultsFragment;
 
-	@Click
-	void myButton()
-	{
-		// @ViewById(R.id.myInput)
-		// EditText myInput;
-		//
-		// @ViewById(R.id.myInput)
-		// TextView textView;
-		//
-		// String name = myInput.getText().toString();
-		// textView.setText("Hello " + name);
-		//
-		// Log.i(TAG, "secretsFragment is");
-		// if (secretsFragment == null)
-		// {
-		// Log.i(TAG, "NULL");
-		// }
-		// else
-		// {
-		// Log.i(TAG, secretsFragment.toString());
-		// }
-	}
+	// @Click
+	// void myButton()
+	// {
+	// @ViewById(R.id.myInput)
+	// EditText myInput;
+	//
+	// @ViewById(R.id.myInput)
+	// TextView textView;
+	//
+	// String name = myInput.getText().toString();
+	// textView.setText("Hello " + name);
+	//
+	// Log.i(TAG, "secretsFragment is");
+	// if (secretsFragment == null)
+	// {
+	// Log.i(TAG, "NULL");
+	// }
+	// else
+	// {
+	// Log.i(TAG, secretsFragment.toString());
+	// }
+	// }
 }
