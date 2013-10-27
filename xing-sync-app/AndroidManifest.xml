@@ -19,6 +19,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- OAuth activities -->
+        <activity
+            android:name=".oauth.PrepareRequestTokenActivity_"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="callback"
+                    android:scheme="x-oauthflow" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

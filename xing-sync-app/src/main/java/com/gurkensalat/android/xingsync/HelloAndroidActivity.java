@@ -1,6 +1,9 @@
 package com.gurkensalat.android.xingsync;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
 
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
@@ -9,12 +12,14 @@ import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
+import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity;
+import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 
 @EActivity(R.layout.main)
 public class HelloAndroidActivity extends Activity
 {
 	private static String TAG = "xing-sync";
-	
+
 	@Pref
 	SyncPrefs_ syncPrefs;
 
@@ -26,6 +31,13 @@ public class HelloAndroidActivity extends Activity
 
 	@FragmentById(R.id.main_layout_fragment_oauth_results)
 	OAuthResultsFragment resultsFragment;
+
+	@Click(R.id.btn_launch_oauth)
+	void launchOAuth(View clickedView)
+	{
+		Log.i(TAG, "About to launch OAuth dance");
+		PrepareRequestTokenActivity_.intent(clickedView.getContext()).start();
+	}
 
 	// @Click
 	// void myButton()
