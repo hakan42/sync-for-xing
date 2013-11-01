@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="hello">سلام يکسان سازي Xing!</string>
-  <string name="app_name">يکسان سازي Xing</string>
-  <string name="transifex_test">تست شده براي کارکردن با </string>
-</resources>
