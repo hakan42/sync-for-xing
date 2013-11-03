@@ -13,7 +13,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="@string/app_name" >
+        android:label="@string/app_label" >
         <activity android:name=".HelloAndroidActivity_" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
