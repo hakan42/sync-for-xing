@@ -28,3 +28,7 @@ local.properties
 .classpath
 .project
 .settings
+
+# Testing
+log.txt
+
