@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="account-preferences-title" />
+
+    <!--
+    <PreferenceScreen
+        android:key="@string/prefs_account_settings_key"
+        android:summary="@string/prefs_account_settings_summary"
+        android:title="@string/prefs_account_settings_title" >
+        <intent
+            android:action="com.gurkensalat.android.xingsync.ACCOUNT_SETUP"
+            android:targetClass="com.gurkensalat.android.xingsync.preferences.AccountPreferences"
+            android:targetPackage="com.gurkensalat.android.xingsync" />
+    </PreferenceScreen>
+    -->
+
+</PreferenceScreen>
