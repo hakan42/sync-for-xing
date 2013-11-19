@@ -73,6 +73,7 @@
                             <platform>${platform.sdk.version}</platform>
                         </sdk>
                         <undeployBeforeDeploy>false</undeployBeforeDeploy>
+                        <release>true</release>
                     </configuration>
                 </plugin>
             </plugins>
