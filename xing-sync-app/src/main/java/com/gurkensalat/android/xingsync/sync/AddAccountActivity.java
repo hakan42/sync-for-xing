@@ -1,6 +1,7 @@
 package com.gurkensalat.android.xingsync.sync;
 
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.gurkensalat.android.xingsync.R;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,9 +12,11 @@ import android.util.Log;
 @EActivity
 public class AddAccountActivity extends Activity
 {
-	private static final String TAG = "xingsync.LastFm";
+	private static final String TAG = "xingsync.AddAccountActivity";
 
 	public static final String PREFS = "LoginPrefs";
+
+	private static String LOGIN_INTENT_ACTION;
 
 	// private boolean mLoginShown;
 	// private EditText mPassField;
@@ -30,12 +33,17 @@ public class AddAccountActivity extends Activity
 	@Override
 	public void onCreate(Bundle icicle)
 	{
-
 		super.onCreate(icicle);
+
+		if (LOGIN_INTENT_ACTION == null)
+		{
+			LOGIN_INTENT_ACTION = getResources().getString(R.string.LOGIN_INTENT_ACTION);
+		}
+
 		SharedPreferences settings = getSharedPreferences(PREFS, 0);
 		String user = settings.getString("lastfm_user", "default xingsync user");
 		String session_key = settings.getString("lastfm_session_key", "lastfm_session_key");
-		String pass;
+		// String pass;
 
 		// try
 		// {
@@ -104,7 +112,7 @@ public class AddAccountActivity extends Activity
 			//
 			// else
 
-			if (getIntent().getAction() != null && getIntent().getAction().equals("fm.last.android.sync.LOGIN"))
+			if (getIntent().getAction() != null && getIntent().getAction().equals(LOGIN_INTENT_ACTION))
 			{
 				Intent intent = getIntent();
 				Bundle extras = intent.getExtras();

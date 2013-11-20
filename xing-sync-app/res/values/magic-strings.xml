@@ -4,4 +4,7 @@
     <!-- What to call our account type -->
     <string name="ACCOUNT_TYPE">com.gurkensalat.android.xingsync.account</string>
 
+    <!-- The name of our Login intent -->
+    <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
+
 </resources>
