@@ -60,7 +60,7 @@
         </service>
 
         <activity
-            android:name=".sync.AddAccountActivity"
+            android:name=".sync.AddAccountActivity_"
             android:configChanges="keyboardHidden" >
 
             <!-- <intent-filter> -->

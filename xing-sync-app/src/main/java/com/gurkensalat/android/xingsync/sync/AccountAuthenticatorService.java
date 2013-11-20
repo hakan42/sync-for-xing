@@ -102,7 +102,7 @@ public class AccountAuthenticatorService extends Service
 			else
 			{
 				result = new Bundle();
-				Intent i = new Intent(mContext, AddAccountActivity.class);
+				Intent i = new Intent(mContext, AddAccountActivity_.class);
 				i.setAction("fm.last.android.sync.LOGIN");
 				i.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
 				result.putParcelable(AccountManager.KEY_INTENT, i);
