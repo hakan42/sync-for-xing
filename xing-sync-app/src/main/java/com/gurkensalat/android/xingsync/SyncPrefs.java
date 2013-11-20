@@ -2,6 +2,7 @@ package com.gurkensalat.android.xingsync;
 
 import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultString;
 import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPref;
+import com.gurkensalat.android.xingsync.sync.AddAccountActivity;
 
 @SharedPref(value = SharedPref.Scope.UNIQUE)
 public interface SyncPrefs
@@ -17,4 +18,16 @@ public interface SyncPrefs
 	 */
 	@DefaultString("")
 	String oauth_token_secret();
+
+	/**
+	 * @see AddAccountActivity
+	 */
+	@DefaultString("default xingsync user")
+	String sync_user();
+
+	/**
+	 * @see AddAccountActivity
+	 */
+	@DefaultString("lastfm_session_key")
+	String session_key();
 }

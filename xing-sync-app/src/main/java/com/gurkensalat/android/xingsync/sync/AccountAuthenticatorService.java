@@ -14,7 +14,9 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import com.googlecode.androidannotations.annotations.EService;
+import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
+import com.gurkensalat.android.xingsync.SyncPrefs_;
 
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;
@@ -25,6 +27,9 @@ public class AccountAuthenticatorService extends Service
 	private static final String TAG = "xingsync.AccountAuthenticatorService";
 
 	private static AccountAuthenticatorImpl sAccountAuthenticator = null;
+
+	@Pref
+	SyncPrefs_ syncPrefs;
 
 	public AccountAuthenticatorService()
 	{

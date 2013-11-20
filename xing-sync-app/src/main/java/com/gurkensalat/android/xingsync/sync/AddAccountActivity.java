@@ -1,7 +1,9 @@
 package com.gurkensalat.android.xingsync.sync;
 
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
+import com.gurkensalat.android.xingsync.SyncPrefs_;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,9 +16,10 @@ public class AddAccountActivity extends Activity
 {
 	private static final String TAG = "xingsync.AddAccountActivity";
 
-	public static final String PREFS = "LoginPrefs";
-
 	private static String LOGIN_INTENT_ACTION;
+
+	@Pref
+	SyncPrefs_ syncPrefs;
 
 	// private boolean mLoginShown;
 	// private EditText mPassField;
@@ -40,9 +43,8 @@ public class AddAccountActivity extends Activity
 			LOGIN_INTENT_ACTION = getResources().getString(R.string.LOGIN_INTENT_ACTION);
 		}
 
-		SharedPreferences settings = getSharedPreferences(PREFS, 0);
-		String user = settings.getString("lastfm_user", "default xingsync user");
-		String session_key = settings.getString("lastfm_session_key", "lastfm_session_key");
+		String user = syncPrefs.sync_user().get();
+		String session_key = syncPrefs.session_key().get();
 		// String pass;
 
 		// try
