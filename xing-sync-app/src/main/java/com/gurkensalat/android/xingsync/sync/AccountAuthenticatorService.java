@@ -1,11 +1,5 @@
 package com.gurkensalat.android.xingsync.sync;
 
-//import fm.last.android.LastFMApplication;
-//import fm.last.android.LastFm;
-//import fm.last.android.R;
-//import fm.last.android.activity.AccountAccessPrompt;
-//import fm.last.android.activity.AccountFailActivity;
-//import fm.last.api.MD5;
 import android.accounts.AbstractAccountAuthenticator;
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorResponse;
@@ -19,14 +13,17 @@ import android.os.IBinder;
 import android.os.Parcelable;
 import android.util.Log;
 
+import com.googlecode.androidannotations.annotations.EService;
 import com.gurkensalat.android.xingsync.R;
 
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;
 
+@EService
 public class AccountAuthenticatorService extends Service
 {
-	private static final String TAG = "AccountAuthenticatorService";
+	private static final String TAG = "xingsync.AccountAuthenticatorService";
+
 	private static AccountAuthenticatorImpl sAccountAuthenticator = null;
 
 	public AccountAuthenticatorService()

@@ -47,7 +47,7 @@
 
         <!-- Account sync activities -->
         <service
-            android:name=".sync.AccountAuthenticatorService"
+            android:name=".sync.AccountAuthenticatorService_"
             android:exported="true"
             android:process=":auth" >
             <intent-filter>
