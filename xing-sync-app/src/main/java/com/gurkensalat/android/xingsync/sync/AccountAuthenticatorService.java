@@ -94,7 +94,7 @@ public class AccountAuthenticatorService extends Service
 			if (hasLastfmAccount(mContext))
 			{
 				result = new Bundle();
-				Intent i = new Intent(mContext, OnlyOneAccountErrorActivity.class);
+				Intent i = new Intent(mContext, OnlyOneAccountErrorActivity_.class);
 				i.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
 				result.putParcelable(AccountManager.KEY_INTENT, i);
 				return result;
