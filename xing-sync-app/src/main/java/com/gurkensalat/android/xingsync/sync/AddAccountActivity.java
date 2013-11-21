@@ -66,8 +66,8 @@ public class AddAccountActivity extends Activity
 			LOGIN_INTENT_ACTION = getResources().getString(R.string.LOGIN_INTENT_ACTION);
 		}
 
-		String user = syncPrefs.sync_user().get();
-		String session_key = syncPrefs.session_key().get();
+		String user = "default xing user"; // syncPrefs.sync_user().get();
+		String session_key = syncPrefs.oauth_token_secret().get();
 		// String pass;
 
 		// try

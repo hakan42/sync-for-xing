@@ -48,6 +48,8 @@ public class AccountAuthenticatorService extends Service
 
 		public static Bundle addAccount(Context ctx, String username, String password)
 		{
+			Log.i(TAG, "addAccount('" + username + "', '" + password + "')");
+
 			Bundle result = null;
 			Account account = new Account(username, ctx.getString(R.string.ACCOUNT_TYPE));
 			AccountManager am = AccountManager.get(ctx);
@@ -72,6 +74,7 @@ public class AccountAuthenticatorService extends Service
 
 		public static void removeAccount(Context ctx)
 		{
+			Log.i(TAG, "removeAccount");
 			AccountManager am = AccountManager.get(ctx);
 			Account[] accounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
 			for (Account account : accounts)
