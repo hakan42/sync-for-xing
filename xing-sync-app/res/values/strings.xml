@@ -4,7 +4,10 @@
     <!-- Label for this package -->
     <string name="app_label">Contact Sync for XING</string>
 
-    <!--  -->
+    <!-- Main screen -->
+    <string name="main_hello_android_title">Hello Android World</string>
+
+    <!-- OAuth stuff -->
     <string name="oauth_launch_flow">Launch OAuth Flow</string>
     <string name="oauth_clear_credentials">Clear Credentials</string>
     <string name="oauth_results_title">OAuth Results</string>

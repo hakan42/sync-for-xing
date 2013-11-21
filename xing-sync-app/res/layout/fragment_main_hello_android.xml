@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/main_hello_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6.0dip"
+        android:text="@string/main_hello_android_title"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>
