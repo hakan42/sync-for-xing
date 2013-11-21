@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <fragment
+        android:id="@+id/login_layout_fragment_oauth_secrets"
+        android:name="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_weight="1"
+        class="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_layout_fragment_oauth_buttons"
+        android:name="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_weight="1"
+        class="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_layout_fragment_oauth_results"
+        android:name="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_weight="1"
+        class="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_" >
+    </fragment>
+
+</LinearLayout>

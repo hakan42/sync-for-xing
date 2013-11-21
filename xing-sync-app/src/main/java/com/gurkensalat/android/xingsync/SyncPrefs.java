@@ -22,7 +22,7 @@ public interface SyncPrefs
 	/**
 	 * @see AddAccountActivity
 	 */
-	@DefaultString("default xingsync user")
+	@DefaultString("")
 	String sync_user();
 
 	/**

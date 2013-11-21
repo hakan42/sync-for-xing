@@ -1,7 +1,5 @@
 package com.gurkensalat.android.xingsync.oauth;
 
-import com.gurkensalat.android.xingsync.HelloAndroidActivity_;
-
 import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
@@ -12,6 +10,8 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
 
 public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {
@@ -58,7 +58,7 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 			String secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
 
 			consumer.setTokenWithSecret(token, secret);
-			context.startActivity(new Intent(context, HelloAndroidActivity_.class));
+			context.startActivity(new Intent(context, AddAccountActivity_.class));
 
 			Log.i(TAG, "OAuth - Access Token Retrieved");
 		}
