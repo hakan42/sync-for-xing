@@ -60,7 +60,7 @@ public class AccountAuthenticatorService extends Service
 			return result;
 		}
 
-		public static Boolean hasLastfmAccount(Context ctx)
+		public static Boolean hasAccount(Context ctx)
 		{
 			AccountManager am = AccountManager.get(ctx);
 			Account[] accounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
@@ -70,7 +70,7 @@ public class AccountAuthenticatorService extends Service
 				return false;
 		}
 
-		public static void removeLastfmAccount(Context ctx)
+		public static void removeAccount(Context ctx)
 		{
 			AccountManager am = AccountManager.get(ctx);
 			Account[] accounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
@@ -91,9 +91,10 @@ public class AccountAuthenticatorService extends Service
 		public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType,
 		        String[] requiredFeatures, Bundle options) throws NetworkErrorException
 		{
+			Log.i(TAG, "addAccount");
 			Bundle result;
 
-			if (hasLastfmAccount(mContext))
+			if (hasAccount(mContext))
 			{
 				result = new Bundle();
 				Intent i = new Intent(mContext, OnlyOneAccountErrorActivity_.class);
@@ -241,14 +242,14 @@ public class AccountAuthenticatorService extends Service
 			authResponse.onResult(result);
 	}
 
-	public static Boolean hasLastfmAccount(Context ctx)
+	public static Boolean hasAccount(Context ctx)
 	{
-		return AccountAuthenticatorImpl.hasLastfmAccount(ctx);
+		return AccountAuthenticatorImpl.hasAccount(ctx);
 	}
 
-	public static void removeLastfmAccount(Context ctx)
+	public static void removeAccount(Context ctx)
 	{
-		AccountAuthenticatorImpl.removeLastfmAccount(ctx);
+		AccountAuthenticatorImpl.removeAccount(ctx);
 	}
 
 	public static void resyncAccount(Context context)
