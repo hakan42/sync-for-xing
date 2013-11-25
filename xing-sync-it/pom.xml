@@ -54,6 +54,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
+                    <!-- FIXME workaround for versioneye duplicate files problem -->
+                    <extractDuplicates>true</extractDuplicates>
                 </configuration>
             </plugin>
 
