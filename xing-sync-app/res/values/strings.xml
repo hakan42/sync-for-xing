@@ -14,4 +14,7 @@
     <string name="oauth_token_title">Token</string>
     <string name="oauth_token_secret_title">Token Secret</string>
 
+    <!-- Xing API Calls -->
+    <string name="oauth_perform_me_call">Call Me</string>
+
 </resources>

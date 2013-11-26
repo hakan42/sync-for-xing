@@ -476,6 +476,12 @@ public class AddAccountActivity extends Activity
 		PrepareRequestTokenActivity_.intent(clickedView.getContext()).start();
 	}
 
+	@Click(R.id.btn_perform_me_call)
+	void performMeCall(View clickedView)
+	{
+		Log.i(TAG, "About to call 'me' api method");
+	}
+
 	@Click(R.id.btn_clear_credentials)
 	void clearCredentials(View clickedView)
 	{
