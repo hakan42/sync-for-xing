@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.sync;
 
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.FragmentById;
@@ -14,6 +17,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.SyncPrefs_;
+import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
@@ -40,6 +44,9 @@ public class AddAccountActivity extends Activity
 
 	@ViewById(R.id.oauth_token_secret)
 	TextView oauthTokenSecret;
+
+	@Bean
+	MeCall meCall;
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -480,6 +487,14 @@ public class AddAccountActivity extends Activity
 	void performMeCall(View clickedView)
 	{
 		Log.i(TAG, "About to call 'me' api method");
+		if (meCall != null)
+		{
+			JSONObject json = meCall.perform((String[]) null);
+			if (json != null)
+			{
+				Log.i(TAG, "Returned array is " + json);
+			}
+		}
 	}
 
 	@Click(R.id.btn_clear_credentials)
