@@ -2,6 +2,7 @@ package com.gurkensalat.android.xingsync.api;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Log;
 
@@ -12,7 +13,7 @@ public class MeCall // implements XingApiCall
 {
 	private static final String TAG = "xingsync.MeCall";
 
-	public JSONArray perform(final String... args)
+	public JSONObject perform(final String... args)
 	{
 		// Hardcoded Mock for now
 
@@ -31,17 +32,17 @@ public class MeCall // implements XingApiCall
 
 		Log.i(TAG, sb.toString());
 
-		JSONArray jsonArray = new JSONArray();
+		JSONObject json = new JSONObject();
 		try
 		{
-			jsonArray = new JSONArray(sb.toString());
-			Log.i(TAG, jsonArray.toString());
+			json = new JSONObject(sb.toString());
+			Log.i(TAG, json.toString());
 		}
 		catch (JSONException e)
 		{
 			Log.e(TAG, "while parsing answer string", e);
 		}
 
-		return jsonArray;
+		return json;
 	}
 }
