@@ -1,6 +1,5 @@
 package com.gurkensalat.android.xingsync.api;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,7 +12,7 @@ public class MeCall // implements XingApiCall
 {
 	private static final String TAG = "xingsync.MeCall";
 
-	public JSONObject perform(final String... args)
+	public JSONObject perform(final Object... args)
 	{
 		// Hardcoded Mock for now
 
@@ -44,5 +43,12 @@ public class MeCall // implements XingApiCall
 		}
 
 		return json;
+	}
+
+	public User performAndParse(final Object... args)
+	{
+		JSONObject json = perform(args);
+		User user = User.fromJSON(json);
+		return user;
 	}
 }
