@@ -74,7 +74,8 @@ public class AddAccountActivity extends Activity
 			LOGIN_INTENT_ACTION = getResources().getString(R.string.LOGIN_INTENT_ACTION);
 		}
 
-		String user = "default xing user"; // syncPrefs.sync_user().get();
+		String userDisplayName = null;
+		// "default xing user"; // syncPrefs.sync_user().get();
 		String session_key = syncPrefs.oauth_token_secret().get();
 		// String pass;
 
@@ -108,7 +109,8 @@ public class AddAccountActivity extends Activity
 			Log.i(TAG, "Intent without action");
 		}
 
-		if (!user.equals("") && !session_key.equals(""))
+		// if (!userDisplayName.equals("") && !session_key.equals(""))
+		if (!session_key.equals(""))
 		{
 			// if (getIntent().getAction() != null &&
 			// getIntent().getAction().equals(Intent.ACTION_SEARCH))
@@ -151,9 +153,20 @@ public class AddAccountActivity extends Activity
 				Bundle extras = intent.getExtras();
 				if (extras != null)
 				{
+					userDisplayName = "default xing user";
+
+					if (meCall != null)
+					{
+						User user = meCall.performAndParse();
+						if (user != null)
+						{
+							userDisplayName = user.getDisplayName();
+						}
+					}
+
 					try
 					{
-						AccountAuthenticatorService.addAccount(this, user, session_key,
+						AccountAuthenticatorService.addAccount(this, userDisplayName, session_key,
 						        extras.getParcelable("accountAuthenticatorResponse"));
 					}
 					catch (Exception e)
