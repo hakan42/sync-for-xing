@@ -17,8 +17,9 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
+import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 
-@EActivity(R.layout.main)
+@EActivity
 public class HelloAndroidActivity extends Activity
 {
 	private static String TAG = "xingsync.HelloAndroidActivity";
@@ -39,13 +40,20 @@ public class HelloAndroidActivity extends Activity
 		Log.i(TAG, "onCreate");
 		// setContentView(R.layout.account_entry);
 
-		Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+		if (AccountAuthenticatorService.hasAccount(getApplicationContext()))
+		{
+			setContentView(R.layout.main);
+		}
+		else
+		{
+			Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
-		// To show only our own accounts
-		intent.putExtra(Settings.EXTRA_AUTHORITIES, new String[] { getResources().getString(R.string.ACCOUNT_TYPE) });
+			// To show only our own accounts
+			intent.putExtra(Settings.EXTRA_AUTHORITIES, new String[] { getResources().getString(R.string.ACCOUNT_TYPE) });
 
-		startActivity(intent);
+			startActivity(intent);
+		}
 	}
 
 	@Click(R.id.btn_perform_me_call)
@@ -84,5 +92,4 @@ public class HelloAndroidActivity extends Activity
 		syncPrefs.oauth_token().put("");
 		syncPrefs.oauth_token_secret().put("");
 	}
-
 }
