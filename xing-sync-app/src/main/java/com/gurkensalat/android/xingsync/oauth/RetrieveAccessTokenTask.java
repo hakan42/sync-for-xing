@@ -15,7 +15,7 @@ import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
 
 public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {
-	private static String TAG = "xing-sync.PrepareRequestTokenActivity";
+	private static String TAG = "xingsync.PrepareRequestTokenActivity";
 
 	private Context context;
 	private OAuthConsumer consumer;

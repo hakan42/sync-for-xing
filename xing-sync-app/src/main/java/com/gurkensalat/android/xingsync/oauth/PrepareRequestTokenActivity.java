@@ -21,7 +21,7 @@ import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 @EActivity
 public class PrepareRequestTokenActivity extends Activity
 {
-	private static String TAG = "xing-sync.PrepareRequestTokenActivity";
+	private static String TAG = "xingsync.PrepareRequestTokenActivity";
 
 	private OAuthConsumer consumer;
 	private OAuthProvider provider;
