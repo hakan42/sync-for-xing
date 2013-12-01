@@ -1,5 +1,6 @@
 package com.gurkensalat.android.xingsync;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -73,12 +74,19 @@ public class HelloAndroidActivity extends Activity
 				text = text + json.toString();
 				text = text + "\n";
 
-				User user = User.fromJSON(json);
-				if (user != null)
+				try
 				{
-					text = text + user.toString();
-					text = text + "\n";
+					User user = User.fromJSON(json);
+					if (user != null)
+					{
+						text = text + user.toString();
+						text = text + "\n";
 
+					}
+				}
+				catch (JSONException e)
+				{
+					Log.e(TAG, "While parsing JSON", e);
 				}
 			}
 

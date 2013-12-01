@@ -59,8 +59,18 @@ public class MeCall // implements XingApiCall
 
 	public User performAndParse(final Object... args)
 	{
+		User user = null;
 		JSONObject json = perform(args);
-		User user = User.fromJSON(json);
+
+		try
+		{
+			user = User.fromJSON(json);
+		}
+		catch (JSONException e)
+		{
+			Log.e(TAG, "While parsing JSON", e);
+		}
+
 		return user;
 	}
 }
