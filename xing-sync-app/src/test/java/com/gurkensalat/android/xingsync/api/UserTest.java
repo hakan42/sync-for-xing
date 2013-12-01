@@ -1,5 +1,8 @@
 package com.gurkensalat.android.xingsync.api;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -28,14 +31,20 @@ public class UserTest
 		sb.append("  ]");
 		sb.append("}");
 
-		json = new JSONObject(sb.toString());
-		Assert.assertNotNull("JSON object could not be created", json);
+		JSONObject actual = new JSONObject(sb.toString());
+		assertNotNull("JSON object could not be created", actual);
+
+		json = actual;
 	}
 
 	@Test
 	public void parseMeCall()
 	{
-		User user = User.fromJSON(json);
-		Assert.assertNotNull("User could not be created", user);
+		User actual = User.fromJSON(json);
+		assertNotNull("User could not be created", actual);
+		assertEquals("Id not correctly parsed", "3382304", actual.getId());
+		assertEquals("First Name not correctly parsed", "Hakan", actual.getFirstName());
+		assertEquals("Last Name not correctly parsed", "Tandogan", actual.getLastName());
+		assertEquals("Display Name not correctly parsed", "Hakan Tandogan", actual.getDisplayName());
 	}
 }

@@ -22,8 +22,6 @@ public class User
 		u.setLastName("Tandogan");
 		u.setDisplayName(u.getFirstName() + " " + u.getLastName());
 
-		// TODO create unit test for JSON parsing
-
 		return u;
 	}
 
