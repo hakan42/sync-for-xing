@@ -9,10 +9,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
+
+import de.akquinet.android.androlog.Log;
 
 public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {

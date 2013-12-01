@@ -1,14 +1,15 @@
 package com.gurkensalat.android.xingsync.preferences;
 
-import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
-import com.gurkensalat.android.xingsync.R;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.util.Log;
+
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
+import com.gurkensalat.android.xingsync.R;
+
+import de.akquinet.android.androlog.Log;
 
 @EActivity
 public class AccountPreferencesActivity extends PreferenceActivity
@@ -21,6 +22,10 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	@Override
 	public void onCreate(Bundle icicle)
 	{
+		// Initializes androlog
+		// This will read the /sdcard/my.application.properties file
+		Log.init(this);
+
 		Log.i(TAG, "onCreate() called");
 		super.onCreate(icicle);
 		addPreferencesFromResource(R.xml.preferences_resources);

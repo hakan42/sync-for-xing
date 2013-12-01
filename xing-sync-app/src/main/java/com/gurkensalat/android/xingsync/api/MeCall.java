@@ -3,11 +3,11 @@ package com.gurkensalat.android.xingsync.api;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.googlecode.androidannotations.annotations.EBean;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
+
+import de.akquinet.android.androlog.Log;
 
 @EBean
 public class MeCall // implements XingApiCall

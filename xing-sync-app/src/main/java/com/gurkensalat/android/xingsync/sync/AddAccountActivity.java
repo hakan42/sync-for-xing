@@ -3,7 +3,6 @@ package com.gurkensalat.android.xingsync.sync;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +20,8 @@ import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
+
+import de.akquinet.android.androlog.Log;
 
 @EActivity
 public class AddAccountActivity extends Activity
@@ -66,6 +67,10 @@ public class AddAccountActivity extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		// Initializes androlog
+		// This will read the /sdcard/my.application.properties file
+		Log.init(this);
 
 		if (LOGIN_INTENT_ACTION == null)
 		{

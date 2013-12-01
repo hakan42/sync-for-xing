@@ -11,13 +11,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
+import de.akquinet.android.androlog.Log;
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;
 
@@ -34,6 +34,10 @@ public class AccountAuthenticatorService extends Service
 	public AccountAuthenticatorService()
 	{
 		super();
+
+		// Initializes androlog
+		// This will read the /sdcard/my.application.properties file
+		Log.init(this);
 	}
 
 	private static class AccountAuthenticatorImpl extends AbstractAccountAuthenticator

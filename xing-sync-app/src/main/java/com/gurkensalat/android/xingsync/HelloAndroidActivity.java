@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +19,8 @@ import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
+
+import de.akquinet.android.androlog.Log;
 
 @EActivity
 public class HelloAndroidActivity extends Activity
@@ -39,6 +40,11 @@ public class HelloAndroidActivity extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		// Initializes androlog
+		// This will read the /sdcard/my.application.properties file
+		Log.init(this);
+
 		Log.i(TAG, "onCreate");
 		// setContentView(R.layout.account_entry);
 

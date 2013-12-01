@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
+
+import de.akquinet.android.androlog.Log;
 
 /**
  * An asynchronous task that communicates with Google to retrieve a request
@@ -40,6 +41,10 @@ public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 	 */
 	public OAuthRequestTokenTask(Context context, OAuthConsumer consumer, OAuthProvider provider)
 	{
+		// Initializes androlog
+		// This will read the /sdcard/my.application.properties file
+		Log.init(context);
+
 		this.context = context;
 		this.consumer = consumer;
 		this.provider = provider;
