@@ -1,8 +1,7 @@
 package com.gurkensalat.android.xingsync.api;
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class ContactsCallTest
 		testable = new ContactsCall();
 		// ContactsCall_.getInstance_(null);
 
-		assertThat("API Call object could not be created", testable, is(not(equalTo(null))));
+		assertThat("API Call object could not be created", testable, is(notNullValue()));
 	}
 
 	@Before
@@ -58,7 +57,7 @@ public class ContactsCallTest
 		sb.append("}");
 
 		JSONObject actual = new JSONObject(sb.toString());
-		assertThat("JSON object could not be created", actual, is(not(equalTo(null))));
+		assertThat("JSON object could not be created", actual, is(notNullValue()));
 
 		json = actual;
 	}
@@ -67,6 +66,6 @@ public class ContactsCallTest
 	public void parseContactsCall() throws JSONException
 	{
 		List<User> actual = testable.parse(json);
-		assertThat("Users list could not be created", actual, is(not(equalTo(null))));
+		assertThat("Users list could not be created", actual, is(notNullValue()));
 	}
 }
