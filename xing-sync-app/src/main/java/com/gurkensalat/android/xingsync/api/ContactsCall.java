@@ -6,11 +6,13 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.googlecode.androidannotations.annotations.EBean;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 import de.akquinet.android.androlog.Log;
 
+@EBean
 public class ContactsCall
 {
 	private static final String TAG = "xingsync.ContactsCall";
