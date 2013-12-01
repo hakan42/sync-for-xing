@@ -90,7 +90,7 @@ public class HelloAndroidActivity extends Activity
 	void clearCredentials(View clickedView)
 	{
 		Log.i(TAG, "About to clear credentials");
-		syncPrefs.oauth_token().put("");
-		syncPrefs.oauth_token_secret().put("");
+		syncPrefs.edit().oauth_token().put("").apply();
+		syncPrefs.edit().oauth_token_secret().put("").apply();
 	}
 }

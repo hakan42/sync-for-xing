@@ -59,6 +59,5 @@ public class AccountPreferencesActivity extends PreferenceActivity
 		boolean debugMockApiCalls = prefs.getBoolean(getResources().getString(R.string.prefs_debug_mock_api_calls_key),
 		        Boolean.TRUE);
 		syncPrefs.edit().debugMockApiCalls().put(debugMockApiCalls).apply();
-
 	}
 }
