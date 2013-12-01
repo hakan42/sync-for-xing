@@ -1,4 +1,4 @@
-package com.gurkensalat.android.xingsync;
+package com.gurkensalat.android.xingsync.preferences;
 
 import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultString;
 import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPref;

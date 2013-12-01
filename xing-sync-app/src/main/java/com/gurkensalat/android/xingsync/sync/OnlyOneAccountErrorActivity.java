@@ -1,10 +1,10 @@
 package com.gurkensalat.android.xingsync.sync;
 
-import com.googlecode.androidannotations.annotations.EActivity;
-
 import android.accounts.AccountAuthenticatorActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.googlecode.androidannotations.annotations.EActivity;
 
 @EActivity
 public class OnlyOneAccountErrorActivity extends AccountAuthenticatorActivity

@@ -1,7 +1,5 @@
 package com.gurkensalat.android.xingsync.sync;
 
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +14,13 @@ import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
-import com.gurkensalat.android.xingsync.SyncPrefs_;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EActivity
 public class AddAccountActivity extends Activity

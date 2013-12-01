@@ -16,7 +16,7 @@ import android.util.Log;
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
-import com.gurkensalat.android.xingsync.SyncPrefs_;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;

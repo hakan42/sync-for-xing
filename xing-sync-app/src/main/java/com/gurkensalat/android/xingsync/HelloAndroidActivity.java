@@ -17,6 +17,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 
 @EActivity

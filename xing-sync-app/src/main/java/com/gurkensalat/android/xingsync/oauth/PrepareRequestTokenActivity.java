@@ -15,8 +15,8 @@ import android.util.Log;
 
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
-import com.gurkensalat.android.xingsync.SyncPrefs_;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EActivity
 public class PrepareRequestTokenActivity extends Activity
