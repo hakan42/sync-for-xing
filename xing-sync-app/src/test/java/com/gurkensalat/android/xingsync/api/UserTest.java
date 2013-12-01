@@ -38,7 +38,7 @@ public class UserTest
 	}
 
 	@Test
-	public void parseMeCall()
+	public void parseMeCall() throws JSONException
 	{
 		User actual = User.fromJSON(json);
 		assertNotNull("User could not be created", actual);
