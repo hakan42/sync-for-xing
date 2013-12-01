@@ -68,6 +68,13 @@
             <artifactId>cardme</artifactId>
         </dependency>
         -->
+
+        <!-- For testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
