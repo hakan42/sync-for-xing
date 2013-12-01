@@ -6,5 +6,11 @@
 
     <!-- The name of our Login intent -->
     <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
+    
+    <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.gurkensalat.android.xingsync.ACCOUNT_SETUP</string>
 
+    <!-- Preferences -->
+    <string name="prefs_account_settings_key">account_settings</string>
+    <string name="prefs_debug_mock_api_calls_key">mock_api_calls</string>
+    
 </resources>

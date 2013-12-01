@@ -7,6 +7,15 @@
     <!-- Main screen -->
     <string name="main_hello_android_title">Hello Android World</string>
 
+    <!-- Preferences -->
+    <string name="prefs_account_settings_title">Account Settings</string>
+    <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
+    <string name="prefs_general_category_title">General Settings</string>
+    
+    <string name="prefs_debug_category_title">Debugging Options</string>
+    <string name="prefs_debug_mock_api_title">Mock API</string>
+    <string name="prefs_debug_mock_api_summary">Mock API Calls</string>
+    
     <!-- OAuth stuff -->
     <string name="oauth_launch_flow">Launch OAuth Flow</string>
     <string name="oauth_clear_credentials">Clear Credentials</string>

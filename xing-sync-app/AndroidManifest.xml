@@ -29,6 +29,13 @@
             </intent-filter>
         </activity>
 
+        <!-- Preferences -->
+        <activity
+            android:name=".preferences.AccountPreferencesActivity"
+            android:excludeFromRecents="true"
+            android:label="Account Preferences"
+            android:theme="@android:style/Theme.Dialog" />
+
         <!-- OAuth activities -->
         <activity
             android:name=".oauth.PrepareRequestTokenActivity_"
@@ -72,6 +79,7 @@
         <activity android:name=".sync.OnlyOneAccountErrorActivity_" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
