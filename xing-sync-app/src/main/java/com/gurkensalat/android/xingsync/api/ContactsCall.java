@@ -71,7 +71,7 @@ public class ContactsCall
 		return json;
 	}
 
-	public List<User> performAndParse(final Object... args)
+	public List<User> parse(JSONObject json)
 	{
 		List<User> allUsers = new ArrayList<User>();
 
@@ -90,5 +90,11 @@ public class ContactsCall
 		// return user;
 
 		return allUsers;
+	}
+
+	public List<User> performAndParse(final Object... args)
+	{
+		JSONObject json = perform(args);
+		return parse(json);
 	}
 }
