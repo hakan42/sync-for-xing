@@ -19,9 +19,13 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	@Override
 	public void onCreate(Bundle icicle)
 	{
+		Log.i(TAG, "onCreate() called");
 		super.onCreate(icicle);
 		addPreferencesFromResource(R.xml.preferences_resources);
-		Log.i(TAG, "onCreate() called");
+
+		// TODO replease with PreferencesFragment code
+		// http://developer.android.com/reference/android/preference/PreferenceActivity.html
+		// http://developer.android.com/reference/android/preference/PreferenceFragment.html
 	}
 
 	@Override
