@@ -24,6 +24,40 @@ public class ContactsCall
 
 		if (syncPrefs.debugMockApiCalls().get())
 		{
+			StringBuffer sb = new StringBuffer(1024);
+
+			sb.append("{");
+			sb.append("  \"contacts\": {");
+			sb.append("    \"total\": 297,");
+			sb.append("    \"users\": [");
+			sb.append("      {");
+			sb.append("        \"id\": \"6841253_007b9e\",");
+			sb.append("        \"first_name\": \"Hasmet\",");
+			sb.append("        \"last_name\": \"Acar\",");
+			sb.append("        \"display_name\": \"Hasmet Acar\",");
+			sb.append("        \"active_email\": null");
+			sb.append("      },");
+			sb.append("      {");
+			sb.append("        \"id\": \"4261890_ffd916\",");
+			sb.append("        \"first_name\": \"Murat\",");
+			sb.append("        \"last_name\": \"Acun\",");
+			sb.append("        \"display_name\": \"Murat Acun\",");
+			sb.append("        \"active_email\": null");
+			sb.append("      }");
+			sb.append("    ]");
+			sb.append("  }");
+			sb.append("}");
+
+			Log.i(TAG, sb.toString());
+
+			try
+			{
+				json = new JSONObject(sb.toString());
+			}
+			catch (JSONException e)
+			{
+				Log.e(TAG, "while parsing answer string", e);
+			}
 		}
 		else
 		{
