@@ -11,6 +11,6 @@
 
     <!-- Preferences -->
     <string name="prefs_account_settings_key">account_settings</string>
-    <string name="prefs_debug_mock_api_calls_key">mock_api_calls</string>
+    <string name="prefs_debug_mock_api_calls_key">debug_mock_api_calls</string>
     
 </resources>

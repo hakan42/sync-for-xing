@@ -1,5 +1,6 @@
 package com.gurkensalat.android.xingsync.preferences;
 
+import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultBoolean;
 import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultString;
 import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPref;
 import com.gurkensalat.android.xingsync.sync.AddAccountActivity;
@@ -30,4 +31,10 @@ public interface SyncPrefs
 	 */
 	@DefaultString("lastfm_session_key")
 	String session_key();
+
+	/**
+	 * TODO make debugMockApiCalls Boolean.FALSE before beta deployment
+	 */
+	@DefaultBoolean(true)
+	boolean debugMockApiCalls();
 }

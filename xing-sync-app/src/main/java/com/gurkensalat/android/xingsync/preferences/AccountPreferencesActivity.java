@@ -4,8 +4,10 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 @EActivity
@@ -44,5 +46,19 @@ public class AccountPreferencesActivity extends PreferenceActivity
 
 		// preferences.unregisterOnSharedPreferenceChangeListener(backupListener);
 		super.onStop();
+		savePreferencesToAnnotation();
+	}
+
+	private void savePreferencesToAnnotation()
+	{
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		Log.i(TAG, "prefs is " + prefs.toString());
+
+		// TODO make debugMockApiCalls Boolean.FALSE before beta deployment
+		boolean debugMockApiCalls = prefs.getBoolean(getResources().getString(R.string.prefs_debug_mock_api_calls_key),
+		        Boolean.TRUE);
+		syncPrefs.edit().debugMockApiCalls().put(debugMockApiCalls).apply();
+
 	}
 }
