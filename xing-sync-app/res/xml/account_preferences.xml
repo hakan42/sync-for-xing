@@ -9,7 +9,7 @@
         android:title="@string/prefs_account_settings_title" >
         <intent
             android:action="@string/LOGIN_INTENT_ACCOUNT_SETUP_ACTION"
-            android:targetClass="com.gurkensalat.android.xingsync.preferences.AccountPreferencesActivity"
+            android:targetClass="com.gurkensalat.android.xingsync.preferences.AccountPreferencesActivity_"
             android:targetPackage="com.gurkensalat.android.xingsync" />
     </PreferenceScreen>
 

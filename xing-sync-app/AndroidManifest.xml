@@ -31,7 +31,7 @@
 
         <!-- Preferences -->
         <activity
-            android:name=".preferences.AccountPreferencesActivity"
+            android:name=".preferences.AccountPreferencesActivity_"
             android:excludeFromRecents="true"
             android:label="Account Preferences"
             android:theme="@android:style/Theme.Dialog" />
