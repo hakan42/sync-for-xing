@@ -3,7 +3,7 @@
 
     <property
         name="LOG_DIR"
-        value="/data/data/com.gurkensalat.android.xingsync/files" />
+        value="/data/data/${PACKAGE_NAME}/files" />
 
     <!-- Create a logcat appender -->
 
