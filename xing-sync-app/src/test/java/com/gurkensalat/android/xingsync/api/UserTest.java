@@ -1,11 +1,12 @@
 package com.gurkensalat.android.xingsync.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -15,7 +16,7 @@ public class UserTest
 {
 	private JSONObject json;
 
-	@org.junit.Before
+	@Before
 	public void populateJson() throws JSONException
 	{
 		StringBuffer sb = new StringBuffer(1024);
@@ -32,7 +33,7 @@ public class UserTest
 		sb.append("}");
 
 		JSONObject actual = new JSONObject(sb.toString());
-		assertNotNull("JSON object could not be created", actual);
+		assertThat("JSON object could not be created", actual, is(notNullValue()));
 
 		json = actual;
 	}
@@ -41,10 +42,10 @@ public class UserTest
 	public void parseMeCall() throws JSONException
 	{
 		User actual = User.fromJSON(json);
-		assertNotNull("User could not be created", actual);
-		assertEquals("Id not correctly parsed", "3382304", actual.getId());
-		assertEquals("First Name not correctly parsed", "Hakan", actual.getFirstName());
-		assertEquals("Last Name not correctly parsed", "Tandogan", actual.getLastName());
-		assertEquals("Display Name not correctly parsed", "Hakan Tandogan", actual.getDisplayName());
+		assertThat("User could not be created", actual, is(notNullValue()));
+		assertThat("Id not correctly parsed", actual.getId(), is("3382304"));
+		assertThat("First Name not correctly parsed", actual.getFirstName(), is("Hakan"));
+		assertThat("Last Name not correctly parsed", actual.getLastName(), is("Tandogan"));
+		assertThat("Display Name not correctly parsed", actual.getDisplayName(), is("Hakan Tandogan"));
 	}
 }

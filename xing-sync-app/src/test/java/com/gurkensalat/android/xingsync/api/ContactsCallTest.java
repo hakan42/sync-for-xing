@@ -2,7 +2,6 @@ package com.gurkensalat.android.xingsync.api;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
