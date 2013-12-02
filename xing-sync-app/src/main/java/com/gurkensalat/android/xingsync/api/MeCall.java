@@ -2,17 +2,17 @@ package com.gurkensalat.android.xingsync.api;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.googlecode.androidannotations.annotations.EBean;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
-import de.akquinet.android.androlog.Log;
-
 @EBean
 public class MeCall // implements XingApiCall
 {
-	private static final String TAG = "xingsync.MeCall";
+	private static Logger LOG = LoggerFactory.getLogger(MeCall.class);
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -36,7 +36,7 @@ public class MeCall // implements XingApiCall
 			sb.append("  ]");
 			sb.append("}");
 
-			Log.i(TAG, sb.toString());
+			LOG.info(sb.toString());
 
 			try
 			{
@@ -44,15 +44,15 @@ public class MeCall // implements XingApiCall
 			}
 			catch (JSONException e)
 			{
-				Log.e(TAG, "while parsing answer string", e);
+				LOG.error("while parsing answer string", e);
 			}
 		}
 		else
 		{
-			Log.i(TAG, "Hardcoded Mock for now");
+			LOG.info("Hardcoded Mock for now");
 		}
 
-		// Log.i(TAG, json.toString());
+		// LOG.info(json.toString());
 
 		return json;
 	}
@@ -68,7 +68,7 @@ public class MeCall // implements XingApiCall
 		}
 		catch (JSONException e)
 		{
-			Log.e(TAG, "While parsing JSON", e);
+			LOG.error("While parsing JSON", e);
 		}
 
 		return user;

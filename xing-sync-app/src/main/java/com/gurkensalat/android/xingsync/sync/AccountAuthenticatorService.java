@@ -1,5 +1,8 @@
 package com.gurkensalat.android.xingsync.sync;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.accounts.AbstractAccountAuthenticator;
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorResponse;
@@ -15,16 +18,16 @@ import android.os.Parcelable;
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
+import com.gurkensalat.android.xingsync.preferences.AccountPreferencesActivity;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
-import de.akquinet.android.androlog.Log;
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;
 
 @EService
 public class AccountAuthenticatorService extends Service
 {
-	private static final String TAG = "xingsync.AccountAuthenticatorService";
+	private static Logger LOG = LoggerFactory.getLogger(AccountPreferencesActivity.class);
 
 	private static AccountAuthenticatorImpl sAccountAuthenticator = null;
 
@@ -34,10 +37,6 @@ public class AccountAuthenticatorService extends Service
 	public AccountAuthenticatorService()
 	{
 		super();
-
-		// Initializes androlog
-		// This will read the /sdcard/my.application.properties file
-		Log.init("com.gurkensalat.android.xingsync");
 	}
 
 	private static class AccountAuthenticatorImpl extends AbstractAccountAuthenticator
@@ -52,7 +51,7 @@ public class AccountAuthenticatorService extends Service
 
 		public static Bundle addAccount(Context ctx, String username, String password)
 		{
-			Log.i(TAG, "addAccount('" + username + "', '" + password + "')");
+			LOG.info("addAccount('" + username + "', '" + password + "')");
 
 			Bundle result = null;
 			Account account = new Account(username, ctx.getString(R.string.ACCOUNT_TYPE));
@@ -78,7 +77,7 @@ public class AccountAuthenticatorService extends Service
 
 		public static void removeAccount(Context ctx)
 		{
-			Log.i(TAG, "removeAccount");
+			LOG.info("removeAccount");
 			AccountManager am = AccountManager.get(ctx);
 			Account[] accounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
 			for (Account account : accounts)
@@ -98,7 +97,7 @@ public class AccountAuthenticatorService extends Service
 		public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType,
 		        String[] requiredFeatures, Bundle options) throws NetworkErrorException
 		{
-			Log.i(TAG, "addAccount");
+			LOG.info("addAccount");
 			Bundle result;
 
 			if (hasAccount(mContext))
@@ -131,7 +130,7 @@ public class AccountAuthenticatorService extends Service
 		public Bundle confirmCredentials(AccountAuthenticatorResponse response, Account account, Bundle options)
 		{
 			// TODO Auto-generated method stub
-			Log.i(TAG, "confirmCredentials");
+			LOG.info("confirmCredentials");
 			return null;
 		}
 
@@ -145,7 +144,7 @@ public class AccountAuthenticatorService extends Service
 		public Bundle editProperties(AccountAuthenticatorResponse response, String accountType)
 		{
 			// TODO Auto-generated method stub
-			Log.i(TAG, "editProperties");
+			LOG.info("editProperties");
 			return null;
 		}
 
@@ -161,7 +160,7 @@ public class AccountAuthenticatorService extends Service
 		public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options)
 		        throws NetworkErrorException
 		{
-			Log.i(TAG, "getAuthToken");
+			LOG.info("getAuthToken");
 
 			String api_key = options.getString("api_key");
 			String api_secret = options.getString("api_secret");
@@ -171,7 +170,7 @@ public class AccountAuthenticatorService extends Service
 			String md5Password = am.getPassword(account);
 			String authToken = MD5.getInstance().hash(user + md5Password);
 
-			Log.i(TAG, "getAuthToken");
+			LOG.info("getAuthToken");
 
 			Bundle result = new Bundle();
 			Intent i = new Intent(mContext, AccountAccessPrompt.class);
@@ -194,7 +193,7 @@ public class AccountAuthenticatorService extends Service
 		public String getAuthTokenLabel(String authTokenType)
 		{
 			// TODO Auto-generated method stub
-			Log.i(TAG, "getAuthTokenLabel");
+			LOG.info("getAuthTokenLabel");
 			return null;
 		}
 
@@ -211,7 +210,7 @@ public class AccountAuthenticatorService extends Service
 		        throws NetworkErrorException
 		{
 			// TODO Auto-generated method stub
-			Log.i(TAG, "hasFeatures: " + features);
+			LOG.info("hasFeatures: " + features);
 			return null;
 		}
 
@@ -227,7 +226,7 @@ public class AccountAuthenticatorService extends Service
 		        Bundle options)
 		{
 			// TODO Auto-generated method stub
-			Log.i(TAG, "updateCredentials");
+			LOG.info("updateCredentials");
 			return null;
 		}
 	}
@@ -261,7 +260,7 @@ public class AccountAuthenticatorService extends Service
 
 	public static void resyncAccount(Context context)
 	{
-		Log.i(TAG, "resyncAccount");
+		LOG.info("resyncAccount");
 
 		// Editor editor =
 		// PreferenceManager.getDefaultSharedPreferences(LastFMApplication.getInstance()).edit();

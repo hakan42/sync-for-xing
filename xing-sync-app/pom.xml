@@ -34,8 +34,18 @@
         </dependency>
 
         <dependency>
-            <groupId>de.akquinet.android.androlog</groupId>
-            <artifactId>androlog</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.tony19</groupId>
+            <artifactId>logback-android-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.tony19</groupId>
+            <artifactId>logback-android-classic</artifactId>
         </dependency>
 
         <dependency>

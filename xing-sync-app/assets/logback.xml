@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration debug="true" >
+
+    <property
+        name="LOG_DIR"
+        value="/data/data/com.gurkensalat.android.xingsync/files" />
+
+    <!-- Create a logcat appender -->
+
+    <appender
+        name="logcat"
+        class="ch.qos.logback.classic.android.LogcatAppender" >
+
+        <encoder>
+            <pattern>%msg</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG" >
+        <appender-ref ref="logcat" />
+    </root>
+
+</configuration>

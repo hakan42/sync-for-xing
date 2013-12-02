@@ -6,17 +6,17 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.googlecode.androidannotations.annotations.EBean;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
-import de.akquinet.android.androlog.Log;
-
 @EBean
 public class ContactsCall
 {
-	private static final String TAG = "xingsync.ContactsCall";
+	private static Logger LOG = LoggerFactory.getLogger(ContactsCall.class);
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -51,7 +51,7 @@ public class ContactsCall
 			sb.append("  }");
 			sb.append("}");
 
-			Log.i(TAG, sb.toString());
+			LOG.info(sb.toString());
 
 			try
 			{
@@ -59,12 +59,12 @@ public class ContactsCall
 			}
 			catch (JSONException e)
 			{
-				Log.e(TAG, "while parsing answer string", e);
+				LOG.error("while parsing answer string", e);
 			}
 		}
 		else
 		{
-			Log.i(TAG, "Hardcoded Mock for now");
+			LOG.info("Hardcoded Mock for now");
 		}
 
 		return json;
@@ -99,8 +99,7 @@ public class ContactsCall
 						}
 						catch (JSONException e)
 						{
-							// e.printStackTrace();
-							Log.e(TAG, "while creating inner JSON object", e);
+							LOG.error("while creating inner JSON object", e);
 						}
 					}
 				}

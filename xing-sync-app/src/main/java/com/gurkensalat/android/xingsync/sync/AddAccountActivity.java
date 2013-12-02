@@ -1,5 +1,8 @@
 package com.gurkensalat.android.xingsync.sync;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,12 +24,10 @@ import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
-import de.akquinet.android.androlog.Log;
-
 @EActivity
 public class AddAccountActivity extends Activity
 {
-	private static final String TAG = "xingsync.AddAccountActivity";
+	private Logger LOG = LoggerFactory.getLogger(AddAccountActivity.class);
 
 	private static String LOGIN_INTENT_ACTION;
 
@@ -68,10 +69,6 @@ public class AddAccountActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 
-		// Initializes androlog
-		// This will read the /sdcard/my.application.properties file
-		Log.init(this);
-
 		if (LOGIN_INTENT_ACTION == null)
 		{
 			LOGIN_INTENT_ACTION = getResources().getString(R.string.LOGIN_INTENT_ACTION);
@@ -105,11 +102,11 @@ public class AddAccountActivity extends Activity
 
 		if (getIntent().getAction() != null)
 		{
-			Log.i(TAG, "Intent: '" + getIntent().getAction() + "'");
+			LOG.info("Intent: '" + getIntent().getAction() + "'");
 		}
 		else
 		{
-			Log.i(TAG, "Intent without action");
+			LOG.info("Intent without action");
 		}
 
 		// if (!userDisplayName.equals("") && !session_key.equals(""))
@@ -124,7 +121,7 @@ public class AddAccountActivity extends Activity
 			// query = getIntent().getStringExtra(SearchManager.QUERY);
 			// else
 			// query = getIntent().getData().toString();
-			// Log.i("LastFm", "Query: " + query);
+			// LOG.info("LastFm", "Query: " + query);
 			// LastFMApplication.getInstance().playRadioStation(this, query,
 			// true);
 			// }
@@ -174,7 +171,7 @@ public class AddAccountActivity extends Activity
 					}
 					catch (Exception e)
 					{
-						Log.i(TAG, "Unable to add account");
+						LOG.info("Unable to add account");
 					}
 				}
 			}
@@ -457,7 +454,7 @@ public class AddAccountActivity extends Activity
 	// if (mUpdateURL.startsWith("market://") ||
 	// mUpdateURL.startsWith("http://")) {
 	// success = true;
-	// Log.i("Last.fm", "Update URL: " + mUpdateURL);
+	// LOG.info("Last.fm", "Update URL: " + mUpdateURL);
 	// }
 	// } catch (Exception e) {
 	// // No updates available! Yay!
@@ -488,7 +485,7 @@ public class AddAccountActivity extends Activity
 	protected void onResume()
 	{
 		// onResume() is always called just before activity is displayed
-		Log.i(TAG, "onResume()");
+		LOG.info("onResume()");
 		super.onResume();
 		displaySecrets();
 	}
@@ -496,25 +493,25 @@ public class AddAccountActivity extends Activity
 	@Click(R.id.btn_launch_oauth)
 	void launchOAuth(View clickedView)
 	{
-		Log.i(TAG, "About to launch OAuth dance");
+		LOG.info("About to launch OAuth dance");
 		PrepareRequestTokenActivity_.intent(clickedView.getContext()).start();
 	}
 
 	@Click(R.id.btn_perform_me_call)
 	void performMeCall(View clickedView)
 	{
-		Log.i(TAG, "About to call 'me' api method");
+		LOG.info("About to call 'me' api method");
 		if (meCall != null)
 		{
 			User user = meCall.performAndParse((Object[]) null);
-			Log.i(TAG, "Obtained user is " + user);
+			LOG.info("Obtained user is " + user);
 		}
 	}
 
 	@Click(R.id.btn_clear_credentials)
 	void clearCredentials(View clickedView)
 	{
-		Log.i(TAG, "About to clear credentials");
+		LOG.info("About to clear credentials");
 		syncPrefs.oauth_token().put("");
 		syncPrefs.oauth_token_secret().put("");
 		displaySecrets();
@@ -522,13 +519,13 @@ public class AddAccountActivity extends Activity
 
 	private void displaySecrets()
 	{
-		Log.i(TAG, "oauth_token: '" + syncPrefs.oauth_token().get() + "'");
+		LOG.info("oauth_token: '" + syncPrefs.oauth_token().get() + "'");
 		if (oauthToken != null)
 		{
 			oauthToken.setText(syncPrefs.oauth_token().get());
 		}
 
-		Log.i(TAG, "oauth_token_secret: '" + syncPrefs.oauth_token_secret().get() + "'");
+		LOG.info("oauth_token_secret: '" + syncPrefs.oauth_token_secret().get() + "'");
 		if (oauthTokenSecret != null)
 		{
 			oauthTokenSecret.setText(syncPrefs.oauth_token_secret().get());

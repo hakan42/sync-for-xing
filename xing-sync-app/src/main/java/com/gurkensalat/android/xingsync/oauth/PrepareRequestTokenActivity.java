@@ -6,6 +6,10 @@ import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,12 +21,10 @@ import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
-import de.akquinet.android.androlog.Log;
-
 @EActivity
 public class PrepareRequestTokenActivity extends Activity
 {
-	private static String TAG = "xingsync.PrepareRequestTokenActivity";
+	private static Logger LOG = LoggerFactory.getLogger(PrepareRequestTokenActivity.class);
 
 	private OAuthConsumer consumer;
 	private OAuthProvider provider;
@@ -33,7 +35,7 @@ public class PrepareRequestTokenActivity extends Activity
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
-		Log.i(TAG, "onCreate()");
+		LOG.info("onCreate()");
 		super.onCreate(savedInstanceState);
 		try
 		{
@@ -45,10 +47,10 @@ public class PrepareRequestTokenActivity extends Activity
 		}
 		catch (Exception e)
 		{
-			Log.e(TAG, "Error creating consumer / provider", e);
+			LOG.error("Error creating consumer / provider", e);
 		}
 
-		Log.i(TAG, "Starting task to retrieve request token.");
+		LOG.info("Starting task to retrieve request token.");
 		new OAuthRequestTokenTask(this, consumer, provider).execute();
 	}
 
@@ -59,13 +61,13 @@ public class PrepareRequestTokenActivity extends Activity
 	@Override
 	public void onNewIntent(Intent intent)
 	{
-		Log.i(TAG, "onNewIntent()");
+		LOG.info("onNewIntent()");
 		super.onNewIntent(intent);
 		final Uri uri = intent.getData();
 		if (uri != null && uri.getScheme().equals(XingOAuthKeys.OAUTH_CALLBACK_SCHEME))
 		{
-			Log.i(TAG, "Callback received : " + uri);
-			Log.i(TAG, "Retrieving Access Token");
+			LOG.info("Callback received : " + uri);
+			LOG.info("Retrieving Access Token");
 			// TODO Avoid passing the current prefs into access task
 			SharedPreferences prefs = syncPrefs.getSharedPreferences();
 			new RetrieveAccessTokenTask(this, consumer, provider, prefs).execute(uri);

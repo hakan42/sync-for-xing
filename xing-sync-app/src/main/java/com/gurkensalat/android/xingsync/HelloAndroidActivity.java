@@ -3,6 +3,8 @@ package com.gurkensalat.android.xingsync;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,12 +24,10 @@ import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 
-import de.akquinet.android.androlog.Log;
-
 @EActivity
 public class HelloAndroidActivity extends Activity
 {
-	private static String TAG = "xingsync.HelloAndroidActivity";
+	private static Logger LOG = LoggerFactory.getLogger(HelloAndroidActivity.class);
 
 	@ViewById(R.id.oauth_api_call_result)
 	TextView oauth_api_call_result;
@@ -44,14 +44,8 @@ public class HelloAndroidActivity extends Activity
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		LOG.info("onCreate");
 		super.onCreate(savedInstanceState);
-
-		// Initializes androlog
-		// This will read the /sdcard/my.application.properties file
-		Log.init(this);
-
-		Log.i(TAG, "onCreate");
-		// setContentView(R.layout.account_entry);
 
 		if (AccountAuthenticatorService.hasAccount(getApplicationContext()))
 		{
@@ -72,7 +66,7 @@ public class HelloAndroidActivity extends Activity
 	@Click(R.id.btn_perform_contacts_call)
 	void performContactsCall(View clickedView)
 	{
-		Log.i(TAG, "About to call 'contacts' api method");
+		LOG.info("About to call 'contacts' api method");
 		if (contactsCall != null)
 		{
 			String text = "Call 'Contacts'";
@@ -92,7 +86,7 @@ public class HelloAndroidActivity extends Activity
 	@Click(R.id.btn_perform_me_call)
 	void performMeCall(View clickedView)
 	{
-		Log.i(TAG, "About to call 'me' api method");
+		LOG.info("About to call 'me' api method");
 		if (meCall != null)
 		{
 
@@ -113,7 +107,7 @@ public class HelloAndroidActivity extends Activity
 	@Click(R.id.btn_clear_credentials)
 	void clearCredentials(View clickedView)
 	{
-		Log.i(TAG, "About to clear credentials");
+		LOG.info("About to clear credentials");
 		syncPrefs.edit().oauth_token().put("").apply();
 		syncPrefs.edit().oauth_token_secret().put("").apply();
 	}

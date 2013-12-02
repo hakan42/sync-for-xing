@@ -3,6 +3,10 @@ package com.gurkensalat.android.xingsync.oauth;
 import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,11 +17,9 @@ import android.os.AsyncTask;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
 
-import de.akquinet.android.androlog.Log;
-
 public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 {
-	private static String TAG = "xingsync.PrepareRequestTokenActivity";
+	private static Logger LOG = LoggerFactory.getLogger(RetrieveAccessTokenTask.class);
 
 	private Context context;
 	private OAuthConsumer consumer;
@@ -45,7 +47,7 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 
 		final String oauth_verifier = uri.getQueryParameter(OAuth.OAUTH_VERIFIER);
 
-		Log.i(TAG, "doInBackground");
+		LOG.info("doInBackground");
 
 		try
 		{
@@ -64,11 +66,11 @@ public class RetrieveAccessTokenTask extends AsyncTask<Uri, Void, Void>
 			intent.setAction(context.getString(R.string.LOGIN_INTENT_ACTION));
 			context.startActivity(intent);
 
-			Log.i(TAG, "OAuth - Access Token Retrieved");
+			LOG.info("OAuth - Access Token Retrieved");
 		}
 		catch (Exception e)
 		{
-			Log.e(TAG, "OAuth - Access Token Retrieval Error", e);
+			LOG.error("OAuth - Access Token Retrieval Error", e);
 		}
 
 		return null;

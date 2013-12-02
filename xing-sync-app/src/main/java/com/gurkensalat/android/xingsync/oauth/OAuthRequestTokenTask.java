@@ -2,14 +2,16 @@ package com.gurkensalat.android.xingsync.oauth;
 
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
-
-import de.akquinet.android.androlog.Log;
 
 /**
  * An asynchronous task that communicates with Google to retrieve a request
@@ -21,8 +23,7 @@ import de.akquinet.android.androlog.Log;
  */
 public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 {
-	/** The tag used to log to adb console. **/
-	private static final String TAG = "xing-sync.OAuthRequestTokenTask";
+	private static Logger LOG = LoggerFactory.getLogger(OAuthRequestTokenTask.class);
 
 	private Context context;
 	private OAuthProvider provider;
@@ -41,10 +42,6 @@ public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 	 */
 	public OAuthRequestTokenTask(Context context, OAuthConsumer consumer, OAuthProvider provider)
 	{
-		// Initializes androlog
-		// This will read the /sdcard/my.application.properties file
-		Log.init(context);
-
 		this.context = context;
 		this.consumer = consumer;
 		this.provider = provider;
@@ -59,20 +56,20 @@ public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 	@Override
 	protected Void doInBackground(Void... params)
 	{
-		Log.i(TAG, "doInBackground");
+		LOG.info("doInBackground");
 
 		try
 		{
-			Log.i(TAG, "Retrieving request token from XING servers");
+			LOG.info("Retrieving request token from XING servers");
 			final String url = provider.retrieveRequestToken(consumer, XingOAuthKeys.OAUTH_CALLBACK_URL);
-			Log.i(TAG, "Popping a browser with the authorize URL : " + url);
+			LOG.info("Popping a browser with the authorize URL : " + url);
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url)).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
 			        | Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_FROM_BACKGROUND);
 			context.startActivity(intent);
 		}
 		catch (Exception e)
 		{
-			Log.e(TAG, "Error during OAUth retrieve request token", e);
+			LOG.error("Error during OAUth retrieve request token", e);
 		}
 
 		return null;

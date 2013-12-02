@@ -1,5 +1,8 @@
 package com.gurkensalat.android.xingsync.preferences;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -9,12 +12,10 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
 
-import de.akquinet.android.androlog.Log;
-
 @EActivity
 public class AccountPreferencesActivity extends PreferenceActivity
 {
-	private static final String TAG = "xingsync.AccountPreferencesActivity";
+	private static Logger LOG = LoggerFactory.getLogger(AccountPreferencesActivity.class);
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -22,11 +23,7 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	@Override
 	public void onCreate(Bundle icicle)
 	{
-		// Initializes androlog
-		// This will read the /sdcard/my.application.properties file
-		Log.init(this);
-
-		Log.i(TAG, "onCreate() called");
+		LOG.info("onCreate() called");
 		super.onCreate(icicle);
 		addPreferencesFromResource(R.xml.preferences_resources);
 
@@ -38,7 +35,7 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	@Override
 	protected void onStart()
 	{
-		Log.i(TAG, "onStart() called");
+		LOG.info("onStart() called");
 
 		super.onStart();
 		// preferences.registerOnSharedPreferenceChangeListener(backupListener);
@@ -47,7 +44,7 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	@Override
 	protected void onStop()
 	{
-		Log.i(TAG, "onStop() called");
+		LOG.info("onStop() called");
 
 		// preferences.unregisterOnSharedPreferenceChangeListener(backupListener);
 		super.onStop();
@@ -58,7 +55,7 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	{
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		Log.i(TAG, "prefs is " + prefs.toString());
+		LOG.info("prefs is " + prefs.toString());
 
 		// TODO make debugMockApiCalls Boolean.FALSE before beta deployment
 		boolean debugMockApiCalls = prefs.getBoolean(getResources().getString(R.string.prefs_debug_mock_api_calls_key),
