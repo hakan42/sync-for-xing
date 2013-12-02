@@ -3,6 +3,7 @@ package com.gurkensalat.android.xingsync.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,8 +67,6 @@ public class ContactsCall
 			Log.i(TAG, "Hardcoded Mock for now");
 		}
 
-		// Log.i(TAG, json.toString());
-
 		return json;
 	}
 
@@ -75,19 +74,38 @@ public class ContactsCall
 	{
 		List<User> allUsers = new ArrayList<User>();
 
-		// User user = null;
-		// JSONObject json = perform(args);
-		//
-		// try
-		// {
-		// user = User.fromJSON(json);
-		// }
-		// catch (JSONException e)
-		// {
-		// Log.e(TAG, "While parsing JSON", e);
-		// }
-		//
-		// return user;
+		if (json != null)
+		{
+			json = json.optJSONObject("contacts");
+			// System.err.println("OBJECT-contacts: " + json);
+			if (json != null)
+			{
+				JSONArray array = json.optJSONArray("users");
+				// System.err.println("ARRAY-users: " + array);
+				if ((array != null) && (array.length() > 0))
+				{
+					for (int i = 0; i < array.length(); i++)
+					{
+						JSONObject innerJson = array.optJSONObject(i);
+
+						// System.err.println("INNER #" + i + ": " + innerJson);
+						try
+						{
+							User user = User.fromJSON(innerJson);
+							if (user != null)
+							{
+								allUsers.add(user);
+							}
+						}
+						catch (JSONException e)
+						{
+							// e.printStackTrace();
+							Log.e(TAG, "while creating inner JSON object", e);
+						}
+					}
+				}
+			}
+		}
 
 		return allUsers;
 	}

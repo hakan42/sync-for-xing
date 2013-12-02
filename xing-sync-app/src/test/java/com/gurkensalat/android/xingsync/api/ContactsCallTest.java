@@ -2,6 +2,7 @@ package com.gurkensalat.android.xingsync.api;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -66,6 +67,16 @@ public class ContactsCallTest
 	public void parseContactsCall() throws JSONException
 	{
 		List<User> actual = testable.parse(json);
+
 		assertThat("Users list could not be created", actual, is(notNullValue()));
+		assertThat("Two users would have to be parsed", actual.size(), is(2));
+
+		assertThat("Id #0 not correctly parsed", actual.get(0).getId(), is("6841253"));
+		assertThat("First Name #0 not correctly parsed", actual.get(0).getFirstName(), is("Hasmet"));
+		assertThat("Last Name #0 not correctly parsed", actual.get(0).getLastName(), is("Acar"));
+
+		assertThat("Id #1 not correctly parsed", actual.get(1).getId(), is("4261890"));
+		assertThat("First Name #1 not correctly parsed", actual.get(1).getFirstName(), is("Murat"));
+		assertThat("Last Name #1 not correctly parsed", actual.get(1).getLastName(), is("Acun"));
 	}
 }

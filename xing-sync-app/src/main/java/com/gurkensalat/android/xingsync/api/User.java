@@ -27,35 +27,36 @@ public class User
 				{
 					json = array.getJSONObject(0);
 					System.err.println(json.getClass().getName());
-
-					u = new User();
-
-					if (json.has("id"))
-					{
-						u.setId(json.getString("id"));
-						// XING privacy protection feature :-)
-						int i = u.getId().indexOf("_");
-						if (i > 0)
-						{
-							u.setId(u.getId().substring(0, i));
-						}
-					}
-
-					if (json.has("first_name"))
-					{
-						u.setFirstName(json.getString("first_name"));
-					}
-
-					if (json.has("last_name"))
-					{
-						u.setLastName(json.getString("last_name"));
-					}
-
-					if (json.has("display_name"))
-					{
-						u.setDisplayName(json.getString("display_name"));
-					}
 				}
+			}
+		}
+
+		if (json.has("id"))
+		{
+			u = new User();
+
+			u.setId(json.getString("id"));
+
+			// XING privacy protection feature :-)
+			int underscorePosition = u.getId().indexOf("_");
+			if (underscorePosition > 0)
+			{
+				u.setId(u.getId().substring(0, underscorePosition));
+			}
+
+			if (json.has("first_name"))
+			{
+				u.setFirstName(json.getString("first_name"));
+			}
+
+			if (json.has("last_name"))
+			{
+				u.setLastName(json.getString("last_name"));
+			}
+
+			if (json.has("display_name"))
+			{
+				u.setDisplayName(json.getString("display_name"));
 			}
 		}
 
