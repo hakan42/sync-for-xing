@@ -37,7 +37,7 @@ public class AccountAuthenticatorService extends Service
 
 		// Initializes androlog
 		// This will read the /sdcard/my.application.properties file
-		Log.init(this);
+		Log.init("com.gurkensalat.android.xingsync");
 	}
 
 	private static class AccountAuthenticatorImpl extends AbstractAccountAuthenticator
