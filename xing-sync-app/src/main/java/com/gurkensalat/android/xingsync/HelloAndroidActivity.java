@@ -1,6 +1,7 @@
 package com.gurkensalat.android.xingsync;
 
-import org.json.JSONException;
+import java.util.List;
+
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -15,6 +16,7 @@ import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
+import com.gurkensalat.android.xingsync.api.ContactsCall;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
@@ -29,6 +31,9 @@ public class HelloAndroidActivity extends Activity
 
 	@ViewById(R.id.oauth_api_call_result)
 	TextView oauth_api_call_result;
+
+	@Bean
+	ContactsCall contactsCall;
 
 	@Bean
 	MeCall meCall;
@@ -64,6 +69,26 @@ public class HelloAndroidActivity extends Activity
 		}
 	}
 
+	@Click(R.id.btn_perform_contacts_call)
+	void performContactsCall(View clickedView)
+	{
+		Log.i(TAG, "About to call 'contacts' api method");
+		if (contactsCall != null)
+		{
+			String text = "Call 'Contacts'";
+			text = text + "\n";
+
+			JSONObject json = contactsCall.perform();
+			displayResults(text, json);
+
+			List<User> users = contactsCall.parse(json);
+			if (users != null)
+			{
+				displayAdditionalString(users.toString());
+			}
+		}
+	}
+
 	@Click(R.id.btn_perform_me_call)
 	void performMeCall(View clickedView)
 	{
@@ -75,28 +100,13 @@ public class HelloAndroidActivity extends Activity
 			text = text + "\n";
 
 			JSONObject json = meCall.perform();
-			if (json != null)
+			displayResults(text, json);
+
+			User user = meCall.performAndParse();
+			if (user != null)
 			{
-				text = text + json.toString();
-				text = text + "\n";
-
-				try
-				{
-					User user = User.fromJSON(json);
-					if (user != null)
-					{
-						text = text + user.toString();
-						text = text + "\n";
-
-					}
-				}
-				catch (JSONException e)
-				{
-					Log.e(TAG, "While parsing JSON", e);
-				}
+				displayAdditionalString(user.toString());
 			}
-
-			oauth_api_call_result.setText(text);
 		}
 	}
 
@@ -106,5 +116,24 @@ public class HelloAndroidActivity extends Activity
 		Log.i(TAG, "About to clear credentials");
 		syncPrefs.edit().oauth_token().put("").apply();
 		syncPrefs.edit().oauth_token_secret().put("").apply();
+	}
+
+	private void displayResults(String text, JSONObject json)
+	{
+		if (json != null)
+		{
+			text = text + json.toString();
+			text = text + "\n";
+		}
+
+		oauth_api_call_result.setText(text);
+	}
+
+	private void displayAdditionalString(String additionalText)
+	{
+		if (additionalText != null)
+		{
+			oauth_api_call_result.setText(oauth_api_call_result.getText() + "\n" + additionalText);
+		}
 	}
 }

@@ -25,5 +25,6 @@
 
     <!-- Xing API Calls -->
     <string name="oauth_perform_me_call">Call Me</string>
-
+    <string name="oauth_perform_contacts_call">Call Contacts</string>
+    
 </resources>
