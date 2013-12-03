@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
     android:accountType="@string/ACCOUNT_TYPE"
-    android:contentAuthority="com.android.contacts"
+    android:contentAuthority="@string/CONTACT_CONTENT_AUTHORITY"
     android:supportsUploading="false"
     android:userVisible="true" />

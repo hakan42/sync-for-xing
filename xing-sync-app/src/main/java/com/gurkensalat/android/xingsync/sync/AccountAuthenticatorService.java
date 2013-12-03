@@ -9,6 +9,7 @@ import android.accounts.AccountAuthenticatorResponse;
 import android.accounts.AccountManager;
 import android.accounts.NetworkErrorException;
 import android.app.Service;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,10 @@ public class AccountAuthenticatorService extends Service
 	private static Logger LOG = LoggerFactory.getLogger(AccountPreferencesActivity.class);
 
 	private static AccountAuthenticatorImpl sAccountAuthenticator = null;
+
+	/** Sync period in seconds, currently every week */
+	// TODO make SYNC_PERIOD configurable
+	private static final long SYNC_PERIOD = 7L * 24L * 60L * 60L;
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -58,10 +63,19 @@ public class AccountAuthenticatorService extends Service
 			AccountManager am = AccountManager.get(ctx);
 			if (am.addAccountExplicitly(account, MD5.getInstance().hash(password), null))
 			{
+				String authority = ctx.getString(R.string.CONTACT_CONTENT_AUTHORITY);
+
+				// Set contacts sync for this account.
+				ContentResolver.setIsSyncable(account, authority, 1);
+				ContentResolver.setSyncAutomatically(account, authority, true);
+				ContentResolver.addPeriodicSync(account, authority, new Bundle(), SYNC_PERIOD);
+				ContentResolver.setMasterSyncAutomatically(true);
+
 				result = new Bundle();
 				result.putString(AccountManager.KEY_ACCOUNT_NAME, account.name);
 				result.putString(AccountManager.KEY_ACCOUNT_TYPE, account.type);
 			}
+
 			return result;
 		}
 
