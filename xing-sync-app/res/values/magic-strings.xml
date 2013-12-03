@@ -3,6 +3,7 @@
 
     <!-- What to call our account type -->
     <string name="ACCOUNT_TYPE">com.gurkensalat.android.xingsync.account</string>
+    <string name="CONTACT_MIME_TYPE">vnd.android.cursor.item/vnd.com.gurkensalat.android.xingsync.profile</string>
 
     <!-- The name of our Login intent -->
     <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
