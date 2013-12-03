@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcelable;
+import android.provider.ContactsContract;
 
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
@@ -63,12 +64,10 @@ public class AccountAuthenticatorService extends Service
 			AccountManager am = AccountManager.get(ctx);
 			if (am.addAccountExplicitly(account, MD5.getInstance().hash(password), null))
 			{
-				String authority = ctx.getString(R.string.CONTACT_CONTENT_AUTHORITY);
-
 				// Set contacts sync for this account.
-				ContentResolver.setIsSyncable(account, authority, 1);
-				ContentResolver.setSyncAutomatically(account, authority, true);
-				ContentResolver.addPeriodicSync(account, authority, new Bundle(), SYNC_PERIOD);
+				ContentResolver.setIsSyncable(account, ContactsContract.AUTHORITY, 1);
+				ContentResolver.setSyncAutomatically(account, ContactsContract.AUTHORITY, true);
+				ContentResolver.addPeriodicSync(account, ContactsContract.AUTHORITY, new Bundle(), SYNC_PERIOD);
 				ContentResolver.setMasterSyncAutomatically(true);
 
 				result = new Bundle();
