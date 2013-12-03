@@ -109,7 +109,7 @@ public class ContactsSyncAdapterService extends Service
 					LOG.info("    About to handle: " + user);
 					if (!(localContacts.containsKey(user.getId())))
 					{
-						addContact(account, user.getDisplayName(), user.getId());
+						addContact(account, user.getId(), user.getDisplayName());
 					}
 				}
 
@@ -127,7 +127,7 @@ public class ContactsSyncAdapterService extends Service
 
 	private static void addContact(Account account, String xingId, String name)
 	{
-		LOG.info("Adding contact: '" + name + "', '" + xingId + "'");
+		LOG.info("      Adding contact: '" + xingId + "', '" + name + "'");
 		ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
 
 		// Create our RawContact
