@@ -66,6 +66,19 @@
                 android:resource="@xml/authenticator" />
         </service>
 
+        <service
+            android:name=".sync.ContactsSyncAdapterService_"
+            android:exported="true"
+            android:process=":contacts" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sync_contacts" />
+        </service>
+
         <activity
             android:name=".sync.AddAccountActivity_"
             android:configChanges="keyboardHidden" >

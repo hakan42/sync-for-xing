@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
     android:accountPreferences="@xml/account_preferences"
-    android:accountType="com.gurkensalat.android.xingsync.account"
+    android:accountType="@string/ACCOUNT_TYPE"
     android:icon="@drawable/icon"
     android:label="@string/app_label"
     android:smallIcon="@drawable/icon" />
