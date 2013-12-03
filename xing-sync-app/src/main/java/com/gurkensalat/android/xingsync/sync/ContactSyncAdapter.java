@@ -11,13 +11,13 @@ import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
 
-/* package protected */class SyncAdapterImpl extends AbstractThreadedSyncAdapter
+/* package protected */class ContactSyncAdapter extends AbstractThreadedSyncAdapter
 {
-	private Logger LOG = LoggerFactory.getLogger(SyncAdapterImpl.class);
+	private Logger LOG = LoggerFactory.getLogger(ContactSyncAdapter.class);
 
 	private Context mContext;
 
-	public SyncAdapterImpl(Context context)
+	public ContactSyncAdapter(Context context)
 	{
 		super(context, true);
 		mContext = context;

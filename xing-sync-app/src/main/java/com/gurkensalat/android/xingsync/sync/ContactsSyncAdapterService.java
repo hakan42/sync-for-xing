@@ -21,7 +21,7 @@ public class ContactsSyncAdapterService extends Service
 {
 	private static Logger LOG = LoggerFactory.getLogger(ContactsSyncAdapterService.class);
 
-	private static SyncAdapterImpl sSyncAdapter = null;
+	private static ContactSyncAdapter sSyncAdapter = null;
 
 	private static ContentResolver mContentResolver = null;
 
@@ -38,11 +38,11 @@ public class ContactsSyncAdapterService extends Service
 		return ret;
 	}
 
-	private SyncAdapterImpl getSyncAdapter()
+	private ContactSyncAdapter getSyncAdapter()
 	{
 		if (sSyncAdapter == null)
 		{
-			sSyncAdapter = new SyncAdapterImpl(this);
+			sSyncAdapter = new ContactSyncAdapter(this);
 		}
 
 		return sSyncAdapter;
