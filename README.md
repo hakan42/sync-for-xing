@@ -18,7 +18,7 @@ few other topics, I started building this client.
 
 Status
 ------
-[![Dependency Status](https://www.versioneye.com/user/projects/526a4290632bac312a0002ab/badge.png)](https://www.versioneye.com/user/projects/526a4290632bac312a0002ab)
+[![Dependency Status](https://www.versioneye.com/user/projects/528f31c4632bac8091000069/badge.png)](https://www.versioneye.com/user/projects/528f31c4632bac8091000069)
 
 
 Maven Site(s)
