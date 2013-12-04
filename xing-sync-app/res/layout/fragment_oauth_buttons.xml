@@ -16,13 +16,15 @@
             android:id="@+id/btn_launch_oauth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/oauth_launch_flow" />
+            android:text="@string/oauth_launch_flow"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btn_clear_credentials"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/oauth_clear_credentials" />
+            android:text="@string/oauth_clear_credentials"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -34,13 +36,15 @@
             android:id="@+id/btn_perform_me_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/oauth_perform_me_call" />
+            android:text="@string/oauth_perform_me_call"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btn_perform_contacts_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/oauth_perform_contacts_call" />
+            android:text="@string/oauth_perform_contacts_call"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>
