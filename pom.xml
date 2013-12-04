@@ -28,7 +28,8 @@
 
     <properties>
         <platform.version>4.1.1.4</platform.version>
-        <platform.sdk.version>14</platform.sdk.version>
+        <platform.min.sdk.version>11</platform.min.sdk.version>
+        <platform.target.sdk.version>18</platform.target.sdk.version>
 
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
@@ -70,7 +71,7 @@
                         <resourceDirectory>${project.basedir}/res</resourceDirectory>
                         <nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
                         <sdk>
-                            <platform>${platform.sdk.version}</platform>
+                            <platform>${platform.target.sdk.version}</platform>
                         </sdk>
                         <undeployBeforeDeploy>false</undeployBeforeDeploy>
                         <release>true</release>
