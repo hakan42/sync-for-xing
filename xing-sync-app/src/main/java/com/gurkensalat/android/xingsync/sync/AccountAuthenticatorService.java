@@ -1,5 +1,7 @@
 package com.gurkensalat.android.xingsync.sync;
 
+import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -179,7 +181,7 @@ public class AccountAuthenticatorService extends Service
 			String api_secret = options.getString("api_secret");
 
 			AccountManager am = AccountManager.get(mContext);
-			String user = account.name.toLowerCase().trim();
+			String user = account.name.toLowerCase(Locale.US).trim();
 			String md5Password = am.getPassword(account);
 			String authToken = MD5.getInstance().hash(user + md5Password);
 
