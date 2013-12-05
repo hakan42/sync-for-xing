@@ -51,6 +51,13 @@ public class ContactsCallTest
 		sb.append("        \"last_name\": \"Acun\",");
 		sb.append("        \"display_name\": \"Murat Acun\",");
 		sb.append("        \"active_email\": null");
+		sb.append("      },");
+		sb.append("      {");
+		sb.append("        \"id\": \"12824542_5078cc\",");
+		sb.append("        \"first_name\": \"Petra\",");
+		sb.append("        \"last_name\": \"Ghotra\",");
+		sb.append("        \"display_name\": \"Petra Ghotra\",");
+		sb.append("        \"active_email\": null");
 		sb.append("      }");
 		sb.append("    ]");
 		sb.append("  }");
@@ -68,7 +75,7 @@ public class ContactsCallTest
 		List<User> actual = testable.parse(json);
 
 		assertThat("Users list could not be created", actual, is(notNullValue()));
-		assertThat("Two users would have to be parsed", actual.size(), is(2));
+		assertThat("Three users would have to be parsed", actual.size(), is(3));
 
 		assertThat("Id #0 not correctly parsed", actual.get(0).getId(), is("6841253"));
 		assertThat("First Name #0 not correctly parsed", actual.get(0).getFirstName(), is("Hasmet"));
@@ -77,5 +84,9 @@ public class ContactsCallTest
 		assertThat("Id #1 not correctly parsed", actual.get(1).getId(), is("4261890"));
 		assertThat("First Name #1 not correctly parsed", actual.get(1).getFirstName(), is("Murat"));
 		assertThat("Last Name #1 not correctly parsed", actual.get(1).getLastName(), is("Acun"));
+
+		assertThat("Id #2 not correctly parsed", actual.get(2).getId(), is("12824542"));
+		assertThat("First Name #2 not correctly parsed", actual.get(2).getFirstName(), is("Petra"));
+		assertThat("Last Name #2 not correctly parsed", actual.get(2).getLastName(), is("Ghotra"));
 	}
 }

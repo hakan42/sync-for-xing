@@ -46,6 +46,13 @@ public class ContactsCall
 			sb.append("        \"last_name\": \"Acun\",");
 			sb.append("        \"display_name\": \"Murat Acun\",");
 			sb.append("        \"active_email\": null");
+			sb.append("      },");
+			sb.append("      {");
+			sb.append("        \"id\": \"12824542_5078cc\",");
+			sb.append("        \"first_name\": \"Petra\",");
+			sb.append("        \"last_name\": \"Ghotra\",");
+			sb.append("        \"display_name\": \"Petra Ghotra\",");
+			sb.append("        \"active_email\": null");
 			sb.append("      }");
 			sb.append("    ]");
 			sb.append("  }");
