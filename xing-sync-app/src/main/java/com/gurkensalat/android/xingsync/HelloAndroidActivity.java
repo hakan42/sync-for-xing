@@ -47,11 +47,11 @@ public class HelloAndroidActivity extends Activity
 		LOG.info("onCreate");
 		super.onCreate(savedInstanceState);
 
-		if (AccountAuthenticatorService.hasAccount(getApplicationContext()))
-		{
-			setContentView(R.layout.main);
-		}
-		else
+		// if (AccountAuthenticatorService.hasAccount(getApplicationContext()))
+		// {
+		// setContentView(R.layout.main);
+		// }
+		// else
 		{
 			Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
