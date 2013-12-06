@@ -37,4 +37,34 @@ public interface SyncPrefs
 	 */
 	@DefaultBoolean(true)
 	boolean debugMockApiCalls();
+
+	@DefaultString("id,first_name,last_name")
+	String fieldsToFetch();
+
+	@DefaultBoolean(false)
+	boolean fetchEmploymentStatus();
+
+	@DefaultBoolean(true)
+	boolean fetchGender();
+
+	@DefaultBoolean(false)
+	boolean fetchBirthDate();
+
+	@DefaultBoolean(false)
+	boolean fetchPrivateAddress();
+
+	@DefaultBoolean(false)
+	boolean fetchBusinessAddress();
+
+	@DefaultBoolean(false)
+	boolean fetchWebProfiles();
+
+	@DefaultBoolean(false)
+	boolean fetchProfessionalExperience();
+
+	@DefaultBoolean(false)
+	boolean fetchPrimaryCompany();
+
+	@DefaultBoolean(false)
+	boolean fetchPermalink();
 }

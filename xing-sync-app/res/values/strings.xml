@@ -11,11 +11,29 @@
     <string name="prefs_account_settings_title">Account Settings</string>
     <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
     <string name="prefs_general_category_title">General Settings</string>
-    
     <string name="prefs_debug_category_title">Debugging Options</string>
     <string name="prefs_debug_mock_api_title">Mock API</string>
     <string name="prefs_debug_mock_api_summary">Mock API Calls</string>
-    
+    <string name="prefs_advanced_category_title">Advanced Settings</string>
+    <string name="prefs_advanced_fetch_employment_status_summary">Fetch employment status</string>
+    <string name="prefs_advanced_fetch_employment_status_title">employment status</string>
+    <string name="prefs_advanced_fetch_gender_summary">Fetch Gender</string>
+    <string name="prefs_advanced_fetch_gender_title">Gender</string>
+    <string name="prefs_advanced_fetch_birth_date_summary">Fetch Birth Date</string>
+    <string name="prefs_advanced_fetch_birth_date_title">Birth Date</string>
+    <string name="prefs_advanced_fetch_private_address_summary">Fetch Private Address</string>
+    <string name="prefs_advanced_fetch_private_address_title">Private Address</string>
+    <string name="prefs_advanced_fetch_business_address_summary">Fetch Business Address</string>
+    <string name="prefs_advanced_fetch_business_address_title">Business Address</string>
+    <string name="prefs_advanced_fetch_web_profiles_summary">Fetch additional web Profiles</string>
+    <string name="prefs_advanced_fetch_web_profiles_title">Web profiles</string>
+    <string name="prefs_advanced_fetch_professional_experience_summary">Fetch Professional Experience</string>
+    <string name="prefs_advanced_fetch_professional_experience_title">professional experience</string>
+    <string name="prefs_advanced_fetch_primary_company_summary">Fetch Primary Company</string>
+    <string name="prefs_advanced_fetch_primary_company_title">Primary company</string>
+    <string name="prefs_advanced_fetch_permalink_summary">Fetch Permalink</string>
+    <string name="prefs_advanced_fetch_permalink_title">permalink</string>
+
     <!-- OAuth stuff -->
     <string name="oauth_launch_flow">Launch OAuth Flow</string>
     <string name="oauth_clear_credentials">Clear Credentials</string>
@@ -26,5 +44,5 @@
     <!-- Xing API Calls -->
     <string name="oauth_perform_me_call">Call Me</string>
     <string name="oauth_perform_contacts_call">Call Contacts</string>
-    
+
 </resources>

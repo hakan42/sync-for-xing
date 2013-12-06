@@ -8,4 +8,52 @@
         android:summary="@string/prefs_debug_mock_api_summary"
         android:title="@string/prefs_debug_mock_api_title" />
 
+    <PreferenceCategory android:title="@string/prefs_advanced_category_title" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_employment_status_key"
+        android:summary="@string/prefs_advanced_fetch_employment_status_summary"
+        android:title="@string/prefs_advanced_fetch_employment_status_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_gender_key"
+        android:summary="@string/prefs_advanced_fetch_gender_summary"
+        android:title="@string/prefs_advanced_fetch_gender_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_birth_date_key"
+        android:summary="@string/prefs_advanced_fetch_birth_date_summary"
+        android:title="@string/prefs_advanced_fetch_birth_date_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_private_address_key"
+        android:summary="@string/prefs_advanced_fetch_private_address_summary"
+        android:title="@string/prefs_advanced_fetch_private_address_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_business_address_key"
+        android:summary="@string/prefs_advanced_fetch_business_address_summary"
+        android:title="@string/prefs_advanced_fetch_business_address_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_web_profiles_key"
+        android:summary="@string/prefs_advanced_fetch_web_profiles_summary"
+        android:title="@string/prefs_advanced_fetch_web_profiles_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_professional_experience_key"
+        android:summary="@string/prefs_advanced_fetch_professional_experience_summary"
+        android:title="@string/prefs_advanced_fetch_professional_experience_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_primary_company_key"
+        android:summary="@string/prefs_advanced_fetch_primary_company_summary"
+        android:title="@string/prefs_advanced_fetch_primary_company_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_advanced_fetch_permalink_key"
+        android:summary="@string/prefs_advanced_fetch_permalink_summary"
+        android:title="@string/prefs_advanced_fetch_permalink_title" />
+
 </PreferenceScreen>

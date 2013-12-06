@@ -8,11 +8,19 @@
 
     <!-- The name of our Login intent -->
     <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
-    
     <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.gurkensalat.android.xingsync.ACCOUNT_SETUP</string>
 
     <!-- Preferences -->
     <string name="prefs_account_settings_key">account_settings</string>
     <string name="prefs_debug_mock_api_calls_key">debug_mock_api_calls</string>
-    
+    <string name="prefs_advanced_fetch_employment_status_key">fetch_employment_status</string>
+    <string name="prefs_advanced_fetch_gender_key">fetch_gender</string>
+    <string name="prefs_advanced_fetch_birth_date_key">fetch_birth_date</string>
+    <string name="prefs_advanced_fetch_private_address_key">fetch_private_address</string>
+    <string name="prefs_advanced_fetch_business_address_key">fetch_business_address</string>
+    <string name="prefs_advanced_fetch_web_profiles_key">fetch_web_profiles</string>
+    <string name="prefs_advanced_fetch_professional_experience_key">fetch_professional_experience</string>
+    <string name="prefs_advanced_fetch_primary_company_key">fetch_primary_company</string>
+    <string name="prefs_advanced_fetch_permalink_key">fetch_permalink</string>
+
 </resources>
