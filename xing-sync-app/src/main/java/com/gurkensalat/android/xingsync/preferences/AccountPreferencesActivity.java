@@ -147,9 +147,11 @@ public class AccountPreferencesActivity extends PreferenceActivity
 				fieldList.append(",").append("professional_experience");
 			}
 
+			// primary company is a sub-field of professional_experience
+			//
 			// if (syncPrefs.fetchPrimaryCompany().get())
 			// {
-			// fieldList.append(",").append("birth_date");
+			// fieldList.append(",").append("primary_company");
 			// }
 
 			if (syncPrefs.fetchPermalink().get())
@@ -157,8 +159,11 @@ public class AccountPreferencesActivity extends PreferenceActivity
 				fieldList.append(",").append("permalink");
 			}
 
-			syncPrefs.edit().fieldsToFetch().put("Banane");
-			// fieldList.toString());
+			LOG.info("collected field list: {}", fieldList.toString());
+
+			syncPrefs.edit().fieldsToFetch().put(fieldList.toString()).apply();
+
+			LOG.info("fieldList saved.");
 		}
 	}
 }
