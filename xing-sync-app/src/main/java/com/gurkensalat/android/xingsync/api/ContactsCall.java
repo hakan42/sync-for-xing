@@ -108,7 +108,7 @@ public class ContactsCall
 
 			callUrl.append(XingOAuthKeys.API_URL_BASE);
 			callUrl.append("/users/me/contacts.json");
-			callUrl.append("?limit=10");
+			callUrl.append("?limit=100");
 			// callUrl.append("&offset=86");
 			// callUrl.append("&order_by=last_name");
 			callUrl.append("&user_fields=").append(syncPrefs.fieldsToFetch().get());
@@ -145,6 +145,17 @@ public class ContactsCall
 				}
 				// Log.i(TAG,"Response : " + responseBuilder.toString());
 				// return responseBuilder.toString();
+
+				LOG.info(responseBuilder.toString());
+
+				try
+				{
+					json = new JSONObject(responseBuilder.toString());
+				}
+				catch (JSONException e)
+				{
+					LOG.error("while parsing answer string", e);
+				}
 			}
 			catch (Exception e)
 			{
