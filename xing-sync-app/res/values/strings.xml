@@ -12,8 +12,10 @@
     <string name="prefs_account_settings_summary">Sync frequency, notifications, etc.</string>
     <string name="prefs_general_category_title">General Settings</string>
     <string name="prefs_debug_category_title">Debugging Options</string>
-    <string name="prefs_debug_mock_api_title">Mock API</string>
-    <string name="prefs_debug_mock_api_summary">Mock API Calls</string>
+    <string name="prefs_debug_mock_api_calls_title">Mock API</string>
+    <string name="prefs_debug_mock_api_calls_summary">Mock API Calls</string>
+    <string name="prefs_debug_save_api_call_results_title">Save Results</string>
+    <string name="prefs_debug_save_api_call_results_summary">Save API Call results</string>
     <string name="prefs_advanced_category_title">Advanced Settings</string>
     <string name="prefs_advanced_fetch_employment_status_summary">Fetch employment status</string>
     <string name="prefs_advanced_fetch_employment_status_title">employment status</string>

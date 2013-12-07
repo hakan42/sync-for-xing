@@ -38,6 +38,12 @@ public interface SyncPrefs
 	@DefaultBoolean(true)
 	boolean debugMockApiCalls();
 
+	/**
+	 * TODO make saveApiCallResults Boolean.FALSE before beta deployment
+	 */
+	@DefaultBoolean(true)
+	boolean saveApiCallResults();
+
 	@DefaultString("id,first_name,last_name")
 	String fieldsToFetch();
 

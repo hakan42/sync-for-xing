@@ -13,6 +13,7 @@
     <!-- Preferences -->
     <string name="prefs_account_settings_key">account_settings</string>
     <string name="prefs_debug_mock_api_calls_key">debug_mock_api_calls</string>
+    <string name="prefs_debug_save_api_call_results_key">debug_save_api_call_results</string>
     <string name="prefs_advanced_fetch_employment_status_key">fetch_employment_status</string>
     <string name="prefs_advanced_fetch_gender_key">fetch_gender</string>
     <string name="prefs_advanced_fetch_birth_date_key">fetch_birth_date</string>

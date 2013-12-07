@@ -5,8 +5,13 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="@string/prefs_debug_mock_api_calls_key"
-        android:summary="@string/prefs_debug_mock_api_summary"
-        android:title="@string/prefs_debug_mock_api_title" />
+        android:summary="@string/prefs_debug_mock_api_calls_summary"
+        android:title="@string/prefs_debug_mock_api_calls_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_debug_save_api_call_results_key"
+        android:summary="@string/prefs_debug_save_api_call_results_summary"
+        android:title="@string/prefs_debug_save_api_call_results_title" />
 
     <PreferenceCategory android:title="@string/prefs_advanced_category_title" />
 
