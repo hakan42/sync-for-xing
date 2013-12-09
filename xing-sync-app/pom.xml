@@ -105,6 +105,16 @@
             </plugin>
 
             <plugin>
+                <groupId>fr.avianey.modjo</groupId>
+                <artifactId>androidgendrawable-maven-plugin</artifactId>
+                <configuration>
+                    <rename>
+                        <button_icon_yellow>icon</button_icon_yellow>
+                    </rename>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <executions>
