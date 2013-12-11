@@ -1,0 +1,147 @@
+{
+   "_comment" : "Reformatted with http://jsonformatter.curiousconcept.com/",
+   "contacts":{
+      "total":2,
+      "users":[
+         {
+            "id":"3382304_c273ad",
+            "first_name":"Hakan",
+            "last_name":"Tandogan",
+            "display_name":"Hakan Tandogan",
+            "employment_status":null,
+            "gender":"m",
+            "birth_date":{
+               "day":5,
+               "month":12,
+               "year":1979
+            },
+            "private_address":{
+               "street":null,
+               "zip_code":null,
+               "city":null,
+               "province":"Hamburg",
+               "country":"Deutschland",
+               "email":"nick0815-xing-test-data@web.de",
+               "phone":null,
+               "fax":null,
+               "mobile_phone":null
+            },
+            "business_address":{
+               "street":"Reeperbahn 1",
+               "zip_code":"20115",
+               "city":"Hamburg",
+               "province":"Hamburg",
+               "country":"DE",
+               "email":"nick.mueller-xing-test-data@software-ag.de",
+               "phone":"49|40|56821147",
+               "fax":"49|40|56821148",
+               "mobile_phone":"49|174|1234567"
+            },
+            "web_profiles":{
+               "other":null,
+               "github":null,
+               "sourceforge":null
+            },
+            "professional_experience":{
+               "primary_company":{
+                  "name":"Software AG [test]",
+                  "url":"http://www.software-ag.de",
+                  "tag":"SOFTWAREAG",
+                  "company_size":"201-500",
+                  "industry":"INFORMATION_TECHNOLOGY_AND_SERVICES",
+                  "title":"Projektleiter [test]",
+                  "career_level":null,
+                  "description":null,
+                  "begin_date":"2010-01",
+                  "end_date":null
+               },
+               "non_primary_companies":[
+                  {
+                     "name":"Software AG [test]",
+                     "title":"Software Entwickler [test]",
+                     "url":"http://www.software-ag.de",
+                     "description":null,
+                     "career_level":"PROFESSIONAL_EXPERIENCED",
+                     "begin_date":"2007-01",
+                     "industry":"INFORMATION_TECHNOLOGY_AND_SERVICES",
+                     "tag":"SOFTWAREAG",
+                     "end_date":"2009-12",
+                     "company_size":"201-500"
+                  },
+                  {
+                     "name":"Software AG [test]",
+                     "title":"Software Entwickler [test]",
+                     "url":"http://www.software-ag.de",
+                     "description":null,
+                     "career_level":"ENTRY_LEVEL",
+                     "begin_date":"2004-01",
+                     "industry":"INFORMATION_TECHNOLOGY_AND_SERVICES",
+                     "tag":"SOFTWAREAG",
+                     "end_date":"2006-12",
+                     "company_size":"201-500"
+                  }
+               ],
+               "awards":null
+            },
+            "permalink":"https://www.xing.com/profile/Hakan_Tandogan"
+         },
+         {
+            "id":"10244846_fd25e9",
+            "first_name":"Frohwalt",
+            "last_name":"Egerer",
+            "display_name":"Frohwalt Egerer",
+            "employment_status":null,
+            "gender":"m",
+            "birth_date":{
+               "day":1,
+               "month":1,
+               "year":1981
+            },
+            "private_address":{
+               "street":null,
+               "zip_code":"20515",
+               "city":"Hamburg",
+               "province":null,
+               "country":null,
+               "email":null,
+               "phone":null,
+               "fax":null,
+               "mobile_phone":null
+            },
+            "business_address":{
+               "street":"Grindelalle 12",
+               "zip_code":"20115",
+               "city":"Hamburg",
+               "province":"Hamburg",
+               "country":"DE",
+               "email":"sebastian.schulze-xing-test-data@it-solutions.de",
+               "phone":null,
+               "fax":"49|40|56821148",
+               "mobile_phone":"49|174|1234567"
+            },
+            "web_profiles":{
+
+            },
+            "professional_experience":{
+               "primary_company":{
+                  "name":"IT Solutions [test]",
+                  "url":"http://www.it-solutions.de",
+                  "tag":"ITSOLUTIONS",
+                  "company_size":"201-500",
+                  "industry":"INFORMATION_TECHNOLOGY_AND_SERVICES",
+                  "title":"Projektleiter [test]",
+                  "career_level":"PROFESSIONAL_EXPERIENCED",
+                  "description":null,
+                  "begin_date":"2010-01",
+                  "end_date":null
+               },
+               "non_primary_companies":[
+
+               ],
+               "awards":null
+            },
+            "permalink":"https://www.xing.com/profile/Frohwalt_Egerer"
+         }
+      ]
+   }
+}
