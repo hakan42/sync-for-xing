@@ -1,5 +1,5 @@
-xing-sync
-=========
+Sync for XING
+=============
 Automated Android Contact Synchronization with XING
 
 Why?
