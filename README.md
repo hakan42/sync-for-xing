@@ -30,6 +30,10 @@ Contributing
 ------
 Please see our [Contibution Documents](https://github.com/hakan42/xing-sync/blob/master/CONTRIBUTING.md)
 
-License
+Privacy Policy
+--------------
+Even though nothing special is declared, please see our [Privacy Policy](https://github.com/hakan42/xing-sync/blob/master/CONTRIBUTING.md)
+
+Licence
 -------
 xing-sync is licenced under the [Apache 2.0 Licence](http://www.apache.org/licenses/LICENSE-2.0)
