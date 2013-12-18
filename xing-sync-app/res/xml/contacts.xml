@@ -4,7 +4,7 @@
     <ContactsDataKind
         android:detailColumn="data3"
         android:detailSocialSummary="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:mimeType="@string/CONTACT_MIME_TYPE"
         android:summaryColumn="data2" />
 
