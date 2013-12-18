@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Label for this package -->
-    <string name="app_label">Contact Sync for XING</string>
+    <string name="app_label">Sync for XING</string>
 
     <!-- Main screen -->
     <string name="main_hello_android_title">Hello Android World</string>
