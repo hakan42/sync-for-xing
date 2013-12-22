@@ -17,8 +17,8 @@
 
     <inceptionYear>2012</inceptionYear>
     <!-- <url>http://hakan42.github.com/xing-sync/</url> -->
-    <url>http://xing-sync.gurkensalat.com/</url>
-    <description>Automated Android Contact Synchronization with XING</description>
+    <url>http://sync-for-xing.gurkensalat.com/</url>
+    <description>Android Synchronization with XING</description>
 
     <modules>
         <module>xing-sync-app</module>
@@ -36,14 +36,14 @@
     </properties>
 
     <scm>
-        <url>https://github.com/hakan42/xing-sync</url>
-        <connection>scm:git:https://github.com/hakan42/xing-sync.git</connection>
-        <developerConnection>scm:git:https://github.com/hakan42/xing-sync.git</developerConnection>
+        <url>https://github.com/hakan42/sync-for-xing</url>
+        <connection>scm:git:https://github.com/hakan42/sync-for-xing.git</connection>
+        <developerConnection>scm:git:https://github.com/hakan42/sync-for-xing.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/hakan42/xing-sync/issues</url>
+        <url>https://github.com/hakan42/sync-for-xing/issues</url>
     </issueManagement>
 
     <distributionManagement>
