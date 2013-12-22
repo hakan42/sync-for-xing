@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 minimum_perc = 80
 
-[xing-sync.xing-sync-app-strings]
+[sync-for-xing.xing-sync-app-strings]
 file_filter = xing-sync-app/res/values-<lang>/strings.xml
 source_file = xing-sync-app/res/values/strings.xml
 source_lang = en
