@@ -1,9 +1,8 @@
 package com.gurkensalat.android.xingsync;
 
-import android.app.Fragment;
+import org.androidannotations.annotations.EFragment;
 
-import com.googlecode.androidannotations.annotations.EFragment;
-import com.gurkensalat.android.xingsync.R;
+import android.app.Fragment;
 
 @EFragment(R.layout.fragment_main_hello_android)
 public class HelloAndroidFragment extends Fragment

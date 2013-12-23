@@ -1,8 +1,9 @@
 package com.gurkensalat.android.xingsync.preferences;
 
-import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultBoolean;
-import com.googlecode.androidannotations.annotations.sharedpreferences.DefaultString;
-import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPref;
+import org.androidannotations.annotations.sharedpreferences.DefaultBoolean;
+import org.androidannotations.annotations.sharedpreferences.DefaultString;
+import org.androidannotations.annotations.sharedpreferences.SharedPref;
+
 import com.gurkensalat.android.xingsync.sync.AddAccountActivity;
 
 @SharedPref(value = SharedPref.Scope.UNIQUE)

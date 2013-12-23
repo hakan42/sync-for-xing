@@ -1,8 +1,9 @@
 package com.gurkensalat.android.xingsync.oauth;
 
+import org.androidannotations.annotations.EFragment;
+
 import android.app.Fragment;
 
-import com.googlecode.androidannotations.annotations.EFragment;
 import com.gurkensalat.android.xingsync.R;
 
 @EFragment(R.layout.fragment_oauth_results)

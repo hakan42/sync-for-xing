@@ -2,6 +2,8 @@ package com.gurkensalat.android.xingsync.sync;
 
 import java.util.Locale;
 
+import org.androidannotations.annotations.EService;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,11 +21,8 @@ import android.os.IBinder;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
 
-import com.googlecode.androidannotations.annotations.EService;
-import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.preferences.AccountPreferencesActivity;
-import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;

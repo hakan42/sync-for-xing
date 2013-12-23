@@ -1,13 +1,11 @@
 package com.gurkensalat.android.xingsync.api;
 
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.googlecode.androidannotations.annotations.EBean;
-import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
-import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EBean
 public class MeCall // implements XingApiCall

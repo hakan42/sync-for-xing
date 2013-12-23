@@ -2,6 +2,11 @@ package com.gurkensalat.android.xingsync;
 
 import java.util.List;
 
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,15 +18,9 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.TextView;
 
-import com.googlecode.androidannotations.annotations.Bean;
-import com.googlecode.androidannotations.annotations.Click;
-import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.ViewById;
-import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import com.gurkensalat.android.xingsync.api.ContactsCall;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
-import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 
 @EActivity
