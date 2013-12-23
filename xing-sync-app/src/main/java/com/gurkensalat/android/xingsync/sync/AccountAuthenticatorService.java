@@ -57,6 +57,42 @@ public class AccountAuthenticatorService extends Service
 			mContext = context;
 		}
 
+		public static void listAccounts(Context ctx)
+		{
+			AccountManager am = AccountManager.get(ctx);
+			LOG.info("Account manager: " + am);
+
+			Account[] allAccounts = am.getAccounts();
+			if (allAccounts == null)
+			{
+				LOG.info("All known accounts: " + "EMPTY");
+			}
+			else
+			{
+				LOG.info("All known accounts: " + allAccounts.length);
+				for (int i = 0; i < allAccounts.length; i++)
+				{
+					LOG.info("    '" + allAccounts[i].type + "' / '" + allAccounts[i].name + "'");
+				}
+			}
+
+			LOG.info("My type: '" + ctx.getString(R.string.ACCOUNT_TYPE) + "'");
+			Account[] myAccounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
+			if (myAccounts == null)
+			{
+				LOG.info("My known accounts: " + "EMPTY");
+			}
+			else
+			{
+				LOG.info("My known accounts: " + myAccounts.length);
+				for (int i = 0; i < myAccounts.length; i++)
+				{
+					LOG.info("    '" + myAccounts[i].type + "' / '" + myAccounts[i].name + "'");
+				}
+			}
+
+		}
+
 		public static Bundle addAccount(Context ctx, String username, String password)
 		{
 			LOG.info("addAccount('" + username + "', '" + password + "')");
@@ -82,6 +118,7 @@ public class AccountAuthenticatorService extends Service
 
 		public static Boolean hasAccount(Context ctx)
 		{
+			LOG.info("hasAccount");
 			AccountManager am = AccountManager.get(ctx);
 			Account[] accounts = am.getAccountsByType(ctx.getString(R.string.ACCOUNT_TYPE));
 			if (accounts != null && accounts.length > 0)
@@ -261,6 +298,11 @@ public class AccountAuthenticatorService extends Service
 		Bundle result = AccountAuthenticatorImpl.addAccount(ctx, username, password);
 		if (authResponse != null)
 			authResponse.onResult(result);
+	}
+
+	public static void listAccounts(Context ctx)
+	{
+		AccountAuthenticatorImpl.listAccounts(ctx);
 	}
 
 	public static Boolean hasAccount(Context ctx)

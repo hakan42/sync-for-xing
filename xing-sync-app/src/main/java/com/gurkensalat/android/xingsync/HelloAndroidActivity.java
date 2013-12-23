@@ -47,6 +47,8 @@ public class HelloAndroidActivity extends Activity
 		LOG.info("onCreate");
 		super.onCreate(savedInstanceState);
 
+		AccountAuthenticatorService.listAccounts(getApplicationContext());
+
 		// if (AccountAuthenticatorService.hasAccount(getApplicationContext()))
 		// {
 		// setContentView(R.layout.main);
