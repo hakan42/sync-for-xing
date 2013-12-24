@@ -3,7 +3,6 @@ package com.gurkensalat.android.xingsync.sync;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.FragmentById;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.slf4j.Logger;
@@ -18,9 +17,6 @@ import android.widget.TextView;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
-import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
-import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
-import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
@@ -30,15 +26,6 @@ public class AddAccountActivity extends Activity
 	private Logger LOG = LoggerFactory.getLogger(AddAccountActivity.class);
 
 	private static String LOGIN_INTENT_ACTION;
-
-	@FragmentById(R.id.login_layout_fragment_oauth_secrets)
-	OAuthSecretsFragment secretsFragment;
-
-	@FragmentById(R.id.login_layout_fragment_oauth_buttons)
-	OAuthButtonsFragment buttonsFragment;
-
-	@FragmentById(R.id.login_layout_fragment_oauth_results)
-	OAuthResultsFragment resultsFragment;
 
 	@ViewById(R.id.oauth_token)
 	TextView oauthToken;
