@@ -65,12 +65,12 @@ public class HelloAndroidActivity extends Activity
 		else
 		{
 			LOG.info("No, no account of appropiate type");
-			// setContentView(R.layout.main);
+			setContentView(R.layout.login);
 
-			Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-
-			startActivity(intent);
+			// Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+			// intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+			//
+			// startActivity(intent);
 		}
 	}
 

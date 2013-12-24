@@ -6,36 +6,14 @@
     android:orientation="vertical" >
 
     <fragment
-        android:id="@+id/login_layout_fragment_oauth_secrets"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_"
+        android:id="@+id/login_layout_fragment_oauth_new_account"
+        android:name="com.gurkensalat.android.xingsync.oauth.OAuthNewAccountFragment_"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment_"
-        tools:layout="@layout/fragment_oauth_secrets" >
-    </fragment>
-
-    <fragment
-        android:id="@+id/login_layout_fragment_oauth_buttons"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="?android:attr/actionBarSize"
-        android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_"
-        tools:layout="@layout/fragment_oauth_buttons" >
-    </fragment>
-
-    <fragment
-        android:id="@+id/login_layout_fragment_oauth_results"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="?android:attr/actionBarSize"
-        android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_"
-        tools:layout="@layout/fragment_oauth_results" >
+        class="com.gurkensalat.android.xingsync.oauth.OAuthNewAccountFragment_"
+        tools:layout="@layout/fragment_oauth_new_account" >
     </fragment>
 
 </LinearLayout>

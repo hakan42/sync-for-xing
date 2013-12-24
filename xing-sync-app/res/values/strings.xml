@@ -42,6 +42,13 @@
     <string name="oauth_results_title">OAuth Results</string>
     <string name="oauth_token_title">Token</string>
     <string name="oauth_token_secret_title">Token Secret</string>
+    <string name="oauth_login">Login via XING</string>
+    <string name="oauth_introductory_blurb">Contact Sync for XING uses OAuth technology to log you into XING. Please click the button
+        above which will redirect you to the XING approval page in the mobile browser. After you approve the application
+        you will be returned to Contact Sync for XING</string>
+    <string name="oauth_introductory_blurb_no_account">If you don\'t have a XING account you can create one with either
+        the mobile browser or using your desktop browser at http://www.xing.com/</string>
+    <string name="oauth_mock_hint">Attention: App running in Mock mode!</string>
 
     <!-- Xing API Calls -->
     <string name="oauth_perform_me_call">Call Me</string>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6.0dip"
+        android:text="@string/oauth_introductory_blurb"
+        android:textAppearance="?android:textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6.0dip"
+        android:text="@string/oauth_introductory_blurb_no_account"
+        android:textAppearance="?android:textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6.0dip"
+        android:text="@string/oauth_mock_hint"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/real_oauth_call"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4.0dip"
+        android:contentDescription="@string/oauth_login"
+        android:focusable="true"
+        android:src="@drawable/login_grey_18" />
+
+</LinearLayout>
