@@ -1,13 +1,10 @@
 package com.gurkensalat.android.xingsync;
 
-import java.util.List;
-
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,17 +17,17 @@ import android.widget.TextView;
 
 import com.gurkensalat.android.xingsync.api.ContactsCall;
 import com.gurkensalat.android.xingsync.api.MeCall;
-import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
+import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
 
 @EActivity
 public class HelloAndroidActivity extends Activity
 {
 	private static Logger LOG = LoggerFactory.getLogger(HelloAndroidActivity.class);
 
-	@ViewById(R.id.oauth_api_call_result)
-	TextView oauth_api_call_result;
+	@ViewById(R.id.oauth_mock_hint)
+	TextView oauth_mock_hint;
 
 	@Bean
 	ContactsCall contactsCall;
@@ -65,53 +62,16 @@ public class HelloAndroidActivity extends Activity
 		else
 		{
 			LOG.info("No, no account of appropiate type");
+
+			// TODO make this dependent on preference
+			// oauth_mock_hint.setVisibility(View.VISIBLE);
+
 			setContentView(R.layout.login);
 
 			// Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
 			// intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 			//
 			// startActivity(intent);
-		}
-	}
-
-	@Click(R.id.btn_perform_contacts_call)
-	void performContactsCall(View clickedView)
-	{
-		LOG.info("About to call 'contacts' api method");
-		if (contactsCall != null)
-		{
-			String text = "Call 'Contacts'";
-			text = text + "\n";
-
-			JSONObject json = contactsCall.perform();
-			displayResults(text, json);
-
-			List<User> users = contactsCall.parse(json);
-			if (users != null)
-			{
-				displayAdditionalString(users.toString());
-			}
-		}
-	}
-
-	@Click(R.id.btn_perform_me_call)
-	void performMeCall(View clickedView)
-	{
-		LOG.info("About to call 'me' api method");
-		if (meCall != null)
-		{
-
-			String text = "Call 'Me'";
-			text = text + "\n";
-
-			JSONObject json = meCall.perform();
-			displayResults(text, json);
-
-			User user = meCall.performAndParse();
-			if (user != null)
-			{
-				displayAdditionalString(user.toString());
-			}
 		}
 	}
 
@@ -123,22 +83,14 @@ public class HelloAndroidActivity extends Activity
 		syncPrefs.edit().oauth_token_secret().put("").apply();
 	}
 
-	private void displayResults(String text, JSONObject json)
+	@Click(R.id.btn_oauth_login)
+	void launchOAuthLogin(View clickedView)
 	{
-		if (json != null)
-		{
-			text = text + json.toString();
-			text = text + "\n";
-		}
+		LOG.info("About to launch OAuth dance");
 
-		oauth_api_call_result.setText(text);
-	}
-
-	private void displayAdditionalString(String additionalText)
-	{
-		if (additionalText != null)
-		{
-			oauth_api_call_result.setText(oauth_api_call_result.getText() + "\n" + additionalText);
-		}
+		// Do we really need the NEW_TASK?
+		// http://stackoverflow.com/questions/3918517/calling-startactivity-from-outside-of-an-activity-context
+		AddAccountActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+		finish();
 	}
 }

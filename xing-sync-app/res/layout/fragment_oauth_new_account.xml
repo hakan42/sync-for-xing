@@ -19,6 +19,7 @@
         android:textAppearance="?android:textAppearanceSmall" />
 
     <TextView
+        android:id="@+id/oauth_mock_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="6.0dip"
@@ -27,7 +28,7 @@
         android:visibility="gone" />
 
     <ImageButton
-        android:id="@+id/real_oauth_call"
+        android:id="@+id/btn_oauth_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4.0dip"
