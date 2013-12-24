@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.gurkensalat.android.xingsync.api.ContactsCall;
 import com.gurkensalat.android.xingsync.api.MeCall;
+import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 import com.gurkensalat.android.xingsync.sync.AddAccountActivity_;
@@ -90,7 +91,7 @@ public class HelloAndroidActivity extends Activity
 
 		// Do we really need the NEW_TASK?
 		// http://stackoverflow.com/questions/3918517/calling-startactivity-from-outside-of-an-activity-context
-		AddAccountActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+		PrepareRequestTokenActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
 		finish();
 	}
 }
