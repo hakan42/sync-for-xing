@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EActivity
 public class PrepareRequestTokenActivity extends Activity

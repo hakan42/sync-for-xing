@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EBean
 public class ContactsCall

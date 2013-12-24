@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.gurkensalat.android.xingsync.api.ContactsCall;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 import com.gurkensalat.android.xingsync.sync.AccountAuthenticatorService;
 
 @EActivity

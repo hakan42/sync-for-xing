@@ -21,6 +21,8 @@ import com.gurkensalat.android.xingsync.api.User;
 import com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment;
 import com.gurkensalat.android.xingsync.oauth.OAuthSecretsFragment;
+import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 @EActivity
 public class AddAccountActivity extends Activity

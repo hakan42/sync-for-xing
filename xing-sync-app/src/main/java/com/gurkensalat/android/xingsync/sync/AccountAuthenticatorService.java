@@ -23,6 +23,7 @@ import android.provider.ContactsContract;
 
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.preferences.AccountPreferencesActivity;
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
 import fm.last.android.activity.AccountAccessPrompt;
 import fm.last.api.MD5;

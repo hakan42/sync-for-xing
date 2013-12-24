@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
+
 @EBean
 public class MeCall // implements XingApiCall
 {
