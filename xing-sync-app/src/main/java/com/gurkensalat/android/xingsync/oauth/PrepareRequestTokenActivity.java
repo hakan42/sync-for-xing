@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
@@ -62,9 +63,12 @@ public class PrepareRequestTokenActivity extends Activity
 	public void onNewIntent(Intent intent)
 	{
 		LOG.info("onNewIntent()");
+
+		String oauthCallbackScheme = getApplicationContext().getString(R.string.oauth_callback_scheme);
+
 		super.onNewIntent(intent);
 		final Uri uri = intent.getData();
-		if (uri != null && uri.getScheme().equals(XingOAuthKeys.OAUTH_CALLBACK_SCHEME))
+		if (uri != null && uri.getScheme().equals(oauthCallbackScheme))
 		{
 			LOG.info("Callback received : " + uri);
 			LOG.info("Retrieving Access Token");

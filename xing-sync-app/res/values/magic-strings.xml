@@ -10,6 +10,9 @@
     <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
     <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.gurkensalat.android.xingsync.ACCOUNT_SETUP</string>
 
+    <!-- OAuth configuration -->
+    <string name="oauth_callback_scheme">x-oauthflow</string>
+    <string name="oauth_callback_host">callback</string>
     <!-- Preferences -->
     <string name="prefs_account_settings_key">account_settings</string>
     <string name="prefs_debug_mock_api_calls_key">debug_mock_api_calls</string>

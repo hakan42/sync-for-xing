@@ -35,21 +35,6 @@ public class XingOAuthKeys
     /**
      * Blurb.
      */
-    public static final String OAUTH_CALLBACK_SCHEME = "x-oauthflow";
-
-    /**
-     * Blurb.
-     */
-    public static final String OAUTH_CALLBACK_HOST   = "callback";
-
-    /**
-     * Blurb.
-     */
-    public static final String OAUTH_CALLBACK_URL    = OAUTH_CALLBACK_SCHEME + "://" + OAUTH_CALLBACK_HOST;
-
-    /**
-     * Blurb.
-     */
     public static final String ENCODING              = "UTF-8";
 
     /**

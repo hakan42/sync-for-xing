@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 
 /**
@@ -60,8 +61,12 @@ public class OAuthRequestTokenTask extends AsyncTask<Void, Void, Void>
 
 		try
 		{
+			String oauthCallbackScheme = context.getString(R.string.oauth_callback_scheme);
+			String oauthCallbackHost = context.getString(R.string.oauth_callback_host);
+			String oauthCallbackUrl = oauthCallbackScheme + "://" + oauthCallbackHost;
+
 			LOG.info("Retrieving request token from XING servers");
-			final String url = provider.retrieveRequestToken(consumer, XingOAuthKeys.OAUTH_CALLBACK_URL);
+			final String url = provider.retrieveRequestToken(consumer, oauthCallbackUrl);
 			LOG.info("Popping a browser with the authorize URL : " + url);
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url)).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
 			        | Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_FROM_BACKGROUND);
