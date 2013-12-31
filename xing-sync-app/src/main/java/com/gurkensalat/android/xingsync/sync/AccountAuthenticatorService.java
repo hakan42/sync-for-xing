@@ -48,6 +48,8 @@ public class AccountAuthenticatorService extends Service
 
 	private static class AccountAuthenticatorImpl extends AbstractAccountAuthenticator
 	{
+		private static Logger LOG = LoggerFactory.getLogger(AccountAuthenticatorImpl.class);
+
 		private Context mContext;
 
 		public AccountAuthenticatorImpl(Context context)
