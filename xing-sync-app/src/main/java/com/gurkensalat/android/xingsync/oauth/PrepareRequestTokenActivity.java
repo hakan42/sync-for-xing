@@ -1,14 +1,11 @@
 package com.gurkensalat.android.xingsync.oauth;
 
-import java.net.URLEncoder;
-
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.OAuthProvider;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
-
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.scribe.builder.ServiceBuilder;
+import org.scribe.builder.api.XingApi;
+import org.scribe.model.Token;
+import org.scribe.oauth.OAuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +24,7 @@ public class PrepareRequestTokenActivity extends Activity
 {
 	private static Logger LOG = LoggerFactory.getLogger(PrepareRequestTokenActivity.class);
 
-	private OAuthConsumer consumer;
-	private OAuthProvider provider;
+	private OAuthService service;
 
 	@Pref
 	SyncPrefs_ syncPrefs;
@@ -41,18 +37,35 @@ public class PrepareRequestTokenActivity extends Activity
 		try
 		{
 			System.setProperty("debug", "true");
-			this.consumer = new CommonsHttpOAuthConsumer(XingOAuthKeys.CONSUMER_KEY, XingOAuthKeys.CONSUMER_SECRET);
-			this.provider = new CommonsHttpOAuthProvider(XingOAuthKeys.REQUEST_URL + "?scope="
-			        + URLEncoder.encode(XingOAuthKeys.SCOPE, XingOAuthKeys.ENCODING), XingOAuthKeys.ACCESS_URL,
-			        XingOAuthKeys.AUTHORIZE_URL);
+
+			// Step One: Create the OAuthService object
+			ServiceBuilder builder = new ServiceBuilder().provider(XingApi.class).apiKey(XingOAuthKeys.CONSUMER_KEY)
+			        .apiSecret(XingOAuthKeys.CONSUMER_SECRET);
+
+			String oauthCallbackScheme = getString(R.string.oauth_callback_scheme);
+			String oauthCallbackHost = getString(R.string.oauth_callback_host);
+			String oauthCallbackUrl = oauthCallbackScheme + "://" + oauthCallbackHost;
+
+			// TODO productive key is broken, have to use "oob"
+			// oauthCallbackUrl = "oob";
+
+			builder = builder.callback(oauthCallbackUrl);
+
+			service = builder.build();
+
+			// Request Token cannot be obtained here, we would get
+			// NetworkOnMainThreadException exceptions
 		}
 		catch (Exception e)
 		{
-			LOG.error("Error creating consumer / provider", e);
+			LOG.error("Error creating OAuthService", e);
 		}
 
 		LOG.info("Starting task to retrieve request token.");
-		new OAuthRequestTokenTask(this, consumer, provider).execute();
+
+		// TODO Avoid passing the current prefs into request task
+		SharedPreferences prefs = syncPrefs.getSharedPreferences();
+		new OAuthRequestTokenTask(this, prefs, service).execute();
 	}
 
 	/**
@@ -64,19 +77,27 @@ public class PrepareRequestTokenActivity extends Activity
 	{
 		LOG.info("onNewIntent()");
 
-		String oauthCallbackScheme = getApplicationContext().getString(R.string.oauth_callback_scheme);
+		String oauthCallbackScheme = getString(R.string.oauth_callback_scheme);
 
 		super.onNewIntent(intent);
 		final Uri uri = intent.getData();
 		if (uri != null && uri.getScheme().equals(oauthCallbackScheme))
 		{
 			LOG.info("Callback received : " + uri);
-			LOG.info("Retrieving Access Token");
+
 			// TODO Avoid passing the current prefs into access task
 			SharedPreferences prefs = syncPrefs.getSharedPreferences();
-			new RetrieveAccessTokenTask(this, consumer, provider, prefs).execute(uri);
+			String token = prefs.getString(XingOAuthKeys.REQUEST_TOKEN, null);
+			String secret = prefs.getString(XingOAuthKeys.REQUEST_TOKEN_SECRET, null);
+
+			// TODO how to access the request token?
+			// Put in preferences and re-fetch it maybe?
+			Token requestToken = new Token(token, secret); // service.getRequestToken();
+			LOG.info("Request Token is: '" + requestToken + "'");
+
+			LOG.info("Retrieving Access Token");
+			new RetrieveAccessTokenTask(getApplicationContext(), prefs, service, requestToken).execute(uri);
 			finish();
 		}
 	}
-
 }

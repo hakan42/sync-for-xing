@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.apache.http.HttpResponse;
@@ -17,6 +14,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.scribe.model.OAuthRequest;
+import org.scribe.model.Response;
+import org.scribe.model.Verb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -99,10 +99,19 @@ public class ContactsCall
 			//
 			// OAuthConsumer consumer = new DefaultOAuthConsumer(CONSUMER_KEY,
 			// CONSUMER_SECRET);
-			OAuthConsumer consumer = new CommonsHttpOAuthConsumer(XingOAuthKeys.CONSUMER_KEY, XingOAuthKeys.CONSUMER_SECRET);
-			LOG.info("    consumer: {}", consumer);
-			consumer.setTokenWithSecret(access_token, token_secret);
-			LOG.info("    consumer: {}", consumer);
+
+			OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.twitter.com/1/account/verify_credentials.xml");
+			// service.signRequest(accessToken, request); // the access token
+			// from step 4
+			Response response = request.send();
+			System.out.println(response.getBody());
+
+			// OAuthConsumer consumer = new
+			// CommonsHttpOAuthConsumer(XingOAuthKeys.CONSUMER_KEY,
+			// XingOAuthKeys.CONSUMER_SECRET);
+			// LOG.info("    consumer: {}", consumer);
+			// consumer.setTokenWithSecret(access_token, token_secret);
+			// LOG.info("    consumer: {}", consumer);
 
 			StringBuilder callUrl = new StringBuilder();
 
@@ -120,21 +129,22 @@ public class ContactsCall
 				// create an HTTP request to a protected resource
 				LOG.info("    url: {}", callUrl.toString());
 
-				DefaultHttpClient httpclient = new DefaultHttpClient();
-				LOG.info("    httpclient: {}", httpclient);
+				// DefaultHttpClient httpclient = new DefaultHttpClient();
+				// LOG.info("    httpclient: {}", httpclient);
+				//
+				// HttpGet request = new HttpGet(callUrl.toString());
+				// LOG.info("    request: {}", request);
+				//
+				// // sign the request
+				// consumer.sign(request);
+				// LOG.info("    consumer: {}", consumer);
+				//
+				// // send the request
+				// HttpResponse response = httpclient.execute(request);
+				// LOG.info("    status : {}", response.getStatusLine());
 
-				HttpGet request = new HttpGet(callUrl.toString());
-				LOG.info("    request: {}", request);
-
-				// sign the request
-				consumer.sign(request);
-				LOG.info("    consumer: {}", consumer);
-
-				// send the request
-				HttpResponse response = httpclient.execute(request);
-				LOG.info("    status : {}", response.getStatusLine());
-
-				InputStream data = response.getEntity().getContent();
+				InputStream data = null;
+				// response.getEntity().getContent();
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(data));
 				String responseLine;
 				StringBuilder responseBuilder = new StringBuilder();

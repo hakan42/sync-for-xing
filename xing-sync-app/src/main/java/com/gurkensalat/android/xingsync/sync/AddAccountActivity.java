@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.gurkensalat.android.xingsync.R;
 import com.gurkensalat.android.xingsync.api.MeCall;
 import com.gurkensalat.android.xingsync.api.User;
+import com.gurkensalat.android.xingsync.keys.XingOAuthKeys;
 import com.gurkensalat.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.gurkensalat.android.xingsync.preferences.SyncPrefs_;
 
@@ -66,6 +68,14 @@ public class AddAccountActivity extends Activity
 		String session_key = syncPrefs.oauth_token_secret().get();
 		// String pass;
 
+		// TODO obtain data from AA SyncPrefs object...
+		SharedPreferences prefs = syncPrefs.getSharedPreferences();
+		LOG.info("====== REQUEST_TOKEN        '" + prefs.getString(XingOAuthKeys.REQUEST_TOKEN, "unset") + "'");
+		LOG.info("====== REQUEST_TOKEN_SECRET '" + prefs.getString(XingOAuthKeys.REQUEST_TOKEN_SECRET, "unset") + "'");
+		LOG.info("====== ACCESS_TOKEN         '" + prefs.getString(XingOAuthKeys.ACCESS_TOKEN, "unset") + "'");
+		LOG.info("====== ACCESS_TOKEN_SECRET  '" + prefs.getString(XingOAuthKeys.ACCESS_TOKEN_SECRET, "unset") + "'");
+		session_key = prefs.getString(XingOAuthKeys.ACCESS_TOKEN, "");
+
 		// try
 		// {
 		// new CheckUpdatesTask().execute((Void) null);
@@ -99,6 +109,8 @@ public class AddAccountActivity extends Activity
 		// if (!userDisplayName.equals("") && !session_key.equals(""))
 		if (!session_key.equals(""))
 		{
+			LOG.info("Session key: '" + session_key + "'");
+
 			// if (getIntent().getAction() != null &&
 			// getIntent().getAction().equals(Intent.ACTION_SEARCH))
 			// {
@@ -134,10 +146,16 @@ public class AddAccountActivity extends Activity
 			//
 			// else
 
+			Intent intent = getIntent();
 			if (getIntent().getAction() != null && getIntent().getAction().equals(LOGIN_INTENT_ACTION))
 			{
-				Intent intent = getIntent();
 				Bundle extras = intent.getExtras();
+				LOG.info("Intent extras: " + extras);
+				if (extras == null)
+				{
+					extras = new Bundle();
+				}
+
 				if (extras != null)
 				{
 					userDisplayName = "default xing user";
@@ -171,11 +189,14 @@ public class AddAccountActivity extends Activity
 			// sendBroadcast(i);
 			// }
 			finish();
-			return;
 		}
+		else
+		{
+			LOG.info("Session key: '" + session_key + "'");
+			LOG.info("Session key was not available");
 
-		setContentView(R.layout.login);
-
+			setContentView(R.layout.login);
+		}
 		// setContentView(R.layout.login);
 		// mPassField = (EditText) findViewById(R.id.password);
 		// mUserField = (EditText) findViewById(R.id.username);

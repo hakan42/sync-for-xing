@@ -21,7 +21,7 @@ public class MeCall // implements XingApiCall
 	{
 		JSONObject json = new JSONObject();
 
-		if (syncPrefs.debugMockApiCalls().get())
+		if (syncPrefs.debugMockApiCalls().get() || true)
 		{
 			StringBuffer sb = new StringBuffer(1024);
 
