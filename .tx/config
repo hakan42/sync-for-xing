@@ -7,3 +7,9 @@ file_filter = xing-sync-app/res/values-<lang>/strings.xml
 source_file = xing-sync-app/res/values/strings.xml
 source_lang = en
 type = ANDROID
+
+[android-commons-oss.android-commons-account-sync-strings]
+file_filter = android-commons-account-sync/res/values-<lang>/common-strings.xml
+source_file = android-commons-account-sync/res/values/common-strings.xml
+source_lang = en
+type = ANDROID
