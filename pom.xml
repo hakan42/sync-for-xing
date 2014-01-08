@@ -23,13 +23,15 @@
     <modules>
         <module>xing-sync-app</module>
         <module>xing-sync-example-data</module>
-        <module>xing-sync-it</module>
+        <!-- <module>xing-sync-it</module> -->
     </modules>
 
     <properties>
         <platform.version>4.1.1.4</platform.version>
         <platform.min.sdk.version>11</platform.min.sdk.version>
         <platform.target.sdk.version>18</platform.target.sdk.version>
+
+        <gurkensalat-android-commons.version>0.2.0-SNAPSHOT</gurkensalat-android-commons.version>
 
         <!-- The device setting must be defined in the developer settings -->
         <!-- <android.device>emulator</android.device> -->
@@ -56,6 +58,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.gurkensalat.android.commons</groupId>
+                <artifactId>android-commons-account-sync-resources</artifactId>
+                <version>${gurkensalat-android-commons.version}</version>
+                <type>aar</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
