@@ -53,6 +53,12 @@
             <artifactId>scribe</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.gurkensalat.android.commons</groupId>
+            <artifactId>android-commons-account-sync-resources</artifactId>
+            <type>aar</type>
+        </dependency>
+
         <!-- 
             <dependency>
                 <groupId>org.json</groupId>
