@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/login_layout_fragment_oauth_new_account"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthNewAccountFragment_"
+        android:name="com.tandogan.android.xingsync.oauth.OAuthNewAccountFragment_"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthNewAccountFragment_"
+        class="com.tandogan.android.xingsync.oauth.OAuthNewAccountFragment_"
         tools:layout="@layout/fragment_oauth_new_account" >
     </fragment>
 

@@ -7,34 +7,34 @@
 
     <fragment
         android:id="@+id/main_layout_fragment_hello_android"
-        android:name="com.gurkensalat.android.xingsync.HelloAndroidFragment_"
+        android:name="com.tandogan.android.xingsync.HelloAndroidFragment_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.HelloAndroidFragment_"
+        class="com.tandogan.android.xingsync.HelloAndroidFragment_"
         tools:layout="@layout/fragment_main_hello_android" >
     </fragment>
 
     <fragment
         android:id="@+id/main_layout_fragment_oauth_buttons"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_"
+        android:name="com.tandogan.android.xingsync.oauth.OAuthButtonsFragment_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthButtonsFragment_"
+        class="com.tandogan.android.xingsync.oauth.OAuthButtonsFragment_"
         tools:layout="@layout/fragment_oauth_buttons" >
     </fragment>
 
     <fragment
         android:id="@+id/main_layout_fragment_oauth_results"
-        android:name="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_"
+        android:name="com.tandogan.android.xingsync.oauth.OAuthResultsFragment_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_weight="1"
-        class="com.gurkensalat.android.xingsync.oauth.OAuthResultsFragment_"
+        class="com.tandogan.android.xingsync.oauth.OAuthResultsFragment_"
         tools:layout="@layout/fragment_oauth_results" >
     </fragment>
 

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.gurkensalat.android.xingsync</groupId>
+        <groupId>com.tandogan.android.xingsync</groupId>
         <artifactId>xing-sync</artifactId>
         <version>0.5.0-SNAPSHOT</version>
     </parent>
@@ -28,14 +28,14 @@
             <artifactId>android-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.gurkensalat.android.xingsync</groupId>
+            <groupId>com.tandogan.android.xingsync</groupId>
             <artifactId>xing-sync-app</artifactId>
             <type>apk</type>
             <version>${project.version}</version>
             <classifier>${zipaligned-classifier}</classifier> <!-- classifier set according to the ran profile -->
         </dependency>
         <dependency>
-            <groupId>com.gurkensalat.android.xingsync</groupId>
+            <groupId>com.tandogan.android.xingsync</groupId>
             <artifactId>xing-sync-app</artifactId>
             <type>jar</type>
             <version>${project.version}</version>

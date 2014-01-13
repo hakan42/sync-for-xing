@@ -8,7 +8,7 @@ import android.accounts.AccountManager;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.gurkensalat.android.xingsync.R;
+import com.tandogan.android.xingsync.R;
 
 /**
  * @author sam

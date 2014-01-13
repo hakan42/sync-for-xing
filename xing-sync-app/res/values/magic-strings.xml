@@ -3,12 +3,12 @@
 
     <!-- What to call our account type -->
     <string name="CONTACT_CONTENT_AUTHORITY">com.android.contacts</string>
-    <string name="ACCOUNT_TYPE">com.gurkensalat.android.xingsync.account</string>
-    <string name="CONTACT_MIME_TYPE">vnd.android.cursor.item/vnd.com.gurkensalat.android.xingsync.profile</string>
+    <string name="ACCOUNT_TYPE">com.tandogan.android.xingsync.account</string>
+    <string name="CONTACT_MIME_TYPE">vnd.android.cursor.item/vnd.com.tandogan.android.xingsync.profile</string>
 
     <!-- The name of our Login intent -->
     <string name="LOGIN_INTENT_ACTION">fm.last.android.sync.LOGIN</string>
-    <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.gurkensalat.android.xingsync.ACCOUNT_SETUP</string>
+    <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.tandogan.android.xingsync.ACCOUNT_SETUP</string>
 
     <!-- OAuth configuration -->
     <string name="oauth_callback_scheme">x-oauthflow</string>
