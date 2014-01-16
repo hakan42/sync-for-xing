@@ -176,9 +176,9 @@ public class ContactsCall
 		return json;
 	}
 
-	public List<User> parse(JSONObject json)
+	public List<Contact> parse(JSONObject json)
 	{
-		List<User> allUsers = new ArrayList<User>();
+		List<Contact> allUsers = new ArrayList<Contact>();
 
 		if (json != null)
 		{
@@ -197,7 +197,7 @@ public class ContactsCall
 						// System.err.println("INNER #" + i + ": " + innerJson);
 						try
 						{
-							User user = User.fromJSON(innerJson);
+							Contact user = Contact.fromJSON(innerJson);
 							if (user != null)
 							{
 								allUsers.add(user);
@@ -215,7 +215,7 @@ public class ContactsCall
 		return allUsers;
 	}
 
-	public List<User> performAndParse(final Object... args)
+	public List<Contact> performAndParse(final Object... args)
 	{
 		JSONObject json = perform(args);
 		return parse(json);

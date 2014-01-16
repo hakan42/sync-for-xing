@@ -50,7 +50,7 @@ public class ContactsCallTest
 	@Test
 	public void parseContactsCall() throws JSONException
 	{
-		List<User> actual = testable.parse(json);
+		List<Contact> actual = testable.parse(json);
 
 		assertThat("Users list could not be created", actual, is(notNullValue()));
 		assertThat("Two users would have to be parsed", actual.size(), is(2));

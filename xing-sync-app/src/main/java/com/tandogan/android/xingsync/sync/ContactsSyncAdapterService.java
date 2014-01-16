@@ -27,7 +27,7 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.RawContacts;
 
 import com.tandogan.android.xingsync.api.ContactsCall;
-import com.tandogan.android.xingsync.api.User;
+import com.tandogan.android.xingsync.api.Contact;
 
 @EService
 public class ContactsSyncAdapterService extends Service
@@ -97,14 +97,14 @@ public class ContactsSyncAdapterService extends Service
 		else
 		{
 			LOG.info(contactsCall.toString());
-			List<User> contacts = contactsCall.performAndParse();
+			List<Contact> contacts = contactsCall.performAndParse();
 			LOG.info(contacts.toString());
 
 			try
 			{
 				ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
 
-				for (User user : contacts)
+				for (Contact user : contacts)
 				{
 					LOG.info("    About to handle: " + user);
 					if (!(localContacts.containsKey(user.getId())))

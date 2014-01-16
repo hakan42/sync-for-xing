@@ -4,7 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class User
+public class Contact
 {
 	private String id;
 
@@ -14,9 +14,9 @@ public class User
 
 	private String displayName;
 
-	public static User fromJSON(JSONObject json) throws JSONException
+	public static Contact fromJSON(JSONObject json) throws JSONException
 	{
-		User u = null;
+		Contact u = null;
 
 		if (json != null)
 		{
@@ -33,7 +33,7 @@ public class User
 
 		if (json.has("id"))
 		{
-			u = new User();
+			u = new Contact();
 
 			u.setId(json.getString("id"));
 

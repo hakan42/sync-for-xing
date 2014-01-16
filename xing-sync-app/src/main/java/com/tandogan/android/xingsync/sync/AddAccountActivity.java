@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.tandogan.android.xingsync.R;
 import com.tandogan.android.xingsync.api.MeCall;
-import com.tandogan.android.xingsync.api.User;
+import com.tandogan.android.xingsync.api.Contact;
 import com.tandogan.android.xingsync.keys.XingOAuthKeys;
 import com.tandogan.android.xingsync.oauth.PrepareRequestTokenActivity_;
 import com.tandogan.android.xingsync.preferences.SyncPrefs_;
@@ -162,7 +162,7 @@ public class AddAccountActivity extends Activity
 
 					if (meCall != null)
 					{
-						User user = meCall.performAndParse();
+						Contact user = meCall.performAndParse();
 						if (user != null)
 						{
 							userDisplayName = user.getDisplayName();
@@ -511,7 +511,7 @@ public class AddAccountActivity extends Activity
 		LOG.info("About to call 'me' api method");
 		if (meCall != null)
 		{
-			User user = meCall.performAndParse((Object[]) null);
+			Contact user = meCall.performAndParse((Object[]) null);
 			LOG.info("Obtained user is " + user);
 		}
 	}

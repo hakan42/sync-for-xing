@@ -57,14 +57,14 @@ public class MeCall // implements XingApiCall
 		return json;
 	}
 
-	public User performAndParse(final Object... args)
+	public Contact performAndParse(final Object... args)
 	{
-		User user = null;
+		Contact user = null;
 		JSONObject json = perform(args);
 
 		try
 		{
-			user = User.fromJSON(json);
+			user = Contact.fromJSON(json);
 		}
 		catch (JSONException e)
 		{

@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class UserTest
+public class ContactTest
 {
 	private JSONObject json;
 
@@ -41,7 +41,7 @@ public class UserTest
 	@Test
 	public void parseMeCall() throws JSONException
 	{
-		User actual = User.fromJSON(json);
+		Contact actual = Contact.fromJSON(json);
 		assertThat("User could not be created", actual, is(notNullValue()));
 		assertThat("Id not correctly parsed", actual.getId(), is("3382304"));
 		assertThat("First Name not correctly parsed", actual.getFirstName(), is("Hakan"));
