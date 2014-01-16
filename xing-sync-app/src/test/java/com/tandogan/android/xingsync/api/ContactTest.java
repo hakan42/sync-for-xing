@@ -1,6 +1,7 @@
 package com.tandogan.android.xingsync.api;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -10,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import android.provider.ContactsContract;
 
 @RunWith(JUnit4.class)
 public class ContactTest
@@ -47,5 +50,16 @@ public class ContactTest
 		assertThat("First Name not correctly parsed", actual.getFirstName(), is("Hakan"));
 		assertThat("Last Name not correctly parsed", actual.getLastName(), is("Tandogan"));
 		assertThat("Display Name not correctly parsed", actual.getDisplayName(), is("Hakan Tandogan"));
+	}
+
+	@Test
+	public void data() throws JSONException
+	{
+		Contact actual = Contact.fromJSON(json);
+		assertThat("User could not be created", actual, is(notNullValue()));
+
+		actual.setData(ContactsContract.CommonDataKinds.Email.ADDRESS, "someone@somewhere.com");
+		assertThat("Email Address could not be set", actual.getData(ContactsContract.CommonDataKinds.Email.ADDRESS),
+		        is(equalTo("someone@somewhere.com")));
 	}
 }

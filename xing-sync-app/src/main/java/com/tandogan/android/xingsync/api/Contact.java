@@ -1,5 +1,8 @@
 package com.tandogan.android.xingsync.api;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +16,8 @@ public class Contact
 	private String lastName;
 
 	private String displayName;
+
+	private Map<String, String> data = new TreeMap<String, String>();
 
 	public static Contact fromJSON(JSONObject json) throws JSONException
 	{
@@ -63,6 +68,21 @@ public class Contact
 		return u;
 	}
 
+	public Map<String, String> getData()
+	{
+		return data;
+	}
+
+	public String getData(String key)
+	{
+		if (data == null)
+		{
+			return null;
+		}
+
+		return data.get(key);
+	}
+
 	public String getDisplayName()
 	{
 		return displayName;
@@ -81,6 +101,21 @@ public class Contact
 	public String getLastName()
 	{
 		return lastName;
+	}
+
+	public void setData(Map<String, String> data)
+	{
+		this.data = data;
+	}
+
+	public void setData(String key, String value)
+	{
+		if (data == null)
+		{
+			setData(new TreeMap<String, String>());
+		}
+
+		data.put(key, value);
 	}
 
 	public void setDisplayName(String displayName)
