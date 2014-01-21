@@ -5,6 +5,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
+
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -20,22 +24,14 @@ public class ContactTest
 	private JSONObject json;
 
 	@Before
-	public void populateJson() throws JSONException
+	public void populateJson() throws JSONException, IOException
 	{
-		StringBuffer sb = new StringBuffer(1024);
+		// JSON is fetched from logcat and reformatted with
+		// http://jsonformatter.curiousconcept.com/
 
-		sb.append("{");
-		sb.append("  \"users\": [");
-		sb.append("    {");
-		sb.append("      \"id\": \"3382304_64b174\",");
-		sb.append("      \"first_name\": \"Hakan\",");
-		sb.append("      \"last_name\": \"Tandogan\",");
-		sb.append("      \"display_name\": \"Hakan Tandogan\"");
-		sb.append("    }");
-		sb.append("  ]");
-		sb.append("}");
+		String data = IOUtils.toString(getClass().getResourceAsStream("ContactTest.json"), Charsets.UTF_8);
 
-		JSONObject actual = new JSONObject(sb.toString());
+		JSONObject actual = new JSONObject(data);
 		assertThat("JSON object could not be created", actual, is(notNullValue()));
 
 		json = actual;
