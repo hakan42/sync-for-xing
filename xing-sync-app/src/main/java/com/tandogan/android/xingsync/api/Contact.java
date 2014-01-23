@@ -7,9 +7,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.provider.ContactsContract;
+
 public class Contact
 {
 	private String id;
+
+	public String MIME_TYPE = ContactsContract.Contacts.CONTENT_TYPE;
 
 	private String firstName;
 
