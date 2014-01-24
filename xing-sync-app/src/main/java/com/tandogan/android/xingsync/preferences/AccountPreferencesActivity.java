@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -13,7 +14,7 @@ import android.preference.PreferenceManager;
 import com.tandogan.android.xingsync.R;
 
 @EActivity
-public class AccountPreferencesActivity extends PreferenceActivity
+public class AccountPreferencesActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
 	private static Logger LOG = LoggerFactory.getLogger(AccountPreferencesActivity.class);
 
@@ -38,7 +39,10 @@ public class AccountPreferencesActivity extends PreferenceActivity
 		LOG.info("onStart() called");
 
 		super.onStart();
-		// preferences.registerOnSharedPreferenceChangeListener(backupListener);
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		LOG.info("prefs is {}", prefs.toString());
+		prefs.registerOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
@@ -46,10 +50,38 @@ public class AccountPreferencesActivity extends PreferenceActivity
 	{
 		LOG.info("onStop() called");
 
-		// preferences.unregisterOnSharedPreferenceChangeListener(backupListener);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		LOG.info("prefs is {}", prefs.toString());
+		prefs.registerOnSharedPreferenceChangeListener(this);
+
 		super.onStop();
 		savePreferencesToAnnotation();
 		createFieldList();
+	}
+
+
+	@Override
+	protected void onResume()
+	{
+		LOG.info("onResume() called");
+
+		super.onResume();
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		LOG.info("prefs is {}", prefs.toString());
+		prefs.registerOnSharedPreferenceChangeListener(this);
+	}
+
+	@Override
+	protected void onPause()
+	{
+		LOG.info("onPause() called");
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		LOG.info("prefs is {}", prefs.toString());
+		prefs.registerOnSharedPreferenceChangeListener(this);
+
+		super.onPause();
 	}
 
 	private void savePreferencesToAnnotation()
@@ -166,4 +198,13 @@ public class AccountPreferencesActivity extends PreferenceActivity
 			LOG.info("fieldList saved.");
 		}
 	}
+
+	@Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+    {
+	    // TODO Auto-generated method stub
+		LOG.info("onSharedPreferenceChanged() called");
+		LOG.info("    sharedPreferences: '{}'", sharedPreferences);
+		LOG.info("    key: '{}'", key);
+    }
 }
