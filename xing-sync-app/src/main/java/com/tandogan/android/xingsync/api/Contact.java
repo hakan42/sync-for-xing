@@ -23,6 +23,8 @@ public class Contact
 
 	private String gender;
 
+	private String permalink;
+
 	private Map<String, String> data = new TreeMap<String, String>();
 
 	public static Contact fromJSON(JSONObject json) throws JSONException
@@ -74,6 +76,11 @@ public class Contact
 			{
 				u.setGender(json.getString("gender"));
 			}
+
+			if (json.has("permalink"))
+			{
+				u.setPermalink(json.getString("permalink"));
+			}
 		}
 
 		return u;
@@ -119,6 +126,11 @@ public class Contact
 		return lastName;
 	}
 
+	public String getPermalink()
+	{
+		return permalink;
+	}
+
 	public void setData(Map<String, String> data)
 	{
 		this.data = data;
@@ -157,5 +169,10 @@ public class Contact
 	public void setLastName(String lastName)
 	{
 		this.lastName = lastName;
+	}
+
+	public void setPermalink(String permalink)
+	{
+		this.permalink = permalink;
 	}
 }
