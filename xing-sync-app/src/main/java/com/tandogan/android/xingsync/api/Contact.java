@@ -25,6 +25,8 @@ public class Contact
 
 	private String permalink;
 
+	private Birthdate birthdate;
+
 	private Map<String, String> data = new TreeMap<String, String>();
 
 	public static Contact fromJSON(JSONObject json) throws JSONException
@@ -81,9 +83,29 @@ public class Contact
 			{
 				u.setPermalink(json.getString("permalink"));
 			}
+
+			if (json.has("birth_date"))
+			{
+				JSONObject bd = json.getJSONObject("birth_date");
+				if (bd != null)
+				{
+					Birthdate birthdate = new Birthdate();
+
+					birthdate.setDay(bd.optInt("day"));
+					birthdate.setMonth(bd.optInt("month"));
+					birthdate.setYear(bd.optInt("year"));
+
+					u.setBirthdate(birthdate);
+				}
+			}
 		}
 
 		return u;
+	}
+
+	public Birthdate getBirthdate()
+	{
+		return birthdate;
 	}
 
 	public Map<String, String> getData()
@@ -129,6 +151,11 @@ public class Contact
 	public String getPermalink()
 	{
 		return permalink;
+	}
+
+	public void setBirthdate(Birthdate birthdate)
+	{
+		this.birthdate = birthdate;
 	}
 
 	public void setData(Map<String, String> data)

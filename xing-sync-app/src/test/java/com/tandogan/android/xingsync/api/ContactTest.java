@@ -46,7 +46,13 @@ public class ContactTest
 		assertThat("Last Name not correctly parsed", actual.getLastName(), equalTo("Tandogan"));
 		assertThat("Display Name not correctly parsed", actual.getDisplayName(), equalTo("Hakan Tandogan"));
 		assertThat("Gender not correctly parsed", actual.getGender(), equalTo("m"));
-		assertThat("Permalink not correctly parsed", actual.getPermalink(), equalTo("https://www.xing.com/profile/Hakan_Tandogan"));
+		assertThat("Permalink not correctly parsed", actual.getPermalink(),
+		        equalTo("https://www.xing.com/profile/Hakan_Tandogan"));
+
+		assertThat("Birthdate not correctly parsed", actual.getBirthdate(), notNullValue());
+		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getDay(), equalTo(5));
+		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getMonth(), equalTo(12));
+		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getYear(), equalTo(1979));
 	}
 
 	@Test
