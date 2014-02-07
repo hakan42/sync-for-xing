@@ -45,6 +45,7 @@ public class ContactTest
 		assertThat("First Name not correctly parsed", actual.getFirstName(), equalTo("Hakan"));
 		assertThat("Last Name not correctly parsed", actual.getLastName(), equalTo("Tandogan"));
 		assertThat("Display Name not correctly parsed", actual.getDisplayName(), equalTo("Hakan Tandogan"));
+		assertThat("Gender not correctly parsed", actual.getGender(), equalTo("m"));
 	}
 
 	@Test

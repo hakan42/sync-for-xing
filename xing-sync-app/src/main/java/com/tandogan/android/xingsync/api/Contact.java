@@ -21,6 +21,8 @@ public class Contact
 
 	private String displayName;
 
+	private String gender;
+
 	private Map<String, String> data = new TreeMap<String, String>();
 
 	public static Contact fromJSON(JSONObject json) throws JSONException
@@ -67,6 +69,11 @@ public class Contact
 			{
 				u.setDisplayName(json.getString("display_name"));
 			}
+
+			if (json.has("gender"))
+			{
+				u.setGender(json.getString("gender"));
+			}
 		}
 
 		return u;
@@ -95,6 +102,11 @@ public class Contact
 	public String getFirstName()
 	{
 		return firstName;
+	}
+
+	public String getGender()
+	{
+		return gender;
 	}
 
 	public String getId()
@@ -130,6 +142,11 @@ public class Contact
 	public void setFirstName(String firstName)
 	{
 		this.firstName = firstName;
+	}
+
+	public void setGender(String gender)
+	{
+		this.gender = gender;
 	}
 
 	public void setId(String id)
