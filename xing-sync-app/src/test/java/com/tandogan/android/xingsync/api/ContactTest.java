@@ -2,6 +2,7 @@ package com.tandogan.android.xingsync.api;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
@@ -53,6 +54,22 @@ public class ContactTest
 		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getDay(), equalTo(5));
 		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getMonth(), equalTo(12));
 		assertThat("Birthdate not correctly parsed", actual.getBirthdate().getYear(), equalTo(1979));
+
+		assertThat("Phone numbers not correctly parsed", actual.getPhone(), notNullValue());
+
+		assertThat("Private phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_HOME), nullValue());
+		assertThat("Private phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE), nullValue());
+		assertThat("Private phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME), nullValue());
+
+		assertThat("Business phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_WORK), equalTo("49|40|56821147"));
+		assertThat("Business phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE), equalTo("49|174|1234567"));
+		assertThat("Business phone numbers not correctly parsed",
+		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK), equalTo("49|40|56821148"));
 	}
 
 	@Test

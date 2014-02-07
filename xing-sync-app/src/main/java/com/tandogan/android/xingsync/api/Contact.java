@@ -29,6 +29,8 @@ public class Contact
 
 	private Map<String, String> data = new TreeMap<String, String>();
 
+	private Map<String, String> phone = new TreeMap<String, String>();
+
 	public static Contact fromJSON(JSONObject json) throws JSONException
 	{
 		Contact u = null;
@@ -98,6 +100,50 @@ public class Contact
 					u.setBirthdate(birthdate);
 				}
 			}
+
+			if (json.has("private_address"))
+			{
+				JSONObject address = json.getJSONObject("private_address");
+				if (address != null)
+				{
+					if (!(address.isNull("phone")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_HOME, address.optString("phone"));
+					}
+
+					if (!(address.isNull("mobile_phone")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE, address.optString("mobile_phone"));
+					}
+
+					if (!(address.isNull("fax")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME, address.optString("fax"));
+					}
+				}
+			}
+
+			if (json.has("business_address"))
+			{
+				JSONObject address = json.getJSONObject("business_address");
+				if (address != null)
+				{
+					if (!(address.isNull("phone")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_WORK, address.optString("phone"));
+					}
+
+					if (!(address.isNull("mobile_phone")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE, address.optString("mobile_phone"));
+					}
+
+					if (!(address.isNull("fax")))
+					{
+						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK, address.optString("fax"));
+					}
+				}
+			}
 		}
 
 		return u;
@@ -153,6 +199,16 @@ public class Contact
 		return permalink;
 	}
 
+	public Map<String, String> getPhone()
+	{
+		return phone;
+	}
+
+	public String getPhone(int type)
+	{
+		return phone.get(Integer.toString(type));
+	}
+
 	public void setBirthdate(Birthdate birthdate)
 	{
 		this.birthdate = birthdate;
@@ -201,5 +257,20 @@ public class Contact
 	public void setPermalink(String permalink)
 	{
 		this.permalink = permalink;
+	}
+
+	public void setPhone(Map<String, String> phone)
+	{
+		this.phone = phone;
+	}
+
+	public void setPhone(int type, String phone)
+	{
+		if (this.phone == null)
+		{
+			this.phone = new TreeMap<String, String>();
+		}
+
+		this.phone.put(Integer.toString(type), phone);
 	}
 }
