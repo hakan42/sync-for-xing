@@ -38,7 +38,7 @@ public class ContactTest
 	}
 
 	@Test
-	public void parseMeCall() throws JSONException
+	public void fromJSON() throws JSONException
 	{
 		Contact actual = Contact.fromJSON(json);
 		assertThat("User could not be created", actual, notNullValue());
@@ -70,6 +70,22 @@ public class ContactTest
 		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE), equalTo("49|174|1234567"));
 		assertThat("Business phone numbers not correctly parsed",
 		        actual.getPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK), equalTo("49|40|56821148"));
+
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getType(),
+		        equalTo(ContactsContract.CommonDataKinds.StructuredPostal.TYPE_HOME));
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getStreet(), nullValue());
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getZip(), nullValue());
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getCity(), nullValue());
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getProvince(), equalTo("Hamburg"));
+		assertThat("Private Address not correctly parsed", actual.getPrivateAddress().getCountry(), equalTo("Deutschland"));
+
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getType(),
+		        equalTo(ContactsContract.CommonDataKinds.StructuredPostal.TYPE_WORK));
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getStreet(), equalTo("Reeperbahn 1"));
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getZip(), equalTo("20115"));
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getCity(), equalTo("Hamburg"));
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getProvince(), equalTo("Hamburg"));
+		assertThat("Business Address not correctly parsed", actual.getBusinessAddress().getCountry(), equalTo("DE"));
 	}
 
 	@Test

@@ -31,6 +31,10 @@ public class Contact
 
 	private Map<String, String> phone = new TreeMap<String, String>();
 
+	private Address privateAddress = new Address();
+
+	private Address businessAddress = new Address();
+
 	public static Contact fromJSON(JSONObject json) throws JSONException
 	{
 		Contact u = null;
@@ -120,6 +124,34 @@ public class Contact
 					{
 						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME, address.optString("fax"));
 					}
+
+					Address a = u.getPrivateAddress();
+					a.setType(ContactsContract.CommonDataKinds.StructuredPostal.TYPE_HOME);
+
+					if (!(address.isNull("street")))
+					{
+						a.setStreet(address.optString("street"));
+					}
+
+					if (!(address.isNull("zip_code")))
+					{
+						a.setZip(address.optString("zip_code"));
+					}
+
+					if (!(address.isNull("city")))
+					{
+						a.setCity(address.optString("city"));
+					}
+
+					if (!(address.isNull("province")))
+					{
+						a.setProvince(address.optString("province"));
+					}
+
+					if (!(address.isNull("country")))
+					{
+						a.setCountry(address.optString("country"));
+					}
 				}
 			}
 
@@ -142,6 +174,34 @@ public class Contact
 					{
 						u.setPhone(ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK, address.optString("fax"));
 					}
+
+					Address a = u.getBusinessAddress();
+					a.setType(ContactsContract.CommonDataKinds.StructuredPostal.TYPE_WORK);
+
+					if (!(address.isNull("street")))
+					{
+						a.setStreet(address.optString("street"));
+					}
+
+					if (!(address.isNull("zip_code")))
+					{
+						a.setZip(address.optString("zip_code"));
+					}
+
+					if (!(address.isNull("city")))
+					{
+						a.setCity(address.optString("city"));
+					}
+
+					if (!(address.isNull("province")))
+					{
+						a.setProvince(address.optString("province"));
+					}
+
+					if (!(address.isNull("country")))
+					{
+						a.setCountry(address.optString("country"));
+					}
 				}
 			}
 		}
@@ -152,6 +212,11 @@ public class Contact
 	public Birthdate getBirthdate()
 	{
 		return birthdate;
+	}
+
+	public Address getBusinessAddress()
+	{
+		return businessAddress;
 	}
 
 	public Map<String, String> getData()
@@ -209,9 +274,19 @@ public class Contact
 		return phone.get(Integer.toString(type));
 	}
 
+	public Address getPrivateAddress()
+	{
+		return privateAddress;
+	}
+
 	public void setBirthdate(Birthdate birthdate)
 	{
 		this.birthdate = birthdate;
+	}
+
+	public void setBusinessAddress(Address businessAddress)
+	{
+		this.businessAddress = businessAddress;
 	}
 
 	public void setData(Map<String, String> data)
@@ -259,11 +334,6 @@ public class Contact
 		this.permalink = permalink;
 	}
 
-	public void setPhone(Map<String, String> phone)
-	{
-		this.phone = phone;
-	}
-
 	public void setPhone(int type, String phone)
 	{
 		if (this.phone == null)
@@ -272,5 +342,15 @@ public class Contact
 		}
 
 		this.phone.put(Integer.toString(type), phone);
+	}
+
+	public void setPhone(Map<String, String> phone)
+	{
+		this.phone = phone;
+	}
+
+	public void setPrivateAddress(Address privateAddress)
+	{
+		this.privateAddress = privateAddress;
 	}
 }
