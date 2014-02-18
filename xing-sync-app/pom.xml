@@ -49,6 +49,12 @@
         </dependency>
 
         <dependency>
+            <groupId>edu.vanderbilt.isis</groupId>
+            <artifactId>lauilib</artifactId>
+            <version>${logback-android-ui.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.scribe</groupId>
             <artifactId>scribe</artifactId>
         </dependency>
