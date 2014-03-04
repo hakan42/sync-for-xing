@@ -29,9 +29,9 @@ public class MeCall // implements XingApiCall
 			sb.append("  \"users\": [");
 			sb.append("    {");
 			sb.append("      \"id\": \"3382304_64b174\",");
-			sb.append("      \"first_name\": \"Hakan\",");
-			sb.append("      \"last_name\": \"Tandogan\",");
-			sb.append("      \"display_name\": \"Hakan Tandogan\"");
+			sb.append("      \"first_name\": \"Mockity\",");
+			sb.append("      \"last_name\": \"Mock\",");
+			sb.append("      \"display_name\": \"Mockity Mock\"");
 			sb.append("    }");
 			sb.append("  ]");
 			sb.append("}");
