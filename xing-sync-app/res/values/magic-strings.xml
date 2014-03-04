@@ -11,8 +11,10 @@
     <string name="LOGIN_INTENT_ACCOUNT_SETUP_ACTION">com.tandogan.android.xingsync.ACCOUNT_SETUP</string>
 
     <!-- OAuth configuration -->
-    <string name="oauth_callback_scheme">x-oauthflow</string>
-    <string name="oauth_callback_host">callback</string>
+    <!-- <string name="oauth_callback_scheme">x-oauthflow</string> -->
+    <!-- <string name="oauth_callback_host">callback</string> -->
+    <string name="oauth_callback_scheme">http</string>
+    <string name="oauth_callback_host">www.sync-for-xing.com</string>
     <!-- Preferences -->
     <string name="prefs_account_settings_key">account_settings</string>
     <string name="prefs_debug_mock_api_calls_key">debug_mock_api_calls</string>
