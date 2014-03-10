@@ -109,7 +109,7 @@
         </activity>
 
         <provider
-            android:name="edu.vanderbilt.isis.logger.lib.LauiContentProvider"
+            android:name="edu.vu.isis.logger.lib.LauiContentProvider"
             android:authorities="com.tandogan.android.xingsync.LauiContentProvider" />
 
         </application>
