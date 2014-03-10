@@ -55,9 +55,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="@string/oauth_callback_host"
-                    android:scheme="@string/oauth_callback_scheme" />
+                <data android:host="@string/oauth_callback_host" />
+                <data android:scheme="@string/oauth_callback_scheme" />
+                <data android:pathPrefix="@string/oauth_callback_prefix" />
             </intent-filter>
         </activity>
 
@@ -111,7 +111,6 @@
         <provider
             android:name="edu.vu.isis.logger.lib.LauiContentProvider"
             android:authorities="com.tandogan.android.xingsync.LauiContentProvider" />
-
-        </application>
+    </application>
 
 </manifest>

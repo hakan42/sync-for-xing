@@ -44,7 +44,8 @@ public class PrepareRequestTokenActivity extends Activity
 
 			String oauthCallbackScheme = getString(R.string.oauth_callback_scheme);
 			String oauthCallbackHost = getString(R.string.oauth_callback_host);
-			String oauthCallbackUrl = oauthCallbackScheme + "://" + oauthCallbackHost;
+			String oauthCallbackPathPrefix = getString(R.string.oauth_callback_prefix);
+			String oauthCallbackUrl = oauthCallbackScheme + "://" + oauthCallbackHost + oauthCallbackPathPrefix;
 
 			// TODO productive key is broken, have to use "oob"
 			// oauthCallbackUrl = "oob";
