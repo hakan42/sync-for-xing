@@ -37,3 +37,7 @@ Even though nothing special is declared, please see our [Privacy Policy](https:/
 Licence
 -------
 sync-for-xing is licenced under the [Apache 2.0 Licence](http://www.apache.org/licenses/LICENSE-2.0)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hakan42/sync-for-xing/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
